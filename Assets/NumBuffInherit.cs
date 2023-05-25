@@ -10,6 +10,7 @@ public static class Define
 
 public class NumBuffInherit : MonoBehaviour
 {
+    public GameObject _cardParent;
     public GameObject _cardPanel;
     protected Text _descriptionText;
     public GameObject _playerData;
@@ -21,10 +22,13 @@ public class NumBuffInherit : MonoBehaviour
 
     protected string _description;
 
-    protected bool isSelected;
+    protected bool isSelected = false;
 
     public GameObject _panel;
     protected Image _panelImage;
+
+    protected int _inputKeyCord;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +37,20 @@ public class NumBuffInherit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Selection()
     {
-
+        if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected)
+        {
+            Selected();
+        }
+        else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected)
+        {
+            UnSelected();
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Execute();
+        }
     }
 
     protected void SetComponent()
@@ -51,11 +66,15 @@ public class NumBuffInherit : MonoBehaviour
     protected void Selected()
     {
         _preHpReduce += _descHpReduce;
+        _panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        isSelected = true;
     }
 
     protected void UnSelected()
     {
         _preHpReduce -= _descHpReduce;
+        _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        isSelected = !isSelected;
     }
 
     /// <summary>
@@ -64,6 +83,7 @@ public class NumBuffInherit : MonoBehaviour
     protected void Execute()
     {
         _playerScript._currentHP -= _preHpReduce;
+        Destroy(_cardParent);
     }
 
     protected void DisplayDescription()
@@ -71,5 +91,4 @@ public class NumBuffInherit : MonoBehaviour
         _descriptionText.text
             = _description + "\n(" + (_playerScript._currentHP - _descHpReduce) + "hp Remain)";
     }
-
 }

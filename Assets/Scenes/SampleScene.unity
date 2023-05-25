@@ -232,6 +232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6805d3d77df1b5749a2d0525adffd207, type: 3}
+--- !u!1 &60702975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3899636503959750437, guid: 6805d3d77df1b5749a2d0525adffd207, type: 3}
+  m_PrefabInstance: {fileID: 5138164486903868527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &106214898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1093340304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1785645896806443340, guid: 1b87582abe10a654c905378c6b7077e3, type: 3}
+  m_PrefabInstance: {fileID: 1785645895003862967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1113865120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1291076501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,6 +3363,10 @@ PrefabInstance:
       value: BuffCard01
       objectReference: {fileID: 0}
     - target: {fileID: 1785645896829723855, guid: 1b87582abe10a654c905378c6b7077e3, type: 3}
+      propertyPath: _cardParent
+      value: 
+      objectReference: {fileID: 1093340304}
+    - target: {fileID: 1785645896829723855, guid: 1b87582abe10a654c905378c6b7077e3, type: 3}
       propertyPath: _playerData
       value: 
       objectReference: {fileID: 827474839}
@@ -3618,6 +3632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1291076504}
     m_Modifications:
+    - target: {fileID: 2157859254479706054, guid: 6805d3d77df1b5749a2d0525adffd207, type: 3}
+      propertyPath: _cardParent
+      value: 
+      objectReference: {fileID: 60702975}
     - target: {fileID: 2157859254479706054, guid: 6805d3d77df1b5749a2d0525adffd207, type: 3}
       propertyPath: _playerData
       value: 

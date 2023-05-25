@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Buff01Script : NumBuffInherit
+public class Buff03Script : NumBuffInherit
 {
 
 #if UNITY_EDITOR
@@ -14,15 +14,15 @@ public class Buff01Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha1;
-        _description = "AttackDamage*2\n-50%HP";
+        _inputKeyCord = (int)KeyCode.Alpha3;
+        _description = "BulletPower++\n-20HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)_playerScript._currentHP / 2;
+        _descHpReduce = (int)20;
         DisplayDescription();
     }
 }

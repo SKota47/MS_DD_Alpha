@@ -14,26 +14,14 @@ public class Buff02Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-
+        _inputKeyCord = (int)KeyCode.Alpha2;
         _description = "BulletPower++\n-20HP";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2) && !isSelected)
-        {
-            Selected();
-            _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-            isSelected = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && isSelected)
-        {
-            UnSelected();
-            _panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
-            isSelected = !isSelected;
-        }
-
+        Selection();
         _descHpReduce = (int)20;
         DisplayDescription();
     }
