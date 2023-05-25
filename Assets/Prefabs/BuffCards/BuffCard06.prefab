@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3899636503919823529}
   - component: {fileID: 3899636503919823524}
   - component: {fileID: 3899636503919823527}
-  - component: {fileID: 2157859254479706054}
+  - component: {fileID: 3100700915453110088}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1.2
   m_Text: Sample01
---- !u!114 &2157859254479706054
+--- !u!114 &3100700915453110088
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3899636503919823528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745c092fc921ae548ab0745bdc7f646e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b2641059ef5d034291716fe684466c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cardParent: {fileID: 3899636503959750437}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3899636503959750432}
   - component: {fileID: 3899636503959750435}
   m_Layer: 5
-  m_Name: BuffCard02
+  m_Name: BuffCard06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

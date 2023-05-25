@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72689abbf02afa4b91bf9c4cf792f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardParent: {fileID: 1785645896806443340}
   _cardPanel: {fileID: 1785645896829723841}
   _playerData: {fileID: 0}
   _panel: {fileID: 1785645896806443340}

@@ -55,6 +55,7 @@ public class NumBuffInherit : MonoBehaviour
 
     protected void SetComponent()
     {
+        _playerData = GameObject.FindWithTag("Player");
         _descriptionText = GetComponent<Text>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
         _panelImage = _panel.GetComponent<Image>();
