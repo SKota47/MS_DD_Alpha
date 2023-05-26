@@ -29,6 +29,8 @@ public class NumBuffInherit : MonoBehaviour
 
     protected int _inputKeyCord;
 
+    public GameObject _buffCardCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,8 @@ public class NumBuffInherit : MonoBehaviour
         _descriptionText = GetComponent<Text>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
         _panelImage = _panel.GetComponent<Image>();
+        _descriptionText.color = Color.white;
+        //_buffCardCanvas = GameObject.Find("BuffCardCanvas");
     }
 
     /// <summary>
@@ -68,6 +72,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce += _descHpReduce;
         _panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        _descriptionText.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         isSelected = true;
     }
 
@@ -75,6 +80,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce -= _descHpReduce;
         _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        _descriptionText.color = Color.white;
         isSelected = !isSelected;
     }
 
@@ -85,6 +91,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _playerScript._currentHP -= _preHpReduce;
         Destroy(_cardParent);
+        //_buffCardCanvas.SetActive(false);
     }
 
     protected void DisplayDescription()
