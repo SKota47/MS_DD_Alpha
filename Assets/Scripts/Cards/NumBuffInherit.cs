@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class Define
-{
-    public const int Input1 = (int)KeyCode.Alpha1;
-}
-
+/// <summary>
+/// ステータス強化用の親スクリプト
+/// </summary>
 public class NumBuffInherit : MonoBehaviour
 {
     public GameObject _cardParent;
@@ -24,14 +22,10 @@ public class NumBuffInherit : MonoBehaviour
 
     protected bool isSelected = false;
 
-    public GameObject _panel;
     protected Image _panelImage;
 
     protected int _inputKeyCord;
 
-    public GameObject _buffCardCanvas;
-
-    // Start is called before the first frame update
     void Start()
     {
         SetComponent();
@@ -55,12 +49,16 @@ public class NumBuffInherit : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 変数にアタッチする関数
+    /// </summary>
     protected void SetComponent()
     {
+        // _cardPanel = GetComponent<GameObject>();
         _playerData = GameObject.FindWithTag("Player");
         _descriptionText = GetComponent<Text>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
-        _panelImage = _panel.GetComponent<Image>();
+        _panelImage = _cardPanel.GetComponent<Image>();
         _descriptionText.color = Color.white;
         //_buffCardCanvas = GameObject.Find("BuffCardCanvas");
     }
@@ -76,6 +74,9 @@ public class NumBuffInherit : MonoBehaviour
         isSelected = true;
     }
 
+    /// <summary>
+    /// カード選択が解除されたときに呼ばれる
+    /// </summary>
     protected void UnSelected()
     {
         _preHpReduce -= _descHpReduce;
@@ -91,12 +92,16 @@ public class NumBuffInherit : MonoBehaviour
     {
         _playerScript._currentHP -= _preHpReduce;
         Destroy(_cardParent);
-        //_buffCardCanvas.SetActive(false);
     }
 
     protected void DisplayDescription()
     {
         _descriptionText.text
             = _description + "\n(" + (_playerScript._currentHP - _descHpReduce) + "hp Remain)";
+    }
+
+    public void SetKeyInput()
+    {
+
     }
 }
