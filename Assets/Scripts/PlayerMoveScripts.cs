@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMoveScripts : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public int _maxHP = 100;        //最大体力
     public float _currentHP;        //現在の体力
+    public static float _publicHP;
     private float _damage = 0;      //受けるダメージ
     [System.NonSerialized]
     public int _damageFromReload = 0;
@@ -39,13 +41,22 @@ public class PlayerMoveScripts : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _currentHP = _maxHP;
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            _currentHP = _maxHP;
+            _publicHP = _currentHP;
+        }
+        else
+        {
+            _currentHP = _publicHP;
+        }
         _hpText = _hpValue.GetComponent<Text>();
         _bsShot = _bullel.GetComponent<BulletShotScript>();
     }
 
     void Update()
     {
+        _currentHP = _publicHP;
         //移動
         //ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
@@ -88,6 +99,8 @@ public class PlayerMoveScripts : MonoBehaviour
         }
 
         HPCulc();
+
+        _publicHP = _currentHP;
     }
 
     private void FixedUpdate()
@@ -95,7 +108,7 @@ public class PlayerMoveScripts : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-         if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ジャンプ
+        if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ジャンプ
     }
 
     private void HPCulc()

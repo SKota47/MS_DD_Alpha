@@ -31,7 +31,6 @@ public class layingCard : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H) && _ancherAlly[0].transform.childCount == 0/*!_buffCardCamvas.activeSelf*/)
         {
-            //_buffCardCamvas.SetActive(true);
             DoLaying();
         }
     }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         Screen.SetResolution(1280, 720, false);
     }
 
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Stage02");
         }
     }
 }
