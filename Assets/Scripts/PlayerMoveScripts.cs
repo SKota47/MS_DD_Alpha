@@ -8,7 +8,7 @@ public class PlayerMoveScripts : MonoBehaviour
 {
     Rigidbody _rb;
     private float _speed = 20.0f;   //横移動の速度
-    private Vector2 _jumpPow = new Vector2(0.0f, 250.0f);   //ジャンプのパワー
+    private Vector2 _jumpPow = new Vector2(0.0f, 380.0f);   //ジャンプのパワー
     private bool _isJump = false;   //ジャンプしているか
 
     public int _maxHP = 100;        //最大体力
