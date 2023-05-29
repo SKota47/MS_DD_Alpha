@@ -14,8 +14,7 @@ public class Buff05Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha5;
-        _description = "?!\n-2HP";
+        _description = "‹­‰»‚T\n-2HP";
     }
 
     // Update is called once per frame

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Enemy01
+  - Enemy02
+  - GameManager
   layers:
   - Default
   - TransparentFX

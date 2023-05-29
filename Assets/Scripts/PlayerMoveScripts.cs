@@ -56,7 +56,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
     void Update()
     {
-        _currentHP = _publicHP;
+        //_currentHP = _publicHP;
         //ˆÚ“®
         //ƒWƒƒƒ“ƒv
         if (Input.GetKeyDown(KeyCode.Space) && !_isJump)

@@ -14,8 +14,7 @@ public class Buff04Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha4;
-        _description = "Sliding\n-4%HP";
+        _description = "‹­‰»‚S\n-4%HP";
     }
 
     // Update is called once per frame

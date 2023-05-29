@@ -14,15 +14,14 @@ public class Buff03Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha3;
-        _description = "JumpPow++\n-10HP";
+        _description = "‹­‰»‚R\n-5HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)10;
+        _descHpReduce = (int)5;
         DisplayDescription();
     }
 }

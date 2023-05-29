@@ -2920,10 +2920,9 @@ GameObject:
   - component: {fileID: 1817338032}
   - component: {fileID: 1817338033}
   - component: {fileID: 1817338034}
-  - component: {fileID: 1817338035}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2993,9 +2992,9 @@ MonoBehaviour:
   - {fileID: 3899636503959750437, guid: 4557bff7383f1c941b0e73c4c3e1188d, type: 3}
   - {fileID: 3899636503959750437, guid: c380e9ac6b7030e4e9f33c600c3152b5, type: 3}
   - {fileID: 3899636503959750437, guid: 0dfc44ca8e929574c94c347dd0f0487e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3899636503959750437, guid: a41fa896d95042948afc2b60ad85c1fd, type: 3}
+  - {fileID: 3899636503959750437, guid: 3abefd086104c2c41b37f24f141da5ac, type: 3}
+  - {fileID: 3899636503959750437, guid: 7979a33f817c9824da382a8fc6ae22c1, type: 3}
 --- !u!114 &1817338034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,20 +3008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyNum: 0
-  _gate: {fileID: 1085894874}
---- !u!114 &1817338035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817338029}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91544a17c65155347bd78e5bd6c92cf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameMnager: {fileID: 1817338029}
   _gate: {fileID: 1085894874}
 --- !u!1 &1820735714
 GameObject:

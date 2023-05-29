@@ -14,8 +14,7 @@ public class Buff06Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha6;
-        _description = "ChargeShot\n-5%HP";
+        _description = "‹­‰»‚U\n-5%HP";
     }
 
     // Update is called once per frame

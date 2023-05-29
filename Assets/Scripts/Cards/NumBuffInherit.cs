@@ -26,6 +26,10 @@ public class NumBuffInherit : MonoBehaviour
 
     protected int _inputKeyCord;
 
+    public GameObject _gameManager;
+    private layingCard _layingCardScript;
+    protected List<GameObject> _cards = new List<GameObject>();
+
     void Start()
     {
         SetComponent();
@@ -54,12 +58,30 @@ public class NumBuffInherit : MonoBehaviour
     /// </summary>
     protected void SetComponent()
     {
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        //_layingCardScript = _gameManager.GetComponent<layingCard>();
+        //_cards = _layingCardScript._cards;
         // _cardPanel = GetComponent<GameObject>();
         _playerData = GameObject.FindWithTag("Player");
         _descriptionText = GetComponent<Text>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
         _panelImage = _cardPanel.GetComponent<Image>();
         _descriptionText.color = Color.white;
+        switch (transform.parent.parent.name)
+        {
+            case "AncherPoint01":
+                _inputKeyCord = (int)KeyCode.Alpha1;
+                break;
+            case "AncherPoint02":
+                _inputKeyCord = (int)KeyCode.Alpha2;
+                break;
+            case "AncherPoint03":
+                _inputKeyCord = (int)KeyCode.Alpha3;
+                break;
+            default:
+                Debug.LogError("アンカーポイントが未指定です\n");
+                break;
+        }
         //_buffCardCanvas = GameObject.Find("BuffCardCanvas");
     }
 
@@ -69,7 +91,7 @@ public class NumBuffInherit : MonoBehaviour
     protected void Selected()
     {
         _preHpReduce += _descHpReduce;
-        _panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        //_panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         _descriptionText.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         isSelected = true;
     }
@@ -80,7 +102,7 @@ public class NumBuffInherit : MonoBehaviour
     protected void UnSelected()
     {
         _preHpReduce -= _descHpReduce;
-        _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        // _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
         _descriptionText.color = Color.white;
         isSelected = !isSelected;
     }
@@ -90,6 +112,10 @@ public class NumBuffInherit : MonoBehaviour
     /// </summary>
     protected void Execute()
     {
+        //if (isSelected)
+        //{
+        //    _cards.Remove(transform.parent.gameObject);
+        //}
         _playerScript._currentHP -= _preHpReduce;
         Destroy(_cardParent);
     }
@@ -100,8 +126,4 @@ public class NumBuffInherit : MonoBehaviour
             = _description + "\n(" + (_playerScript._currentHP - _descHpReduce) + "hp Remain)";
     }
 
-    public void SetKeyInput()
-    {
-
-    }
 }

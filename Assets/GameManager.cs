@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            SceneManager.LoadScene("Stage02");
-        }
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    SceneManager.LoadScene("Stage02");
+        //}
     }
 }

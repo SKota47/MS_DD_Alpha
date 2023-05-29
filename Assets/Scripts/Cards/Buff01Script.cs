@@ -14,15 +14,14 @@ public class Buff01Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _inputKeyCord = (int)KeyCode.Alpha1;
-        _description = "AttackDamage*2\n-50%HP";
+        _description = "‹­‰»‚P\n-5%HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)_playerScript._currentHP / 2;
+        _descHpReduce = (int)_playerScript._currentHP / 20;
         DisplayDescription();
     }
 }
