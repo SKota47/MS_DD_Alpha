@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 250c99093df5dcd4796c61aea3e6e99b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _cardParent: {instanceID: 0}
+  - _cardPanel: {instanceID: 0}
+  - _playerData: {instanceID: 0}
+  - _gameManager: {instanceID: 0}
+  - _preHpBar: {fileID: 679579106256146294, guid: 48683d32199c5e44ab4039bb0d58a199, type: 3}
+  - _preHpBarSlider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

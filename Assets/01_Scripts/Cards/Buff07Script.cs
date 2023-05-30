@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class Buff03Script : NumBuffInherit
+public class Buff07Script : NumBuffInherit
 {
 
 #if UNITY_EDITOR
@@ -14,14 +14,15 @@ public class Buff03Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "‹­‰»‚R\n-5HP";
+        _description = "‹­‰»‚V\n-5%HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)5;
+        _descHpReduce = (int)_playerScript._currentHP / 20;
+        //_displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) / 20;
         DisplayDescription();
     }
 }

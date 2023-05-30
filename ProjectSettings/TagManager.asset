@@ -8,6 +8,7 @@ TagManager:
   - Enemy01
   - Enemy02
   - GameManager
+  - PreHpBar
   layers:
   - Default
   - TransparentFX

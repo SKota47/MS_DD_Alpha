@@ -17,6 +17,7 @@ public class NumBuffInherit : MonoBehaviour
 
     protected int _descHpReduce;
     protected int _preHpReduce;
+    protected int _displayPreHpResuce;
 
     protected string _description;
 
@@ -30,6 +31,9 @@ public class NumBuffInherit : MonoBehaviour
     private layingCard _layingCardScript;
     protected List<GameObject> _cards = new List<GameObject>();
 
+    public GameObject _preHpBar;
+    protected Slider _preHpBarSlider;
+
     void Start()
     {
         SetComponent();
@@ -39,18 +43,9 @@ public class NumBuffInherit : MonoBehaviour
     // Update is called once per frame
     protected void Selection()
     {
-        if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected)
-        {
-            Selected();
-        }
-        else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected)
-        {
-            UnSelected();
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Execute();
-        }
+        if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected) Selected();
+        else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected) UnSelected();
+        if (Input.GetKeyDown(KeyCode.Return)) Execute();
     }
 
     /// <summary>
@@ -65,7 +60,10 @@ public class NumBuffInherit : MonoBehaviour
         _playerData = GameObject.FindWithTag("Player");
         _descriptionText = GetComponent<Text>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
-        _panelImage = _cardPanel.GetComponent<Image>();
+        _preHpBar = GameObject.FindWithTag("PreHpBar");
+        _preHpBarSlider = _preHpBar.GetComponent<Slider>();
+        _preHpBarSlider.value = _playerScript._currentHP;
+        _panelImage = _cardParent.GetComponent<Image>();
         _descriptionText.color = Color.white;
         switch (transform.parent.parent.name)
         {
@@ -91,9 +89,11 @@ public class NumBuffInherit : MonoBehaviour
     protected void Selected()
     {
         _preHpReduce += _descHpReduce;
+        _displayPreHpResuce += _descHpReduce;
         //_panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         _descriptionText.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         isSelected = true;
+        _preHpBarSlider.value -= _displayPreHpResuce;
     }
 
     /// <summary>
@@ -102,9 +102,11 @@ public class NumBuffInherit : MonoBehaviour
     protected void UnSelected()
     {
         _preHpReduce -= _descHpReduce;
+        _displayPreHpResuce -= _descHpReduce;
         // _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
         _descriptionText.color = Color.white;
         isSelected = !isSelected;
+        _preHpBarSlider.value += _displayPreHpResuce;
     }
 
     /// <summary>
