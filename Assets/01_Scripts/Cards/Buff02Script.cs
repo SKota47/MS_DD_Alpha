@@ -21,7 +21,7 @@ public class Buff02Script : NumBuffInherit
     void Update()
     {
         Selection();
-        _descHpReduce = (int)20;
+        _descHpReduce = (int)10;
        // _displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) - _descHpReduce;
         DisplayDescription();
     }

@@ -119,6 +119,10 @@ public class NumBuffInherit : MonoBehaviour
         //    _cards.Remove(transform.parent.gameObject);
         //}
         _playerScript._currentHP -= _preHpReduce;
+        if (_preHpBar.activeSelf)
+        {
+            _preHpBar.SetActive(false);
+        }
         Destroy(_cardParent);
     }
 
