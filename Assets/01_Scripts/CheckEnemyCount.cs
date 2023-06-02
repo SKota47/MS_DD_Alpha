@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Žc“G‚ÌŠm”F
+/// </summary>
 public class CheckEnemyCount : MonoBehaviour
 {
     GameObject[] _enemyObjects;
     GameObject[] _flyEnemyObjects;
     public int _enemyNum;
     public GameObject _gate;
-    void Start()
-    {
-
-    }
 
     void Update()
     {

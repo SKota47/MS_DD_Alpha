@@ -14,7 +14,7 @@ public class Buff04Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "‹­‰»‚S\n-4%HP";
+        _description = "Buf4\n-4%HP";
     }
 
     // Update is called once per frame

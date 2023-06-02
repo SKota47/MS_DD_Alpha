@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class NumBuffInherit : MonoBehaviour
 {
     public GameObject _cardParent;
     public GameObject _cardPanel;
-    protected Text _descriptionText;
+    protected TextMeshProUGUI _descriptionTextMesh;
     public GameObject _playerData;
     protected PlayerMoveScripts _playerScript;
     protected int _playerHp;
@@ -33,6 +34,11 @@ public class NumBuffInherit : MonoBehaviour
 
     public GameObject _preHpBar;
     protected Slider _preHpBarSlider;
+
+    //public GameObject _bgPanelPrefab;
+    public GameObject _bgPanelObj;
+    private Image _backGroundImage;
+
 
     void Start()
     {
@@ -58,13 +64,20 @@ public class NumBuffInherit : MonoBehaviour
         //_cards = _layingCardScript._cards;
         // _cardPanel = GetComponent<GameObject>();
         _playerData = GameObject.FindWithTag("Player");
-        _descriptionText = GetComponent<Text>();
+        _descriptionTextMesh = GetComponent<TextMeshProUGUI>();
         _playerScript = _playerData.GetComponent<PlayerMoveScripts>();
         _preHpBar = GameObject.FindWithTag("PreHpBar");
         _preHpBarSlider = _preHpBar.GetComponent<Slider>();
         _preHpBarSlider.value = _playerScript._currentHP;
         _panelImage = _cardParent.GetComponent<Image>();
-        _descriptionText.color = Color.white;
+        _panelImage.color = Color.white;
+        _descriptionTextMesh.color = Color.white;
+
+        if (_bgPanelObj == null) _bgPanelObj = GameObject.Find("BackGroundPanel");
+        if (!_bgPanelObj.activeSelf) _bgPanelObj.SetActive(true);
+        _backGroundImage = _bgPanelObj.GetComponent<Image>();
+        _backGroundImage.color = new Color(0.0f, 0.0f, 0.0f, 0.75f);
+
         switch (transform.parent.parent.name)
         {
             case "AncherPoint01":
@@ -80,7 +93,6 @@ public class NumBuffInherit : MonoBehaviour
                 Debug.LogError("アンカーポイントが未指定です\n");
                 break;
         }
-        //_buffCardCanvas = GameObject.Find("BuffCardCanvas");
     }
 
     /// <summary>
@@ -90,8 +102,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce += _descHpReduce;
         _displayPreHpResuce += _descHpReduce;
-        //_panelImage.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
-        _descriptionText.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        _descriptionTextMesh.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
         isSelected = true;
         _preHpBarSlider.value -= _displayPreHpResuce;
     }
@@ -103,8 +114,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce -= _descHpReduce;
         _displayPreHpResuce -= _descHpReduce;
-        // _panelImage.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-        _descriptionText.color = Color.white;
+        _descriptionTextMesh.color = Color.white;
         isSelected = !isSelected;
         _preHpBarSlider.value += _displayPreHpResuce;
     }
@@ -114,22 +124,16 @@ public class NumBuffInherit : MonoBehaviour
     /// </summary>
     protected void Execute()
     {
-        //if (isSelected)
-        //{
-        //    _cards.Remove(transform.parent.gameObject);
-        //}
         _playerScript._currentHP -= _preHpReduce;
-        if (_preHpBar.activeSelf)
-        {
-            _preHpBar.SetActive(false);
-        }
+        if (_preHpBar.activeSelf) _preHpBar.SetActive(false);
+        if (_bgPanelObj.activeSelf) _bgPanelObj.SetActive(false);
         Destroy(_cardParent);
     }
 
     protected void DisplayDescription()
     {
-        _descriptionText.text
-            = _description + "\n(" + (_playerScript._currentHP - _descHpReduce) + "hp Remain)";
+        _descriptionTextMesh.text
+            = _description + "\n"/* + (_playerScript._currentHP - _descHpReduce) + "hp Remain)"*/;
     }
 
 }

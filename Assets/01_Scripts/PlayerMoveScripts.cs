@@ -13,14 +13,15 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public int _maxHP = 100;        //最大体力
     public float _currentHP;        //現在の体力
-    public static float _publicHP;
+    public static float _publicHP;  //シーン間でHPを共有するためのHPのセーブ的なもの
     private float _damage = 0;      //受けるダメージ
+    //以下何からダメージを受けるか
     [System.NonSerialized]
-    public int _damageFromReload = 0;
+    public int _damageFromReload = 0;   //リロード時に受けるダメージ
     [System.NonSerialized]
-    public int _damageByTouch = 0;
+    public int _damageByTouch = 0;      //接触によるダメージ
     [System.NonSerialized]
-    public int _damageBySystem = 0;
+    public int _damageBySystem = 0;     //システム(強化など)によるダメージ
 
     public Slider _hpBar;            //HPゲージのスライダー
     public GameObject _hpValue;      //UI
@@ -29,18 +30,20 @@ public class PlayerMoveScripts : MonoBehaviour
     public GameObject _attackBox;       //攻撃時の当たり判定Cube
     private Collider _attackCollision;  //当たり判定コライダー(おそらく未使用)
 
-    public GameObject _bullel;
-    private BulletShotScript _bsShot;
+    public GameObject _bullel;          //弾が射出される場所
+    private BulletShotScript _bsShot;   //弾を撃つスクリプト
 
-    public float _attackTime = 0;
-    private const float _ATTACK_TIME_MAX = 0.25f;
-    private bool _isAttack = false;
-    private const float _ATTACK_DEFUSE_MAX = 2;
-    private float AttackDefuse = 0;
+    public float _attackTime = 0;                   //一回攻撃した後にしばらく攻撃しないためのタイマー
+    private const float _ATTACK_TIME_MAX = 0.25f;   //一回攻撃した後にしばらく攻撃しないためのタイマーの最大値
+    private bool _isAttack = false;                 //攻撃しているかどうか
+    private const float _ATTACK_DEFUSE_MAX = 2;     //未使用
+    private float AttackDefuse = 0;                 //未使用
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        //HPがシーン間で共有される仕組み
+        //1ステージ目の場合は最大体力だがそれ以外は前のステージのHPをもってくる
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             _currentHP = _maxHP;
@@ -90,8 +93,7 @@ public class PlayerMoveScripts : MonoBehaviour
             _attackTime += Time.deltaTime;
         }
 
-        //HPの処理
-
+        //リロード時にダメージ
         if (Input.GetKeyDown(KeyCode.R))
         {
             _damageFromReload = (5 - _bsShot._bulletCount) * 2;
@@ -100,6 +102,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
         HPCulc();
 
+        //今のHPをstaticのHPへ代入
         _publicHP = _currentHP;
     }
 
@@ -111,14 +114,18 @@ public class PlayerMoveScripts : MonoBehaviour
         if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ジャンプ
     }
 
+    //HPの処理
     private void HPCulc()
     {
+        //各種ダメージの計算
         _currentHP -= _damage;
         _currentHP -= _damageFromReload;
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
+        //UIへHPの転送
         _hpBar.value = _currentHP / _maxHP;
         _hpText.text = _currentHP.ToString();
+        //計算後ダメージを初期化
         _damage = 0;
         _damageFromReload = 0;
         _damageByTouch = 0;

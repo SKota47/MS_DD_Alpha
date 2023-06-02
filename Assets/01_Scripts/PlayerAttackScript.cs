@@ -3,30 +3,23 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの攻撃(攻撃時に出る当たり判定にアタッチ)
+/// </summary>
+
 public class PlayerAttackScript : MonoBehaviour
 {
     [System.NonSerialized] public int _ATTACK_DAMAGE_MAX = 50;   //攻撃ダメージ
-    public int _attackDamage;
     public GameObject _attackObj;       //攻撃範囲のコライダー
-    Collider _collider;
 
     bool _isAttack = false;
 
-    GameObject _player;
-    PlayerMoveScripts _plMoveScripts;
-
     private void Start()
     {
-        _attackDamage = 0;
-        _player = GameObject.Find("Player");
-        _plMoveScripts = _player.GetComponent<PlayerMoveScripts>();
         _attackObj.SetActive(false);
     }
 
-    private void Update()
-    {
-    }
-
+    //敵に当たったらその敵にダメージを与える
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy01"))

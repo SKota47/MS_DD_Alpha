@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// プレイヤーの当たり判定(今は敵との接触判定用になってます)
+/// </summary>
 public class PlayerHitboxScript : MonoBehaviour
 {
     public GameObject _playerObj;

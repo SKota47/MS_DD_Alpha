@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ほとんどHPの管理をしているだけです
+/// ほとんど敵のHPの管理をしているだけです
 /// 今後インターフェース実装を予定しています
 /// </summary>
 public class EnemyHPScript : MonoBehaviour
@@ -23,7 +23,7 @@ public class EnemyHPScript : MonoBehaviour
     {
         _enemyType = gameObject.tag;
 
-        switch (_enemyType)//敵によって設定を変える
+        switch (_enemyType)//敵によってHPの設定を変える
         {
             case "Enemy01":
                 _maxHP = 200;
@@ -35,7 +35,7 @@ public class EnemyHPScript : MonoBehaviour
                 _maxHP = 50;
                 break;
             default:
-                Debug.LogError("エネミーのHPが設定できませんでした");
+                Debug.LogError("エネミーのHPが設定できませんでした");   //バグ検知用
                 break;
         }
 
@@ -51,7 +51,9 @@ public class EnemyHPScript : MonoBehaviour
 
     public void Update()
     {
+        //ダメージ計算
         _currentHP -= _damage;
+        //UIに値を渡している
         _slider.value = _currentHP / _maxHP;
 
         if (_currentHP <= 0)
