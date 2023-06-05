@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class layingCard : MonoBehaviour
+public class LayingCard : MonoBehaviour
 {
     public GameObject _ancherPoint01, _ancherPoint02, _ancherPoint03;
     private GameObject[] _ancherAlly = new GameObject[3];
@@ -23,6 +23,8 @@ public class layingCard : MonoBehaviour
     private int _randomWeight;
     private bool _isStageStart = true;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class layingCard : MonoBehaviour
         _ancherAlly[1] = _ancherPoint02;
         _ancherAlly[2] = _ancherPoint03;
 
-        if (SceneManager.GetActiveScene().name == "SampleScene")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             _cardsSaveBox = _cards;
         }
@@ -41,16 +43,16 @@ public class layingCard : MonoBehaviour
 
         _randomWeight = SceneManager.sceneCount;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         if (_ancherAlly[0].transform.childCount == 0 && _isStageStart)
         {
             DoLaying();
             _isStageStart = false;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 
     private void DoLaying()

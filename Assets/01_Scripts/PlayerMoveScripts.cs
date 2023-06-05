@@ -23,6 +23,9 @@ public class PlayerMoveScripts : MonoBehaviour
     [System.NonSerialized]
     public int _damageBySystem = 0;     //システム(強化など)によるダメージ
 
+    [System.NonSerialized]
+    public int _regainBySystem = 0;     //システム(強化など)による回復
+
     public Slider _hpBar;            //HPゲージのスライダー
     public GameObject _hpValue;      //UI
     private Text _hpText;            //UI
@@ -44,7 +47,7 @@ public class PlayerMoveScripts : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         //HPがシーン間で共有される仕組み
         //1ステージ目の場合は最大体力だがそれ以外は前のステージのHPをもってくる
-        if (SceneManager.GetActiveScene().name == "SampleScene")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             _currentHP = _maxHP;
             _publicHP = _currentHP;
@@ -122,13 +125,17 @@ public class PlayerMoveScripts : MonoBehaviour
         _currentHP -= _damageFromReload;
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
+        //回復の計算
+        _currentHP += _regainBySystem;
         //UIへHPの転送
         _hpBar.value = _currentHP / _maxHP;
         _hpText.text = _currentHP.ToString();
+
         //計算後ダメージを初期化
         _damage = 0;
         _damageFromReload = 0;
         _damageByTouch = 0;
         _damageBySystem = 0;
+        _regainBySystem = 0;
     }
 }

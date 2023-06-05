@@ -10,7 +10,20 @@ public class CheckEnemyCount : MonoBehaviour
     GameObject[] _enemyObjects;
     GameObject[] _flyEnemyObjects;
     public int _enemyNum;
+    public int _enemyNumMax;    //‰ñ•œ—Ê—p
+    private int _regainNum = 4;     //‰ñ•œ—Ê‚Ç‚Ì‚­‚ç‚¢‚©
+
+    public GameObject _player;
+    private PlayerMoveScripts _playerMoveScripts;
     public GameObject _gate;
+    private bool _isRegain = true;
+
+    void Start()
+    {
+        _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
+        _enemyObjects = GameObject.FindGameObjectsWithTag("Enemy01");
+        _enemyNumMax = _enemyObjects.Length;
+    }
 
     void Update()
     {
@@ -19,6 +32,11 @@ public class CheckEnemyCount : MonoBehaviour
         _enemyNum = _enemyObjects.Length /*+ _flyEnemyObjects.Length*/;
         if (_enemyNum <= 0)
         {
+            if (_isRegain)
+            {
+                _playerMoveScripts._regainBySystem = _enemyNumMax * _regainNum;
+                _isRegain = false;
+            }
             _gate.SetActive(true);
         }
         else

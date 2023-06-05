@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
     private CheckEnemyCount _enemyCountS;
     public GameObject _gate;
     private int _nowSceneNum;
+    private bool isCheckGoal = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,11 @@ public class SceneChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        isCheckGoal = false;
+        if (Input.GetKeyDown(KeyCode.Return)) isCheckGoal = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {

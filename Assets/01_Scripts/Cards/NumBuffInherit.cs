@@ -24,12 +24,12 @@ public class NumBuffInherit : MonoBehaviour
 
     protected bool isSelected = false;
 
-    protected Image _panelImage;
+    //protected Image _panelImage;
 
     protected int _inputKeyCord;
 
     public GameObject _gameManager;
-    private layingCard _layingCardScript;
+    private LayingCard _layingCardScript;
     protected List<GameObject> _cards = new List<GameObject>();
 
     public GameObject _preHpBar;
@@ -69,8 +69,8 @@ public class NumBuffInherit : MonoBehaviour
         _preHpBar = GameObject.FindWithTag("PreHpBar");
         _preHpBarSlider = _preHpBar.GetComponent<Slider>();
         _preHpBarSlider.value = _playerScript._currentHP;
-        _panelImage = _cardParent.GetComponent<Image>();
-        _panelImage.color = Color.white;
+        //_panelImage = _cardParent.GetComponent<Image>();
+        //_panelImage.color = Color.white;
         _descriptionTextMesh.color = Color.white;
 
         if (_bgPanelObj == null) _bgPanelObj = GameObject.Find("BackGroundPanel");
@@ -132,6 +132,26 @@ public class NumBuffInherit : MonoBehaviour
 
     protected void DisplayDescription()
     {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            _cardParent.transform.localPosition
+                = new Vector3(_cardParent.transform.localPosition.x,
+                 -250,
+                _cardParent.transform.localPosition.z);
+            _preHpBar.transform.localPosition
+                = new Vector3(_preHpBar.transform.localPosition.x,
+                200, _preHpBar.transform.localPosition.z);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _cardParent.transform.localPosition
+                = new Vector3(_cardParent.transform.localPosition.x,
+                 0,
+                _cardParent.transform.localPosition.z);
+            _preHpBar.transform.localPosition
+                = new Vector3(_preHpBar.transform.localPosition.x,
+                95, _preHpBar.transform.localPosition.z);
+        }
         _descriptionTextMesh.text
             = _description + "\n"/* + (_playerScript._currentHP - _descHpReduce) + "hp Remain)"*/;
     }
