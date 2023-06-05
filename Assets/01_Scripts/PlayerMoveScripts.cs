@@ -8,7 +8,7 @@ public class PlayerMoveScripts : MonoBehaviour
 {
     Rigidbody _rb;
     private float _speed = 20.0f;   //横移動の速度
-    private Vector2 _jumpPow = new Vector2(0.0f, 380.0f);   //ジャンプのパワー
+    private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ジャンプのパワー
     private bool _isJump = false;   //ジャンプしているか
 
     public int _maxHP = 100;        //最大体力
@@ -47,7 +47,8 @@ public class PlayerMoveScripts : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         //HPがシーン間で共有される仕組み
         //1ステージ目の場合は最大体力だがそれ以外は前のステージのHPをもってくる
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        //if内後半は今後消した方がいいかも
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
         {
             _currentHP = _maxHP;
             _publicHP = _currentHP;
@@ -64,12 +65,14 @@ public class PlayerMoveScripts : MonoBehaviour
     {
         //_currentHP = _publicHP;
         //移動
+
         //ジャンプ
         if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
         {
             _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
             _isJump = true;
         }
+
         //横移動
         _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
         //横移動時の反転

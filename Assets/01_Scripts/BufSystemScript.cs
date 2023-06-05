@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プロトタイプ版までは使ってたやつ
+/// </summary>
 public class BufSystemScript : MonoBehaviour
 {
     public GameObject _bufPanel;

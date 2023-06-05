@@ -32,7 +32,7 @@ public class LayingCard : MonoBehaviour
         _ancherAlly[1] = _ancherPoint02;
         _ancherAlly[2] = _ancherPoint03;
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
         {
             _cardsSaveBox = _cards;
         }

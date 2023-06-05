@@ -3169,6 +3169,10 @@ PrefabInstance:
       propertyPath: _attackBox
       value: 
       objectReference: {fileID: 3826468251904927906}
+    - target: {fileID: 4775682111589039628, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: _currentHP
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6922873277082475406, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
