@@ -71,7 +71,7 @@ public class NumBuffInherit : MonoBehaviour
         _preHpBarSlider.value = _playerScript._currentHP;
         //_panelImage = _cardParent.GetComponent<Image>();
         //_panelImage.color = Color.white;
-        _descriptionTextMesh.color = Color.white;
+        _descriptionTextMesh.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
 
         if (_bgPanelObj == null) _bgPanelObj = GameObject.Find("BackGroundPanel");
         if (!_bgPanelObj.activeSelf) _bgPanelObj.SetActive(true);
@@ -102,7 +102,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce += _descHpReduce;
         _displayPreHpResuce += _descHpReduce;
-        _descriptionTextMesh.color = new Color(1.0f, 1.0f, 0.0f, 0.5f);
+        _descriptionTextMesh.color = new Color(0.9f, 0.1f, 0.1f, 1.0f);
         isSelected = true;
         _preHpBarSlider.value -= _displayPreHpResuce;
     }
@@ -114,7 +114,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce -= _descHpReduce;
         _displayPreHpResuce -= _descHpReduce;
-        _descriptionTextMesh.color = Color.white;
+        _descriptionTextMesh.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
         isSelected = !isSelected;
         _preHpBarSlider.value += _displayPreHpResuce;
     }
@@ -138,6 +138,7 @@ public class NumBuffInherit : MonoBehaviour
                 = new Vector3(_cardParent.transform.localPosition.x,
                  -250,
                 _cardParent.transform.localPosition.z);
+
             _preHpBar.transform.localPosition
                 = new Vector3(_preHpBar.transform.localPosition.x,
                 200, _preHpBar.transform.localPosition.z);

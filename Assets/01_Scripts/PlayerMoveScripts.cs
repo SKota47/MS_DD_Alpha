@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,47 +8,53 @@ using UnityEngine.UI;
 public class PlayerMoveScripts : MonoBehaviour
 {
     Rigidbody _rb;
-    private float _speed = 20.0f;   //‰¡ˆÚ“®‚Ì‘¬“x
-    private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ƒWƒƒƒ“ƒv‚Ìƒpƒ[
-    private bool _isJump = false;   //ƒWƒƒƒ“ƒv‚µ‚Ä‚¢‚é‚©
+    private float _speed = 20.0f;   //æ¨ªç§»å‹•ã®é€Ÿåº¦
+    private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ã‚¸ãƒ£ãƒ³ãƒ—ã®ãƒ‘ãƒ¯ãƒ¼
+    private bool _isJump = false;   //ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¦ã„ã‚‹ã‹
 
-    public int _maxHP = 100;        //Å‘å‘Ì—Í
-    public float _currentHP;        //Œ»İ‚Ì‘Ì—Í
-    public static float _publicHP;  //ƒV[ƒ“ŠÔ‚ÅHP‚ğ‹¤—L‚·‚é‚½‚ß‚ÌHP‚ÌƒZ[ƒu“I‚È‚à‚Ì
-    private float _damage = 0;      //ó‚¯‚éƒ_ƒ[ƒW
-    //ˆÈ‰º‰½‚©‚çƒ_ƒ[ƒW‚ğó‚¯‚é‚©
+    public int _maxHP = 100;        //æœ€å¤§ä½“åŠ›
+    public float _currentHP;        //ç¾åœ¨ã®ä½“åŠ›
+    public static float _publicHP;  //ã‚·ãƒ¼ãƒ³é–“ã§HPã‚’å…±æœ‰ã™ã‚‹ãŸã‚ã®HPã®ã‚»ãƒ¼ãƒ–çš„ãªã‚‚ã®
+    private float _damage = 0;      //å—ã‘ã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸
+    //ä»¥ä¸‹ä½•ã‹ã‚‰ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ã‚‹ã‹
     [System.NonSerialized]
-    public int _damageFromReload = 0;   //ƒŠƒ[ƒh‚Éó‚¯‚éƒ_ƒ[ƒW
+    public int _damageFromReload = 0;   //ãƒªãƒ­ãƒ¼ãƒ‰æ™‚ã«å—ã‘ã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸
     [System.NonSerialized]
-    public int _damageByTouch = 0;      //ÚG‚É‚æ‚éƒ_ƒ[ƒW
+    public int _damageByTouch = 0;      //æ¥è§¦ã«ã‚ˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸
     [System.NonSerialized]
-    public int _damageBySystem = 0;     //ƒVƒXƒeƒ€(‹­‰»‚È‚Ç)‚É‚æ‚éƒ_ƒ[ƒW
+    public int _damageBySystem = 0;     //ã‚·ã‚¹ãƒ†ãƒ (å¼·åŒ–ãªã©)ã«ã‚ˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸
 
     [System.NonSerialized]
-    public int _regainBySystem = 0;     //ƒVƒXƒeƒ€(‹­‰»‚È‚Ç)‚É‚æ‚é‰ñ•œ
+    public int _regainBySystem = 0;     //ã‚·ã‚¹ãƒ†ãƒ (å¼·åŒ–ãªã©)ã«ã‚ˆã‚‹å›å¾©
 
-    public Slider _hpBar;            //HPƒQ[ƒW‚ÌƒXƒ‰ƒCƒ_[
+    public Slider _hpBar;            //HPã‚²ãƒ¼ã‚¸ã®ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼
     public GameObject _hpValue;      //UI
     private Text _hpText;            //UI
 
-    public GameObject _attackBox;       //UŒ‚‚Ì“–‚½‚è”»’èCube
-    private Collider _attackCollision;  //“–‚½‚è”»’èƒRƒ‰ƒCƒ_[(‚¨‚»‚ç‚­–¢g—p)
+    public GameObject _attackBox;       //æ”»æ’ƒæ™‚ã®å½“ãŸã‚Šåˆ¤å®šCube
+    private Collider _attackCollision;  //å½“ãŸã‚Šåˆ¤å®šã‚³ãƒ©ã‚¤ãƒ€ãƒ¼(ãŠãã‚‰ãæœªä½¿ç”¨)
 
-    public GameObject _bullel;          //’e‚ªËo‚³‚ê‚éêŠ
-    private BulletShotScript _bsShot;   //’e‚ğŒ‚‚ÂƒXƒNƒŠƒvƒg
+    public GameObject _bullel;          //å¼¾ãŒå°„å‡ºã•ã‚Œã‚‹å ´æ‰€
+    private BulletShotScript _bsShot;   //å¼¾ã‚’æ’ƒã¤ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 
-    public float _attackTime = 0;                   //ˆê‰ñUŒ‚‚µ‚½Œã‚É‚µ‚Î‚ç‚­UŒ‚‚µ‚È‚¢‚½‚ß‚Ìƒ^ƒCƒ}[
-    private const float _ATTACK_TIME_MAX = 0.25f;   //ˆê‰ñUŒ‚‚µ‚½Œã‚É‚µ‚Î‚ç‚­UŒ‚‚µ‚È‚¢‚½‚ß‚Ìƒ^ƒCƒ}[‚ÌÅ‘å’l
-    private bool _isAttack = false;                 //UŒ‚‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    private const float _ATTACK_DEFUSE_MAX = 2;     //–¢g—p
-    private float AttackDefuse = 0;                 //–¢g—p
+    public float _attackTime = 0;                   //ä¸€å›æ”»æ’ƒã—ãŸå¾Œã«ã—ã°ã‚‰ãæ”»æ’ƒã—ãªã„ãŸã‚ã®ã‚¿ã‚¤ãƒãƒ¼
+    private const float _ATTACK_TIME_MAX = 0.25f;   //ä¸€å›æ”»æ’ƒã—ãŸå¾Œã«ã—ã°ã‚‰ãæ”»æ’ƒã—ãªã„ãŸã‚ã®ã‚¿ã‚¤ãƒãƒ¼ã®æœ€å¤§å€¤
+    [System.NonSerialized] public bool _isAttack = false;                 //æ”»æ’ƒã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
+    private const float _ATTACK_DEFUSE_MAX = 2;     //æœªä½¿ç”¨
+    private float AttackDefuse = 0;                 //æœªä½¿ç”¨
+
+    [System.NonSerialized] public bool _playAttackSound = false;
+    [System.NonSerialized] public bool _playJumpSound = false;
+    [System.NonSerialized] public bool _playRegainSound = false;
+
+    public GameObject _sealdObj;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        //HP‚ªƒV[ƒ“ŠÔ‚Å‹¤—L‚³‚ê‚éd‘g‚İ
-        //1ƒXƒe[ƒW–Ú‚Ìê‡‚ÍÅ‘å‘Ì—Í‚¾‚ª‚»‚êˆÈŠO‚Í‘O‚ÌƒXƒe[ƒW‚ÌHP‚ğ‚à‚Á‚Ä‚­‚é
-        //if“àŒã”¼‚Í¡ŒãÁ‚µ‚½•û‚ª‚¢‚¢‚©‚à
+        //HPãŒã‚·ãƒ¼ãƒ³é–“ã§å…±æœ‰ã•ã‚Œã‚‹ä»•çµ„ã¿
+        //1ã‚¹ãƒ†ãƒ¼ã‚¸ç›®ã®å ´åˆã¯æœ€å¤§ä½“åŠ›ã ãŒãã‚Œä»¥å¤–ã¯å‰ã®ã‚¹ãƒ†ãƒ¼ã‚¸ã®HPã‚’ã‚‚ã£ã¦ãã‚‹
+        //ifå†…å¾ŒåŠã¯ä»Šå¾Œæ¶ˆã—ãŸæ–¹ãŒã„ã„ã‹ã‚‚
         if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
         {
             _currentHP = _maxHP;
@@ -59,56 +66,74 @@ public class PlayerMoveScripts : MonoBehaviour
         }
         _hpText = _hpValue.GetComponent<Text>();
         _bsShot = _bullel.GetComponent<BulletShotScript>();
+        _sealdObj.SetActive(false);
     }
 
     void Update()
     {
         //_currentHP = _publicHP;
-        //ˆÚ“®
-
-        //ƒWƒƒƒ“ƒv
-        if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+        //ç§»å‹•
+        if (!_sealdObj.activeSelf)
         {
-            _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
-            _isJump = true;
+            //ã‚¸ãƒ£ãƒ³ãƒ—
+            if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+            {
+                _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
+                _isJump = true;
+                _playJumpSound = true;
+            }
+
+            //æ¨ªç§»å‹•
+            _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
+            //æ¨ªç§»å‹•æ™‚ã®åè»¢
+            if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
+            if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
+
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«ãƒ€ãƒ¡ãƒ¼ã‚¸
+            //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
+
+            //æ”»æ’ƒã¨æ”»æ’ƒåˆ¤å®šã‚ªãƒ³ã‚ªãƒ•
+            if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+            {
+                _attackBox.gameObject.SetActive(true);
+                _isAttack = !_isAttack;
+                _playAttackSound = true;
+            }
+            else if (_attackTime >= _ATTACK_TIME_MAX)
+            {
+                _attackBox.gameObject.SetActive(false);
+                _isAttack = !_isAttack;
+                _attackTime = 0;
+            }
+            if (_isAttack)
+            {
+                _attackTime += Time.deltaTime;
+            }
+            //ãƒªãƒ­ãƒ¼ãƒ‰æ™‚ã«ãƒ€ãƒ¡ãƒ¼ã‚¸
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                _damageFromReload = (5 - _bsShot._bulletCount) * 2;
+                _bsShot._bulletCount = 5;
+            }
+        }
+        else
+        {
+            _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
         }
 
-        //‰¡ˆÚ“®
-        _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
-        //‰¡ˆÚ“®‚Ì”½“]
-        if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
-        if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
-
-        //ƒvƒŒƒCƒ„[‚Éƒ_ƒ[ƒW
-        //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
-
-        //UŒ‚‚ÆUŒ‚”»’èƒIƒ“ƒIƒt
-        if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+        if (Input.GetKey(KeyCode.S))
         {
-            _attackBox.gameObject.SetActive(true);
-            _isAttack = !_isAttack;
+            _sealdObj.SetActive(true);
         }
-        else if (_attackTime >= _ATTACK_TIME_MAX)
+        else
         {
-            _attackBox.gameObject.SetActive(false);
-            _isAttack = !_isAttack;
-            _attackTime = 0;
-        }
-        if (_isAttack)
-        {
-            _attackTime += Time.deltaTime;
+            _sealdObj.SetActive(false);
         }
 
-        //ƒŠƒ[ƒh‚Éƒ_ƒ[ƒW
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            _damageFromReload = (5 - _bsShot._bulletCount) * 2;
-            _bsShot._bulletCount = 5;
-        }
 
         HPCulc();
 
-        //¡‚ÌHP‚ğstatic‚ÌHP‚Ö‘ã“ü
+        //ä»Šã®HPã‚’staticã®HPã¸ä»£å…¥
         _publicHP = _currentHP;
     }
 
@@ -117,24 +142,29 @@ public class PlayerMoveScripts : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ƒWƒƒƒ“ƒv
+        if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ã‚¸ãƒ£ãƒ³ãƒ—
     }
 
-    //HP‚Ìˆ—
+    //HPã®å‡¦ç†
     private void HPCulc()
     {
-        //Šeíƒ_ƒ[ƒW‚ÌŒvZ
+        //å„ç¨®ãƒ€ãƒ¡ãƒ¼ã‚¸ã®è¨ˆç®—
         _currentHP -= _damage;
         _currentHP -= _damageFromReload;
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
-        //‰ñ•œ‚ÌŒvZ
-        _currentHP += _regainBySystem;
-        //UI‚ÖHP‚Ì“]‘—
+        //å›å¾©ã®è¨ˆç®—
+        if (_currentHP < _maxHP)
+        {
+            _currentHP += _regainBySystem;
+            if (_regainBySystem != 0) _playRegainSound = true;
+        }
+
+        //UIã¸HPã®è»¢é€
         _hpBar.value = _currentHP / _maxHP;
         _hpText.text = _currentHP.ToString();
 
-        //ŒvZŒãƒ_ƒ[ƒW‚ğ‰Šú‰»
+        //è¨ˆç®—å¾Œãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’åˆæœŸåŒ–
         _damage = 0;
         _damageFromReload = 0;
         _damageByTouch = 0;

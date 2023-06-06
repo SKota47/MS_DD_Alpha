@@ -17,6 +17,9 @@ public class BulletShotScript : MonoBehaviour
     public GameObject _bulletCountUI;
     private Text _bulletCountText;
 
+    [System.NonSerialized]
+    public bool _fireSound = false;
+
     private void Start()
     {
         _bulletCountText = _bulletCountUI.GetComponent<Text>();
@@ -24,8 +27,9 @@ public class BulletShotScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && _bulletCount > 0)
+        if (Input.GetKeyDown(KeyCode.Q) && _bulletCount > 0 && !(Input.GetKey(KeyCode.S)))
         {
+            _fireSound = true;
             Shot();
             _bulletCount--;
         }
