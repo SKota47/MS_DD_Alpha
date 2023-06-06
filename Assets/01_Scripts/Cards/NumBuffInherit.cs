@@ -71,7 +71,7 @@ public class NumBuffInherit : MonoBehaviour
         _preHpBarSlider.value = _playerScript._currentHP;
         //_panelImage = _cardParent.GetComponent<Image>();
         //_panelImage.color = Color.white;
-        _descriptionTextMesh.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        _descriptionTextMesh.color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
 
         if (_bgPanelObj == null) _bgPanelObj = GameObject.Find("BackGroundPanel");
         if (!_bgPanelObj.activeSelf) _bgPanelObj.SetActive(true);
@@ -102,7 +102,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce += _descHpReduce;
         _displayPreHpResuce += _descHpReduce;
-        _descriptionTextMesh.color = new Color(0.9f, 0.1f, 0.1f, 1.0f);
+        _descriptionTextMesh.color = new Color(0.7f, 0.2f, 0.2f, 1.0f);
         isSelected = true;
         _preHpBarSlider.value -= _displayPreHpResuce;
     }
@@ -114,7 +114,7 @@ public class NumBuffInherit : MonoBehaviour
     {
         _preHpReduce -= _descHpReduce;
         _displayPreHpResuce -= _descHpReduce;
-        _descriptionTextMesh.color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+        _descriptionTextMesh.color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
         isSelected = !isSelected;
         _preHpBarSlider.value += _displayPreHpResuce;
     }

@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.42
+      value: 19.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.8396226, g: 0.1544589, b: 0.1544589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.013520956, a: 1}
+  m_Color: {r: 0.12677999, g: 0.7264151, b: 0.13510823, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1846,7 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.013520956, a: 1}
+  m_Color: {r: 0.12322002, g: 0.6698113, b: 0.12965053, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2189,15 +2189,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.94
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.32
+      value: -6.73
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.9951596
       objectReference: {fileID: 0}
     - target: {fileID: 3354732058037861116, guid: 8e97c272e39f4e64d994b9386b15ef99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2699,7 +2699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7735849, g: 0.16420436, b: 0.16420436, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
