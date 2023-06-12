@@ -329,6 +329,9 @@ MonoBehaviour:
   _player: {fileID: 0}
   _attackBox: {fileID: 0}
   _bullet: {fileID: 1007021245737263864, guid: 000bf4cbdded53745acde8ecb8558682, type: 3}
+  _plScript: {fileID: 0}
+  _plAttackScript: {fileID: 0}
+  _bulletScript: {fileID: 0}
 --- !u!4 &108311168
 Transform:
   m_ObjectHideFlags: 0
@@ -437,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &223917314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -782,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &611289286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1084,6 +1087,10 @@ PrefabInstance:
       propertyPath: _attackBox
       value: 
       objectReference: {fileID: 850667508}
+    - target: {fileID: 4775682111589039628, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: _background
+      value: 
+      objectReference: {fileID: 223917313}
     - target: {fileID: 6922873277082475406, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
@@ -1341,7 +1348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921817969
@@ -1728,7 +1735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1127988999
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2184,7 +2191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Title
+  m_text: BLOOD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2370,7 +2377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437152978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2567,7 +2574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1473560038
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2970,6 +2977,9 @@ MonoBehaviour:
   _player: {fileID: 850667509}
   _attackBox: {fileID: 850667508}
   _bullet: {fileID: 1007021245737263864, guid: 000bf4cbdded53745acde8ecb8558682, type: 3}
+  _plScript: {fileID: 0}
+  _plAttackScript: {fileID: 0}
+  _bulletScript: {fileID: 0}
 --- !u!4 &1640778150
 Transform:
   m_ObjectHideFlags: 0
@@ -3003,7 +3013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1665369947
 MonoBehaviour:
   m_ObjectHideFlags: 0

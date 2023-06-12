@@ -27,6 +27,10 @@ public class PlayerHitboxScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy01"))
         {
             _plMove._damageByTouch = 5;
+            _plMove._rb.velocity = Vector3.zero;
+            Vector3 distination = (transform.position - collision.transform.position).normalized;
+
+            _plMove._rb.AddForce(distination * 800, ForceMode.Impulse);
         }
     }
 }

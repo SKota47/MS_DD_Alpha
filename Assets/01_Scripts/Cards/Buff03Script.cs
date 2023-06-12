@@ -14,7 +14,7 @@ public class Buff03Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "Buf3\n-5HP";
+        _description = "SpeedUP\n+2\n-5HP";
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class Buff03Script : NumBuffInherit
     {
         Selection();
         _descHpReduce = (int)5;
+        _prePlayerSpeed = (int)2;
         //_displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) - _descHpReduce;
         DisplayDescription();
     }

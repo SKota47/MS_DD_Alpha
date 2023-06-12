@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public float _bulletDamage = 2;
+    private float _bulletDamage;
+    public GameObject _player;
+    private PlayerMoveScripts _playerMoveScripts;
     void Start()
     {
-
+        _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
+        _bulletDamage = _playerMoveScripts._bulletDamage;
     }
 
     void Update()

@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class PlayerMoveScripts : MonoBehaviour
 {
-    Rigidbody _rb;
-    private float _speed = 20.0f;   //横移動の速度
+    public Rigidbody _rb;
+    /* [System.NonSerialized] */
+    public float _speed = 20.0f;   //横移動の速度
+    public float _maxSpeed = 20.0f;
     private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ジャンプのパワー
     private bool _isJump = false;   //ジャンプしているか
 
@@ -33,6 +35,11 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public GameObject _attackBox;       //攻撃時の当たり判定Cube
     private Collider _attackCollision;  //当たり判定コライダー(おそらく未使用)
+    [System.NonSerialized] public PlayerAttackScript _playerAttackScript;
+
+    public GameObject _chargeAttackBox;       //チャージ攻撃時の当たり判定Cube
+    private Collider _chargeAttackCollision;  //当たり判定コライダー(おそらく未使用)
+    [System.NonSerialized] public PlayerChargeAttackScript _playerChargeAttackScript;
 
     public GameObject _bullel;          //弾が射出される場所
     private BulletShotScript _bsShot;   //弾を撃つスクリプト
@@ -42,12 +49,15 @@ public class PlayerMoveScripts : MonoBehaviour
     [System.NonSerialized] public bool _isAttack = false;                 //攻撃しているかどうか
     private const float _ATTACK_DEFUSE_MAX = 2;     //未使用
     private float AttackDefuse = 0;                 //未使用
+    [System.NonSerialized] public float _bulletDamage = 5;
 
     [System.NonSerialized] public bool _playAttackSound = false;
     [System.NonSerialized] public bool _playJumpSound = false;
     [System.NonSerialized] public bool _playRegainSound = false;
 
     public GameObject _sealdObj;
+
+    public GameObject _background;
 
     void Start()
     {
@@ -67,67 +77,80 @@ public class PlayerMoveScripts : MonoBehaviour
         _hpText = _hpValue.GetComponent<Text>();
         _bsShot = _bullel.GetComponent<BulletShotScript>();
         _sealdObj.SetActive(false);
+        _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
     }
 
     void Update()
     {
         //_currentHP = _publicHP;
         //移動
-        if (!_sealdObj.activeSelf)
+        if (!_background.activeSelf)
         {
-            //ジャンプ
-            if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+            if (!_sealdObj.activeSelf)
             {
-                _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
-                _isJump = true;
-                _playJumpSound = true;
+                //ジャンプ
+                if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+                {
+                    _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
+                    _isJump = true;
+                    _playJumpSound = true;
+                }
+
+                //横移動
+                _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
+                //横移動時の反転
+                if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
+                if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
+
+                //プレイヤーにダメージ
+                //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
+
+                //攻撃と攻撃判定オンオフ
+                if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+                {
+                    _attackBox.gameObject.SetActive(true);
+                    _isAttack = !_isAttack;
+                    _playAttackSound = true;
+                }
+                else if (_attackTime >= _ATTACK_TIME_MAX)
+                {
+                    _attackBox.gameObject.SetActive(false);
+                    _isAttack = !_isAttack;
+                    _attackTime = 0;
+                }
+                if (_attackBox.activeSelf)
+                {
+                    _speed = 0.0f;
+                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                }
+                else
+                {
+                    _speed = _maxSpeed;
+                }
+                if (_isAttack)
+                {
+                    _attackTime += Time.deltaTime;
+                }
+                //リロード時にダメージ
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    _damageFromReload = (5 - _bsShot._bulletCount) * 2;
+                    _bsShot._bulletCount = 5;
+                }
+            }
+            else
+            {
+                _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
             }
 
-            //横移動
-            _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
-            //横移動時の反転
-            if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
-            if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
-
-            //プレイヤーにダメージ
-            //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
-
-            //攻撃と攻撃判定オンオフ
-            if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+            if (Input.GetKey(KeyCode.S))
             {
-                _attackBox.gameObject.SetActive(true);
-                _isAttack = !_isAttack;
-                _playAttackSound = true;
+                _sealdObj.SetActive(true);
             }
-            else if (_attackTime >= _ATTACK_TIME_MAX)
+            else
             {
-                _attackBox.gameObject.SetActive(false);
-                _isAttack = !_isAttack;
-                _attackTime = 0;
+                _sealdObj.SetActive(false);
             }
-            if (_isAttack)
-            {
-                _attackTime += Time.deltaTime;
-            }
-            //リロード時にダメージ
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                _damageFromReload = (5 - _bsShot._bulletCount) * 2;
-                _bsShot._bulletCount = 5;
-            }
-        }
-        else
-        {
-            _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            _sealdObj.SetActive(true);
-        }
-        else
-        {
-            _sealdObj.SetActive(false);
         }
 
 

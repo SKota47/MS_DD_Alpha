@@ -14,15 +14,15 @@ public class Buff05Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "Buf5\n-2HP";
+        _description = "BulletDamageUP\n+2\n-10HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)2;
-        //_displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) - _descHpReduce;
+        _descHpReduce = (int)10;
+        _preBulletDamage = (int)2;
         DisplayDescription();
     }
 }

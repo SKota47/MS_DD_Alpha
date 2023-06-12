@@ -26,7 +26,7 @@ public class EnemyHPScript : MonoBehaviour
         switch (_enemyType)//“G‚É‚æ‚Á‚ÄHP‚Ìİ’è‚ğ•Ï‚¦‚é
         {
             case "Enemy01":
-                _maxHP = 200;
+                _maxHP = 100;
                 break;
             case "Enemy02":
                 _maxHP = 20;

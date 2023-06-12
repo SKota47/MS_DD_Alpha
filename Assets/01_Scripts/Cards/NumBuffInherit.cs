@@ -39,6 +39,9 @@ public class NumBuffInherit : MonoBehaviour
     public GameObject _bgPanelObj;
     private Image _backGroundImage;
 
+    protected float _preAttackDamage;
+    protected float _preBulletDamage;
+    protected float _prePlayerSpeed;
 
     void Start()
     {
@@ -125,6 +128,9 @@ public class NumBuffInherit : MonoBehaviour
     protected void Execute()
     {
         _playerScript._currentHP -= _preHpReduce;
+        _playerScript._playerAttackScript._ATTACK_DAMAGE_MAX += (int)_preAttackDamage;
+        _playerScript._bulletDamage += _preBulletDamage;
+        _playerScript._maxSpeed += _prePlayerSpeed;
         if (_preHpBar.activeSelf) _preHpBar.SetActive(false);
         if (_bgPanelObj.activeSelf) _bgPanelObj.SetActive(false);
         Destroy(_cardParent);

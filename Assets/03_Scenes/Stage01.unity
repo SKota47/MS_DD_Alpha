@@ -3202,6 +3202,10 @@ PrefabInstance:
       propertyPath: _currentHP
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4775682111589039628, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: _background
+      value: 
+      objectReference: {fileID: 8807491983387244376}
     - target: {fileID: 6922873277082475406, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
@@ -3212,7 +3216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732851845405566526, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8732851845405566526, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_LocalScale.z
@@ -3220,7 +3224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8732851845405566526, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.47
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8831459934507206444, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: _bulletCountUI
@@ -3246,6 +3250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackObj: {fileID: 3826468251904927906}
+  _player: {fileID: 0}
 --- !u!1001 &4908566973870917648
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-/// <summary>
-/// プレイヤーの攻撃(攻撃時に出る当たり判定にアタッチ)
-/// </summary>
-
-public class PlayerAttackScript : MonoBehaviour
+public class PlayerChargeAttackScript : MonoBehaviour
 {
-    [System.NonSerialized] public int _ATTACK_DAMAGE_MAX = 10;   //攻撃ダメージ
     [System.NonSerialized] public int _CHARGE_ATTACK_DAMAGE_MAX = 20;   //攻撃ダメージ
     public GameObject _attackObj;       //攻撃範囲のコライダー
     public GameObject _player;
@@ -31,7 +25,7 @@ public class PlayerAttackScript : MonoBehaviour
         {
             EnemyHPScript _es = collision.GetComponent<EnemyHPScript>();
 
-            _es._damage = _ATTACK_DAMAGE_MAX;
+            _es._damage = _CHARGE_ATTACK_DAMAGE_MAX;
             _isAttack = true;
         }
     }
