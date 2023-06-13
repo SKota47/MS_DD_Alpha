@@ -14,7 +14,7 @@ public class Buff02Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "BulletDamageUP\n+1\n-5HP";
+        _description = "RangeATK\n+1\n-5HP";
     }
 
     // Update is called once per frame

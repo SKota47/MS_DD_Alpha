@@ -125,9 +125,12 @@ public class PlayerMoveScripts : MonoBehaviour
                 {
                     _speed = 0.0f;
                     _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                    if (_chargeParticle == null) _chargeParticle = Instantiate(_chargeParticlePrefab);
-                    _chargeParticle.transform.position = transform.position;
-                    _chargeParticle.Play();
+                    if (_chargeParticle == null)
+                    {
+                        _chargeParticle = Instantiate(_chargeParticlePrefab);
+                        _chargeParticle.transform.position = transform.position;
+                        _chargeParticle.Play();
+                    }
                 }
                 if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
                 {
@@ -136,12 +139,14 @@ public class PlayerMoveScripts : MonoBehaviour
                     _chargeAttackBox.gameObject.SetActive(true);
                     _isAttack = !_isAttack;
                     _playAttackSound = true;
+                    _attackButtonTime = 0;
                 }
                 if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
                 {
                     _attackBox.gameObject.SetActive(true);
                     _isAttack = !_isAttack;
                     _playAttackSound = true;
+                    _attackButtonTime = 0;
                 }
                 if (Input.GetKeyUp(KeyCode.E))
                 {
