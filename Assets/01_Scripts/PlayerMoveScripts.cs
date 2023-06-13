@@ -59,6 +59,13 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public GameObject _background;
 
+    public int _attackButtonTime;
+
+    private int _attackButtonTimeMax = 60;
+
+    public ParticleSystem _chargeParticlePrefab;
+    private ParticleSystem _chargeParticle;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -78,6 +85,7 @@ public class PlayerMoveScripts : MonoBehaviour
         _bsShot = _bullel.GetComponent<BulletShotScript>();
         _sealdObj.SetActive(false);
         _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
+        _playerChargeAttackScript = _chargeAttackBox.GetComponent<PlayerChargeAttackScript>();
     }
 
     void Update()
@@ -105,18 +113,61 @@ public class PlayerMoveScripts : MonoBehaviour
                 //プレイヤーにダメージ
                 //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
 
+                Debug.Log(_attackButtonTime);
+
                 //攻撃と攻撃判定オンオフ
-                if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+                if (Input.GetKey(KeyCode.E))
+                {
+                    _attackButtonTime++;
+                }
+                //チャージ
+                if (_attackButtonTime >= _attackButtonTimeMax)
+                {
+                    _speed = 0.0f;
+                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                    if (_chargeParticle == null) _chargeParticle = Instantiate(_chargeParticlePrefab);
+                    _chargeParticle.transform.position = transform.position;
+                    _chargeParticle.Play();
+                }
+                if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
+                {
+                    _chargeParticle.Stop();
+                    Destroy(_chargeParticle);
+                    _chargeAttackBox.gameObject.SetActive(true);
+                    _isAttack = !_isAttack;
+                    _playAttackSound = true;
+                }
+                if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
                 {
                     _attackBox.gameObject.SetActive(true);
                     _isAttack = !_isAttack;
                     _playAttackSound = true;
                 }
+                if (Input.GetKeyUp(KeyCode.E))
+                {
+                    _attackButtonTime = 0;
+                }
+                //if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+                //{
+                //    _attackBox.gameObject.SetActive(true);
+                //    _isAttack = !_isAttack;
+                //    _playAttackSound = true;
+                //}
                 else if (_attackTime >= _ATTACK_TIME_MAX)
                 {
                     _attackBox.gameObject.SetActive(false);
                     _isAttack = !_isAttack;
                     _attackTime = 0;
+                    _chargeAttackBox.gameObject.SetActive(false);
+                }
+                if (_chargeAttackBox.activeSelf)
+                {
+                    _speed = 0.0f;
+                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                }
+                else
+                {
+                    _speed = _maxSpeed;
                 }
                 if (_attackBox.activeSelf)
                 {

@@ -162,5 +162,4 @@ public class NumBuffInherit : MonoBehaviour
         _descriptionTextMesh.text
             = _description + "\n"/* + (_playerScript._currentHP - _descHpReduce) + "hp Remain)"*/;
     }
-
 }

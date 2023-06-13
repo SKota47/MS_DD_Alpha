@@ -226,10 +226,13 @@ MonoBehaviour:
   _hpBar: {fileID: 0}
   _hpValue: {fileID: 0}
   _attackBox: {fileID: 4427219859068023137}
+  _chargeAttackBox: {fileID: 5874440323599720071}
   _bullel: {fileID: 3826468252360168673}
   _attackTime: 0
   _sealdObj: {fileID: 7339989647642556260}
   _background: {fileID: 0}
+  _attackButtonTime: 0
+  _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 60f7e20949d1e1147910d34e93870411, type: 3}
 --- !u!135 &2778917199306878775
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -352,7 +355,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4427219859068023137}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -369,6 +372,7 @@ GameObject:
   - component: {fileID: 4764047209879151888}
   - component: {fileID: 8007092280677855577}
   - component: {fileID: 3025286463937964808}
+  - component: {fileID: 1232900744925829779}
   m_Layer: 0
   m_Name: ChargeAttackBox
   m_TagString: Untagged
@@ -449,11 +453,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5874440323599720071}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1232900744925829779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874440323599720071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380dc473e2b48ac408813dbe0dc8172f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chargeAttackBox: {fileID: 5874440323599720071}
+  _player: {fileID: 3826468252360168673}
 --- !u!1 &6239846366013986331
 GameObject:
   m_ObjectHideFlags: 0

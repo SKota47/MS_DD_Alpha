@@ -24,7 +24,6 @@ public class LayingCard : MonoBehaviour
     private bool _isStageStart = true;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
