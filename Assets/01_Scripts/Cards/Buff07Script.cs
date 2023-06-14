@@ -14,15 +14,15 @@ public class Buff07Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "Buf7\n-5%HP";
+        _description = "ATK\n+10\n-20HP";
     }
 
     // Update is called once per frame
     void Update()
     {
         Selection();
-        _descHpReduce = (int)_playerScript._currentHP / 20;
-        //_displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) / 20;
+        _descHpReduce = (int)20;
+        _preAttackDamage = 10;
         DisplayDescription();
     }
 }
