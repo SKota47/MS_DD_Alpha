@@ -10,6 +10,7 @@ public class MenuScript : MonoBehaviour
     public void Title()
     {
         _titleCheck.SetActive(true);
+        gameObject.SetActive(false);
     }
     public void CheckTitleYes()
     {
@@ -18,11 +19,13 @@ public class MenuScript : MonoBehaviour
     public void CheckTitleNo()
     {
         _titleCheck.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     public void Quit()
     {
         _quitCheck.SetActive(true);
+        gameObject.SetActive(false);
     }
     public void CheckQuitYes()
     {
@@ -31,6 +34,7 @@ public class MenuScript : MonoBehaviour
     public void CheckQuitNo()
     {
         _quitCheck.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     public void Resume()

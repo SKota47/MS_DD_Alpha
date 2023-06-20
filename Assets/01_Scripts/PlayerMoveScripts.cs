@@ -231,6 +231,9 @@ public class PlayerMoveScripts : MonoBehaviour
         _currentHP -= _damageFromReload;
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
+
+        if (Input.GetKey(KeyCode.Alpha0)) _currentHP--;
+
         //回復の計算
         if (_currentHP < _maxHP)
         {
