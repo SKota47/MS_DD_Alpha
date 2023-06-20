@@ -13,7 +13,7 @@ public class MenuScript : MonoBehaviour
     }
     public void CheckTitleYes()
     {
-        if (_titleCheck.activeSelf) SceneManager.LoadScene("00Title");
+        SceneManager.LoadScene("00Title");
     }
     public void CheckTitleNo()
     {

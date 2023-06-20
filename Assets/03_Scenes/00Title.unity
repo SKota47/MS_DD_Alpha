@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &108311162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21aeb3bc8af51214d8d2a352661b39ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ancherPoint01: {fileID: 0}
-  _ancherPoint02: {fileID: 0}
-  _ancherPoint03: {fileID: 0}
+  _ancherPoint01: {fileID: 1437152977}
+  _ancherPoint02: {fileID: 1127988998}
+  _ancherPoint03: {fileID: 1473560037}
   _cards:
   - {fileID: 1785645896806443340, guid: 1b87582abe10a654c905378c6b7077e3, type: 3}
   - {fileID: 3899636503959750437, guid: 6805d3d77df1b5749a2d0525adffd207, type: 3}
@@ -326,13 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5a45dd457bdf84dba56a6d7a8f5286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bufPanel: {fileID: 0}
-  _player: {fileID: 0}
-  _attackBox: {fileID: 0}
-  _bullet: {fileID: 1007021245737263864, guid: 000bf4cbdded53745acde8ecb8558682, type: 3}
-  _plScript: {fileID: 0}
-  _plAttackScript: {fileID: 0}
-  _bulletScript: {fileID: 0}
 --- !u!4 &108311168
 Transform:
   m_ObjectHideFlags: 0
@@ -2899,7 +2892,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1640778150}
-  - component: {fileID: 1640778149}
   - component: {fileID: 1640778148}
   - component: {fileID: 1640778147}
   - component: {fileID: 1640778146}
@@ -2909,7 +2901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1640778146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2917,7 +2909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640778145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 606dfff32da167c4085e76258c551d05, type: 3}
   m_Name: 
@@ -2933,7 +2925,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640778145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21aeb3bc8af51214d8d2a352661b39ec, type: 3}
   m_Name: 
@@ -2958,31 +2950,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640778145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 106b88c7e6ca4d04fbdf3a57cf48d42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _menu: {fileID: 0}
---- !u!114 &1640778149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640778145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5a45dd457bdf84dba56a6d7a8f5286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bufPanel: {fileID: 1310478387}
-  _player: {fileID: 850667509}
-  _attackBox: {fileID: 850667508}
-  _bullet: {fileID: 1007021245737263864, guid: 000bf4cbdded53745acde8ecb8558682, type: 3}
-  _plScript: {fileID: 0}
-  _plAttackScript: {fileID: 0}
-  _bulletScript: {fileID: 0}
 --- !u!4 &1640778150
 Transform:
   m_ObjectHideFlags: 0
