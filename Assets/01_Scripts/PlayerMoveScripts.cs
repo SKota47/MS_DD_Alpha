@@ -59,14 +59,12 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public GameObject _background;
 
-    public float _attackButtonTime;
+    public int _attackButtonTime;
 
-    private float _attackButtonTimeMax = 1;
+    private int _attackButtonTimeMax = 60;
 
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeParticle;
-
-    [System.NonSerialized] public bool _isDead = false;
 
     void Start()
     {
@@ -94,7 +92,7 @@ public class PlayerMoveScripts : MonoBehaviour
     {
         //_currentHP = _publicHP;
         //移動
-        if (!_background.activeSelf || !_isDead)
+        if (!_background.activeSelf)
         {
             if (!_sealdObj.activeSelf)
             {
@@ -120,7 +118,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 //攻撃と攻撃判定オンオフ
                 if (Input.GetKey(KeyCode.E))
                 {
-                    _attackButtonTime += Time.deltaTime;
+                    _attackButtonTime++;
                 }
                 //チャージ
                 if (_attackButtonTime >= _attackButtonTimeMax)
@@ -218,6 +216,9 @@ public class PlayerMoveScripts : MonoBehaviour
         _publicHP = _currentHP;
     }
 
+    private void FixedUpdate()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ジャンプ
@@ -231,18 +232,11 @@ public class PlayerMoveScripts : MonoBehaviour
         _currentHP -= _damageFromReload;
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
-
-        if (Input.GetKey(KeyCode.Alpha0)) _currentHP--;
-
         //回復の計算
         if (_currentHP < _maxHP)
         {
             _currentHP += _regainBySystem;
             if (_regainBySystem != 0) _playRegainSound = true;
-        }
-        if (_currentHP <= 0)
-        {
-            _currentHP = 0;
         }
 
         //UIへHPの転送

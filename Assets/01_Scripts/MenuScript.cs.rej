@@ -1,0 +1,9 @@
+diff a/Assets/01_Scripts/MenuScript.cs b/Assets/01_Scripts/MenuScript.cs	(rejected hunks)
+@@ -10,6 +10,7 @@
+     public void Title()
+     {
+         _titleCheck.SetActive(true);
++        gameObject.SetActive(false);
+     }
+     public void CheckTitleYes()
+     {
