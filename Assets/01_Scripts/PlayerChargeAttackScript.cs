@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerChargeAttackScript : MonoBehaviour
 {
@@ -16,12 +17,16 @@ public class PlayerChargeAttackScript : MonoBehaviour
         _chargeAttackBox.SetActive(false);
         _player = transform.parent.gameObject;
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
+        if (!(SceneManager.GetActiveScene().buildIndex == 0) && !(SceneManager.GetActiveScene().buildIndex == 1))
+        {
+            _CHARGE_ATTACK_DAMAGE_MAX = PlayerPrefs.GetInt("ChargeAttackDamage", _CHARGE_ATTACK_DAMAGE_MAX);
+        }
     }
 
     //ìGÇ…ìñÇΩÇ¡ÇΩÇÁÇªÇÃìGÇ…É_ÉÅÅ[ÉWÇó^Ç¶ÇÈ
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy01"))
+        if (collision.gameObject.CompareTag("Enemy01") || collision.gameObject.CompareTag("MiniBoss"))
         {
             EnemyHPScript _es = collision.GetComponent<EnemyHPScript>();
 

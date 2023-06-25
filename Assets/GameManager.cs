@@ -6,11 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject _menu;
+    public GameObject _gameOverObj;
+
+    public GameObject _playerObj;
+    private PlayerMoveScripts _playerMoveScript;
     // Start is called before the first frame update
     void Start()
     {
-
         Screen.SetResolution(1280, 720, false);
+        _playerMoveScript = _playerObj.GetComponent<PlayerMoveScripts>();
+        _gameOverObj.SetActive(false);
     }
 
     // Update is called once per frame
@@ -18,6 +23,11 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf) _menu.SetActive(true);
         else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf) _menu.SetActive(false);
+
+        if (_playerMoveScript._isDead)
+        {
+            _gameOverObj.SetActive(true);
+        }
         //if (Input.GetKeyDown(KeyCode.Tab))
         //{
         //    SceneManager.LoadScene("Stage02");

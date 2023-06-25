@@ -13,7 +13,8 @@ public class MenuScript : MonoBehaviour
     }
     public void CheckTitleYes()
     {
-        if (_titleCheck.activeSelf) SceneManager.LoadScene("00Title");
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("00Title");
     }
     public void CheckTitleNo()
     {
@@ -26,6 +27,7 @@ public class MenuScript : MonoBehaviour
     }
     public void CheckQuitYes()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
     public void CheckQuitNo()
@@ -36,5 +38,15 @@ public class MenuScript : MonoBehaviour
     public void Resume()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void FromSave()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameStart()
+    {
+        SceneManager.LoadScene("Stage01");
     }
 }

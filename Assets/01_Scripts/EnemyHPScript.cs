@@ -26,13 +26,13 @@ public class EnemyHPScript : MonoBehaviour
         switch (_enemyType)//敵によってHPの設定を変える
         {
             case "Enemy01":
-                _maxHP = 100;
+                _maxHP = 50;
                 break;
             case "Enemy02":
                 _maxHP = 20;
                 break;
-            case "Enemy03":
-                _maxHP = 50;
+            case "MiniBoss":
+                _maxHP = 150;
                 break;
             default:
                 Debug.LogError("エネミーのHPが設定できませんでした");   //バグ検知用

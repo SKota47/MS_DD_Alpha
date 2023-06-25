@@ -9,6 +9,7 @@ TagManager:
   - Enemy02
   - GameManager
   - PreHpBar
+  - MiniBoss
   layers:
   - Default
   - TransparentFX

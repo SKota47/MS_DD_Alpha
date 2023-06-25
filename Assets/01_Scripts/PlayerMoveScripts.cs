@@ -66,21 +66,26 @@ public class PlayerMoveScripts : MonoBehaviour
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeParticle;
 
+    [System.NonSerialized] public bool _isDead = false;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         //HPがシーン間で共有される仕組み
         //1ステージ目の場合は最大体力だがそれ以外は前のステージのHPをもってくる
         //if内後半は今後消した方がいいかも
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            _currentHP = _maxHP;
-            _publicHP = _currentHP;
-        }
-        else
-        {
-            _currentHP = _publicHP;
-        }
+        //if (SceneManager.GetActiveScene().buildIndex == 0)
+        //{
+        //    _currentHP = _maxHP;
+        //    _publicHP = _currentHP;
+        //}
+        //else
+        //{
+        _currentHP = PlayerPrefs.GetInt("HP", (int)_maxHP);
+        _maxSpeed = PlayerPrefs.GetFloat("Speed", _maxSpeed);
+        _bulletDamage = PlayerPrefs.GetFloat("BulletDamage", _bulletDamage);
+        //_currentHP = _publicHP;
+        // }
         _hpText = _hpValue.GetComponent<Text>();
         _bsShot = _bullel.GetComponent<BulletShotScript>();
         _sealdObj.SetActive(false);
@@ -113,7 +118,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 //プレイヤーにダメージ
                 //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
 
-                Debug.Log(_attackButtonTime);
+                // Debug.Log(_attackButtonTime);
 
                 //攻撃と攻撃判定オンオフ
                 if (Input.GetKey(KeyCode.E))
@@ -214,6 +219,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
         //今のHPをstaticのHPへ代入
         _publicHP = _currentHP;
+        Debug.Log(_playerAttackScript._ATTACK_DAMAGE_MAX);
     }
 
     private void FixedUpdate()
@@ -237,6 +243,12 @@ public class PlayerMoveScripts : MonoBehaviour
         {
             _currentHP += _regainBySystem;
             if (_regainBySystem != 0) _playRegainSound = true;
+        }
+
+        if (_currentHP <= 0)
+        {
+            _currentHP = 0;
+            _isDead = true;
         }
 
         //UIへHPの転送

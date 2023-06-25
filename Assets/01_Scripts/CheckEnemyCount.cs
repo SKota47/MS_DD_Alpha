@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 残敵の確認
@@ -9,7 +10,9 @@ public class CheckEnemyCount : MonoBehaviour
 {
     GameObject[] _enemyObjects;
     GameObject[] _flyEnemyObjects;
+    GameObject[] _bossObjects;
     public int _enemyNum;
+    public int _bossNum;
     public int _enemyNumMax;    //回復量用
     private int _regainNum = 4;     //回復量どのくらいか
 
@@ -22,15 +25,27 @@ public class CheckEnemyCount : MonoBehaviour
     {
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
         _enemyObjects = GameObject.FindGameObjectsWithTag("Enemy01");
+        if (SceneManager.GetActiveScene().name == "Stage03_Boss")
+        {
+            _bossObjects = GameObject.FindGameObjectsWithTag("MiniBoss");
+        }
         _enemyNumMax = _enemyObjects.Length;
     }
 
     void Update()
     {
         _enemyObjects = GameObject.FindGameObjectsWithTag("Enemy01");
-        // _flyEnemyObjects = GameObject.FindGameObjectsWithTag("Enemy02");
-        _enemyNum = _enemyObjects.Length /*+ _flyEnemyObjects.Length*/;
-        if (_enemyNum <= 0)
+        if (SceneManager.GetActiveScene().name == "Stage03_Boss")
+        {
+            _bossObjects = GameObject.FindGameObjectsWithTag("MiniBoss");
+        }
+        _enemyNum = _enemyObjects.Length;
+        if (_bossObjects != null)
+        {
+            _bossNum = _bossObjects.Length;
+        }
+
+        if (_enemyNum <= 0 && _bossNum <= 0)
         {
             if (_isRegain)
             {
