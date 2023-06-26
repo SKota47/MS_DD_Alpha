@@ -27,7 +27,7 @@ public class BulletShotScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && _bulletCount > 0 && !(Input.GetKey(KeyCode.S)))
+        if (Input.GetKeyDown(KeyCode.K) && _bulletCount > 0 && !(Input.GetKey(KeyCode.LeftShift)))
         {
             _fireSound = true;
             Shot();

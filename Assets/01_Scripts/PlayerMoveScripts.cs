@@ -121,7 +121,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 // Debug.Log(_attackButtonTime);
 
                 //攻撃と攻撃判定オンオフ
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKey(KeyCode.J))
                 {
                     _attackButtonTime++;
                 }
@@ -137,7 +137,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _chargeParticle.Play();
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
+                if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
                 {
                     _chargeParticle.Stop();
                     Destroy(_chargeParticle);
@@ -146,14 +146,14 @@ public class PlayerMoveScripts : MonoBehaviour
                     _playAttackSound = true;
                     _attackButtonTime = 0;
                 }
-                if (Input.GetKeyUp(KeyCode.E) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
+                if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
                 {
                     _attackBox.gameObject.SetActive(true);
                     _isAttack = !_isAttack;
                     _playAttackSound = true;
                     _attackButtonTime = 0;
                 }
-                if (Input.GetKeyUp(KeyCode.E))
+                if (Input.GetKeyUp(KeyCode.J))
                 {
                     _attackButtonTime = 0;
                 }
@@ -193,7 +193,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     _attackTime += Time.deltaTime;
                 }
                 //リロード時にダメージ
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.L))
                 {
                     _damageFromReload = (5 - _bsShot._bulletCount) * 2;
                     _bsShot._bulletCount = 5;
@@ -204,7 +204,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 _sealdObj.SetActive(true);
             }
