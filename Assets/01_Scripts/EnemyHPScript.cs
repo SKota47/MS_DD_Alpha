@@ -11,7 +11,7 @@ public class EnemyHPScript : MonoBehaviour
 {
     private float _maxHP;
     public Slider _slider;
-    private float _currentHP;
+    public float _currentHP;
     public float _damage;
 
     private string _enemyType;  //ƒ^ƒO‚É‚æ‚é“GŽí‚ðŽæ“¾
@@ -61,5 +61,7 @@ public class EnemyHPScript : MonoBehaviour
             Destroy(gameObject);
         }
         _damage = 0;
+
+        _slider.transform.rotation = Camera.main.transform.rotation;
     }
 }
