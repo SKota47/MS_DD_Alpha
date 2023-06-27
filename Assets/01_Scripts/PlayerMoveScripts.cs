@@ -219,7 +219,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
         //今のHPをstaticのHPへ代入
         _publicHP = _currentHP;
-        Debug.Log(_playerAttackScript._ATTACK_DAMAGE_MAX);
+        //Debug.Log(_playerAttackScript._ATTACK_DAMAGE_MAX);
     }
 
     private void FixedUpdate()
@@ -236,6 +236,7 @@ public class PlayerMoveScripts : MonoBehaviour
         //各種ダメージの計算
         _currentHP -= _damage;
         _currentHP -= _damageFromReload;
+        if (_sealdObj.activeSelf) { _damageByTouch /= 2; }
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
         //回復の計算

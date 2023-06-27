@@ -45,10 +45,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EnemyHP._currentHP < EnemyHpSave)
-        {
-            chase = true;
-        }
+       //if(EnemyHP._currentHP < EnemyHpSave)
+       //{
+       //    chase = true;
+       //}
         if (enemySight.playerInSight)
         {
             Shooting();
@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         {
             Patrolling();
         }
-        EnemyHpSave = EnemyHP._currentHP;
+        //EnemyHpSave = EnemyHP._currentHP;
     }
     void Shooting()
     {
