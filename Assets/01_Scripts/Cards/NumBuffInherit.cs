@@ -141,27 +141,27 @@ public class NumBuffInherit : MonoBehaviour
 
     protected void DisplayDescription()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            _cardParent.transform.localPosition
-                = new Vector3(_cardParent.transform.localPosition.x,
-                 -250,
-                _cardParent.transform.localPosition.z);
-
-            _preHpBar.transform.localPosition
-                = new Vector3(_preHpBar.transform.localPosition.x,
-                200, _preHpBar.transform.localPosition.z);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _cardParent.transform.localPosition
-                = new Vector3(_cardParent.transform.localPosition.x,
-                 0,
-                _cardParent.transform.localPosition.z);
-            _preHpBar.transform.localPosition
-                = new Vector3(_preHpBar.transform.localPosition.x,
-                95, _preHpBar.transform.localPosition.z);
-        }
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    _cardParent.transform.localPosition
+        //        = new Vector3(_cardParent.transform.localPosition.x,
+        //         -250,
+        //        _cardParent.transform.localPosition.z);
+        //
+        //    _preHpBar.transform.localPosition
+        //        = new Vector3(_preHpBar.transform.localPosition.x,
+        //        200, _preHpBar.transform.localPosition.z);
+        //}
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    _cardParent.transform.localPosition
+        //        = new Vector3(_cardParent.transform.localPosition.x,
+        //         0,
+        //        _cardParent.transform.localPosition.z);
+        //    _preHpBar.transform.localPosition
+        //        = new Vector3(_preHpBar.transform.localPosition.x,
+        //        95, _preHpBar.transform.localPosition.z);
+        //}
         _descriptionTextMesh.text
             = _description + "\n"/* + (_playerScript._currentHP - _descHpReduce) + "hp Remain)"*/;
     }
