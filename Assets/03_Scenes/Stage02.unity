@@ -1105,7 +1105,14 @@ MonoBehaviour:
   _regainSound: {fileID: 8300000, guid: 74f53767bbcea224d91548d2da631055, type: 3}
   _jumpSound: {fileID: 8300000, guid: 8769639bd4776d04cb864c727e5f91c4, type: 3}
   _damageSound: {fileID: 0}
+  _chargeSound: {fileID: 8300000, guid: 6b7de460322d4fd498a209027034ea67, type: 3}
+  _deadSound: {fileID: 8300000, guid: 6855df194653f2144a98837e6f5d9eb8, type: 3}
+  _cancelSound: {fileID: 8300000, guid: 9570cf29460761646b214d76deefbf8e, type: 3}
+  _decisionSound: {fileID: 8300000, guid: 6cbf16dca7711b64eaea38f1e58bb37c, type: 3}
+  _audioSourceobj: {fileID: 0}
   _playerObj: {fileID: 1171163518}
+  _Menu: {fileID: 539929548}
+  _backGroundCanvas: {fileID: 211123196}
 --- !u!82 &177481518
 AudioSource:
   m_ObjectHideFlags: 0

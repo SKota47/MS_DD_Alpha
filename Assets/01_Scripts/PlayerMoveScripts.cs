@@ -54,6 +54,10 @@ public class PlayerMoveScripts : MonoBehaviour
     [System.NonSerialized] public bool _playAttackSound = false;
     [System.NonSerialized] public bool _playJumpSound = false;
     [System.NonSerialized] public bool _playRegainSound = false;
+    [System.NonSerialized] public bool _playChargeSound = false;//a
+    [System.NonSerialized] public bool _playDeadSound = false;//a
+
+    bool _deadSoundPlaymanage = false;
 
     public GameObject _sealdObj;
 
@@ -138,6 +142,7 @@ public class PlayerMoveScripts : MonoBehaviour
                             _chargeParticle = Instantiate(_chargeParticlePrefab);
                             _chargeParticle.transform.position = transform.position;
                             _chargeParticle.Play();
+                            _playChargeSound = true;//a
                         }
                         if (_chargeParticle != null)
                         {
@@ -257,6 +262,11 @@ public class PlayerMoveScripts : MonoBehaviour
         {
             _currentHP = 0;
             _isDead = true;
+            if (!_deadSoundPlaymanage)
+            {
+                _playDeadSound = true;
+                _deadSoundPlaymanage = true;
+            }
         }
 
         if (_currentHP >= _maxHP) _currentHP = _maxHP;
