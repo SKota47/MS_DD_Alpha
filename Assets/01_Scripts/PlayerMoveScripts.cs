@@ -259,6 +259,7 @@ public class PlayerMoveScripts : MonoBehaviour
             _isDead = true;
         }
 
+        if (_currentHP >= _maxHP) _currentHP = _maxHP;
         //UIへHPの転送
         _hpBar.value = _currentHP / _maxHP;
         _hpText.text = _currentHP.ToString();
