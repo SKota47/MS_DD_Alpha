@@ -97,123 +97,130 @@ public class PlayerMoveScripts : MonoBehaviour
     {
         //_currentHP = _publicHP;
         //移動
-        if (!_background.activeSelf)
+        if (!_isDead)
         {
-            if (!_sealdObj.activeSelf)
+            if (!_background.activeSelf)
             {
-                //ジャンプ
-                if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+
+                if (!_sealdObj.activeSelf)
                 {
-                    _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
-                    _isJump = true;
-                    _playJumpSound = true;
-                }
-
-                //横移動
-                _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
-                //横移動時の反転
-                if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
-                if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
-
-                //プレイヤーにダメージ
-                //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
-
-                // Debug.Log(_attackButtonTime);
-
-                //攻撃と攻撃判定オンオフ
-                if (Input.GetKey(KeyCode.J))
-                {
-                    _attackButtonTime++;
-                }
-                //チャージ
-                if (_attackButtonTime >= _attackButtonTimeMax)
-                {
-                    _speed = 0.0f;
-                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                    if (_chargeParticle == null)
+                    //ジャンプ
+                    if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
                     {
-                        _chargeParticle = Instantiate(_chargeParticlePrefab);
-                        _chargeParticle.transform.position = transform.position;
-                        _chargeParticle.Play();
+                        _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
+                        _isJump = true;
+                        _playJumpSound = true;
+                    }
+
+                    //横移動
+                    _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
+                    //横移動時の反転
+                    if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
+                    if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
+
+                    //プレイヤーにダメージ
+                    //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
+
+                    // Debug.Log(_attackButtonTime);
+
+                    //攻撃と攻撃判定オンオフ
+                    if (Input.GetKey(KeyCode.J))
+                    {
+                        _attackButtonTime++;
+                    }
+                    //チャージ
+                    if (_attackButtonTime >= _attackButtonTimeMax)
+                    {
+                        _speed = 0.0f;
+                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                        if (_chargeParticle == null)
+                        {
+                            _chargeParticle = Instantiate(_chargeParticlePrefab);
+                            _chargeParticle.transform.position = transform.position;
+                            _chargeParticle.Play();
+                        }
+                        if (_chargeParticle != null)
+                        {
+                            _chargeParticle.transform.position = transform.position;
+                        }
+                    }
+                    if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
+                    {
+                        _chargeParticle.Stop();
+                        Destroy(_chargeParticle);
+                        _chargeAttackBox.gameObject.SetActive(true);
+                        _isAttack = !_isAttack;
+                        _playAttackSound = true;
+                        _attackButtonTime = 0;
+                    }
+                    if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
+                    {
+                        _attackBox.gameObject.SetActive(true);
+                        _isAttack = !_isAttack;
+                        _playAttackSound = true;
+                        _attackButtonTime = 0;
+                    }
+                    if (Input.GetKeyUp(KeyCode.J))
+                    {
+                        _attackButtonTime = 0;
+                    }
+                    //if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
+                    //{
+                    //    _attackBox.gameObject.SetActive(true);
+                    //    _isAttack = !_isAttack;
+                    //    _playAttackSound = true;
+                    //}
+                    else if (_attackTime >= _ATTACK_TIME_MAX)
+                    {
+                        _attackBox.gameObject.SetActive(false);
+                        _isAttack = !_isAttack;
+                        _attackTime = 0;
+                        _chargeAttackBox.gameObject.SetActive(false);
+                    }
+                    if (_chargeAttackBox.activeSelf)
+                    {
+                        _speed = 0.0f;
+                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                    }
+                    else
+                    {
+                        _speed = _maxSpeed;
+                    }
+                    if (_attackBox.activeSelf)
+                    {
+                        _speed = 0.0f;
+                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                    }
+                    else
+                    {
+                        _speed = _maxSpeed;
+                    }
+                    if (_isAttack)
+                    {
+                        _attackTime += Time.deltaTime;
+                    }
+                    //リロード時にダメージ
+                    if (Input.GetKeyDown(KeyCode.L))
+                    {
+                        _damageFromReload = (5 - _bsShot._bulletCount) * 2;
+                        _bsShot._bulletCount = 5;
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
-                {
-                    _chargeParticle.Stop();
-                    Destroy(_chargeParticle);
-                    _chargeAttackBox.gameObject.SetActive(true);
-                    _isAttack = !_isAttack;
-                    _playAttackSound = true;
-                    _attackButtonTime = 0;
-                }
-                if (Input.GetKeyUp(KeyCode.J) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
-                {
-                    _attackBox.gameObject.SetActive(true);
-                    _isAttack = !_isAttack;
-                    _playAttackSound = true;
-                    _attackButtonTime = 0;
-                }
-                if (Input.GetKeyUp(KeyCode.J))
-                {
-                    _attackButtonTime = 0;
-                }
-                //if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
-                //{
-                //    _attackBox.gameObject.SetActive(true);
-                //    _isAttack = !_isAttack;
-                //    _playAttackSound = true;
-                //}
-                else if (_attackTime >= _ATTACK_TIME_MAX)
-                {
-                    _attackBox.gameObject.SetActive(false);
-                    _isAttack = !_isAttack;
-                    _attackTime = 0;
-                    _chargeAttackBox.gameObject.SetActive(false);
-                }
-                if (_chargeAttackBox.activeSelf)
-                {
-                    _speed = 0.0f;
-                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                }
                 else
                 {
-                    _speed = _maxSpeed;
+                    _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
                 }
-                if (_attackBox.activeSelf)
-                {
-                    _speed = 0.0f;
-                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                }
-                else
-                {
-                    _speed = _maxSpeed;
-                }
-                if (_isAttack)
-                {
-                    _attackTime += Time.deltaTime;
-                }
-                //リロード時にダメージ
-                if (Input.GetKeyDown(KeyCode.L))
-                {
-                    _damageFromReload = (5 - _bsShot._bulletCount) * 2;
-                    _bsShot._bulletCount = 5;
-                }
-            }
-            else
-            {
-                _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
-            }
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                _sealdObj.SetActive(true);
-            }
-            else
-            {
-                _sealdObj.SetActive(false);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    _sealdObj.SetActive(true);
+                }
+                else
+                {
+                    _sealdObj.SetActive(false);
+                }
             }
         }
-
 
         HPCulc();
 

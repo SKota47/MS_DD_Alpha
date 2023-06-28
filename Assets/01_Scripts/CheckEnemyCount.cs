@@ -53,6 +53,11 @@ public class CheckEnemyCount : MonoBehaviour
                 _isRegain = false;
             }
             _gate.SetActive(true);
+            if (SceneManager.GetActiveScene().name == "Stage03_Boss")
+            {
+                if (_playerMoveScripts._maxHP == 100) _playerMoveScripts._maxHP = _playerMoveScripts._maxHP + 50;
+                _playerMoveScripts._currentHP = _playerMoveScripts._maxHP;
+            }
         }
         else
         {
