@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
         _bulletShotScript = _playerObj.GetComponent<BulletShotScript>();
         _menuScript = _Menu.GetComponent<MenuScript>();
         //_audioSourceobj = GameObject.FindGameObjectWithTag("BGM");
-        _BGMSource = _audioSourceobj.GetComponent<AudioSource>();
+        //_BGMSource = _audioSourceobj.GetComponent<AudioSource>();
     }
 
     void Update()
