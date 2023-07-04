@@ -8996,11 +8996,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5780847253579461824, guid: 8715d6e5e9c625c46ab5018d40253168, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6853876688839362097, guid: 8715d6e5e9c625c46ab5018d40253168, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9131003141329995102, guid: 8715d6e5e9c625c46ab5018d40253168, type: 3}
       propertyPath: patrolWayPoints
