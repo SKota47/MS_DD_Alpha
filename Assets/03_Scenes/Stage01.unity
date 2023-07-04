@@ -8749,11 +8749,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
-<<<<<<< HEAD
---- !u!114 &3826468251904927911
-=======
---- !u!114 &3826468251904927910
->>>>>>> d06ca7db10ef424c1bdfb877b240b2e56e7c9722
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
