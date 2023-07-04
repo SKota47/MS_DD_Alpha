@@ -36,6 +36,8 @@ public class EnemyBossAI : MonoBehaviour
     public GameObject _attackBox;
     [System.NonSerialized] public bool isAttack = false;
 
+    public GameObject _menuCanvas;
+
 
 
     // Start is called before the first frame update
@@ -56,30 +58,33 @@ public class EnemyBossAI : MonoBehaviour
         //}
         //Debug.Log(enemySight.playerInSight);
 
-        if (enemySight.playerInSight)
-        {
-            Attacking();
-            chase = true;
-        }
-        else if (chase)
-        {
-            Chasing();
-        }
-        else
-        {
-            Patrolling();
-        }
-        if (isAttack) 
-        {
-            agent.isStopped = true; 
-            attackBoxOffTimer += Time.deltaTime; 
-        }
+        _menuCanvas = GameObject.Find("MenuCanvas");
 
-        if (attackBoxOffTimer > attackBoxOffTime)
-        {
-            _attackBox.gameObject.SetActive(false);
-            isAttack = false;
-        }
+            if (enemySight.playerInSight)
+            {
+                Attacking();
+                chase = true;
+            }
+            else if (chase)
+            {
+                Chasing();
+            }
+            else
+            {
+                Patrolling();
+            }
+            if (isAttack)
+            {
+                agent.isStopped = true;
+                attackBoxOffTimer += Time.deltaTime;
+            }
+
+            if (attackBoxOffTimer > attackBoxOffTime)
+            {
+                _attackBox.gameObject.SetActive(false);
+                isAttack = false;
+            }
+
 
         //EnemyHpSave = EnemyHP._currentHP;
     }
@@ -134,6 +139,7 @@ public class EnemyBossAI : MonoBehaviour
     }
     void Patrolling()
     {
+
         agent.isStopped = false;
         agent.speed = patrolSpeed;
         if (agent.remainingDistance < agent.stoppingDistance)

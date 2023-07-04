@@ -16,13 +16,27 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, true);
         _playerMoveScript = _playerObj.GetComponent<PlayerMoveScripts>();
         _gameOverObj.SetActive(false);
+        if ((SceneManager.GetActiveScene().buildIndex != 0))
+        {
+            Time.timeScale = 0;
+        }            
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf) _menu.SetActive(true);
-        else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf) _menu.SetActive(false);
+        //  if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf) _menu.SetActive(true);
+        //  else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf) _menu.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf)
+        {
+            _menu.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf)
+        {
+            _menu.SetActive(false);
+            Time.timeScale = 1;
+        }
 
         if (_playerMoveScript._isDead)
         {

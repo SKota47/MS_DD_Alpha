@@ -49,6 +49,7 @@ public class MenuScript : MonoBehaviour
     {
         _canselSound = true;
         this.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void FromSave()

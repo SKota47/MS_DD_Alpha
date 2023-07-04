@@ -18,5 +18,6 @@ public class BuffExecuteScript : MonoBehaviour
     public void OnClick()
     {
         _isClick = true;
+        Time.timeScale = 1;
     }
 }
