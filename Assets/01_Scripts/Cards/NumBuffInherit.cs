@@ -43,18 +43,42 @@ public class NumBuffInherit : MonoBehaviour
     protected float _preBulletDamage;
     protected float _prePlayerSpeed;
 
+    protected bool _pushed = false;
+
+    public GameObject _startButton;
+    protected BuffExecuteScript _startButtonScript;
+
     void Start()
     {
         SetComponent();
         _preHpReduce = (int)_playerScript._currentHP;
     }
 
-    // Update is called once per frame
-    protected void Selection()
+    private void Update()
     {
-        if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected) Selected();
-        else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected) UnSelected();
-        if (Input.GetKeyDown(KeyCode.Return)) Execute();
+        if (_startButtonScript._isClick)
+        {
+            Execute();
+        }
+    }
+
+    // Update is called once per frame
+    public void Selection()
+    {
+        //if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected) Selected();
+        //else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected) UnSelected();
+        //if (Input.GetKeyDown(KeyCode.Return)) Execute();
+        if (!isSelected && !_pushed)
+        {
+            Selected();
+            _pushed = true;
+        }
+        else if (isSelected && _pushed)
+        {
+            UnSelected();
+            _pushed = false;
+        }
+
     }
 
     /// <summary>
@@ -96,6 +120,8 @@ public class NumBuffInherit : MonoBehaviour
                 Debug.LogError("アンカーポイントが未指定です\n");
                 break;
         }
+        _startButton = GameObject.Find("Start");
+        _startButtonScript = _startButton.GetComponent<BuffExecuteScript>();
     }
 
     /// <summary>
@@ -125,7 +151,7 @@ public class NumBuffInherit : MonoBehaviour
     /// <summary>
     /// カードが選択された後決定されると呼ばれる
     /// </summary>
-    protected void Execute()
+    public void Execute()
     {
         _playerScript._currentHP -= _preHpReduce;
         if (isSelected)
@@ -137,6 +163,7 @@ public class NumBuffInherit : MonoBehaviour
         if (_preHpBar.activeSelf) _preHpBar.SetActive(false);
         if (_bgPanelObj.activeSelf) _bgPanelObj.SetActive(false);
         Destroy(_cardParent);
+        Destroy(_startButton);
     }
 
     protected void DisplayDescription()
