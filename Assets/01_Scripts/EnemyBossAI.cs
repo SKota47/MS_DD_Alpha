@@ -54,7 +54,7 @@ public class EnemyBossAI : MonoBehaviour
         //{
         //    chase = true;
         //}
-        Debug.Log(enemySight.playerInSight);
+        //Debug.Log(enemySight.playerInSight);
 
         if (enemySight.playerInSight)
         {

@@ -20,7 +20,11 @@ public class Buff08Script : NumBuffInherit
     // Update is called once per frame
     void Update()
     {
-        Selection();
+        if (_startButtonScript._isClick)
+        {
+            Execute();
+        }
+        //Selection();
         _descHpReduce = (int)15;
         _preBulletDamage = (int)4;
         DisplayDescription();

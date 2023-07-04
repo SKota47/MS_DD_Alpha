@@ -20,7 +20,11 @@ public class Buff03Script : NumBuffInherit
     // Update is called once per frame
     void Update()
     {
-        Selection();
+        if (_startButtonScript._isClick)
+        {
+            Execute();
+        }
+        //Selection();
         _descHpReduce = (int)5;
         _prePlayerSpeed = (int)2;
         //_displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) - _descHpReduce;

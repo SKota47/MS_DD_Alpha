@@ -41,7 +41,7 @@ public class SceneChanger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) isCheckGoal = true;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && (SceneManager.GetActiveScene().buildIndex == 3))
         {
