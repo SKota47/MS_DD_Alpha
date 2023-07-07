@@ -56,7 +56,18 @@ public class SceneChanger : MonoBehaviour
             PlayerPrefs.SetFloat("BulletDamage", _playerMoveScripts._bulletDamage);
             PlayerPrefs.Save();
             Debug.Log(PlayerPrefs.GetInt("HP"));
-            SceneManager.LoadScene(_nowSceneNum++);
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                SceneManager.LoadScene(1);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SceneManager.LoadScene(2);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                SceneManager.LoadScene(3);
+            }
         }
     }
 }

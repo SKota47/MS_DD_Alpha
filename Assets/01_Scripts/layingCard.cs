@@ -87,7 +87,7 @@ public class LayingCard : MonoBehaviour
 
     private int DiceRoll()
     {
-        return Random.Range(0, 5);
+        return Random.Range(0, 4);
     }
 
 }
