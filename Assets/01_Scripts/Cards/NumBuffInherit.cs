@@ -141,11 +141,11 @@ public class NumBuffInherit : MonoBehaviour
     /// </summary>
     protected void UnSelected()
     {
+        _preHpBarSlider.value += _displayPreHpResuce;
         _preHpReduce -= _descHpReduce;
         _displayPreHpResuce -= _descHpReduce;
         _descriptionTextMesh.color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
         isSelected = !isSelected;
-        _preHpBarSlider.value += _displayPreHpResuce;
     }
 
     /// <summary>
