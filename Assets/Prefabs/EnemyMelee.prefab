@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 4167322376749731687}
   - component: {fileID: 4167322376749731686}
   - component: {fileID: 4167322376749731681}
+  - component: {fileID: 318059287033252616}
   - component: {fileID: 4167322376749731680}
   - component: {fileID: 4167322376749731683}
   m_Layer: 0
@@ -364,6 +365,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &318059287033252616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4167322376749731682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fa49195acc14a4a981e98f9e2099ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodParticle: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
+  _attackParticle: {fileID: 5883794629473302271, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
+  _damageParticle: {fileID: 8717665392237738629, guid: e4a051ce1061d0a4c80d7d5d54423dc5, type: 3}
 --- !u!114 &4167322376749731680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,6 +611,7 @@ MonoBehaviour:
   attackBoxOffTime: 1
   EnemyHP: {fileID: 0}
   _attackBox: {fileID: 4167322376749731682}
+  _menuCanvas: {fileID: 0}
 --- !u!114 &5143844585115843452
 MonoBehaviour:
   m_ObjectHideFlags: 0

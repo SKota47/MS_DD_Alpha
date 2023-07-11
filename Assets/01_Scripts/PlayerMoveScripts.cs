@@ -127,7 +127,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     // Debug.Log(_attackButtonTime);
 
                     //攻撃と攻撃判定オンオフ
-                    if (Input.GetMouseButton(0))
+                    if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)))
                     {
                         _attackButtonTime++;
                     }
@@ -148,7 +148,7 @@ public class PlayerMoveScripts : MonoBehaviour
                             _chargeParticle.transform.position = transform.position;
                         }
                     }
-                    if (Input.GetMouseButtonUp(0) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
+                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
                     {
                         _chargeParticle.Stop();
                         Destroy(_chargeParticle);
@@ -157,14 +157,14 @@ public class PlayerMoveScripts : MonoBehaviour
                         _playAttackSound = true;
                         _attackButtonTime = 0;
                     }
-                    if (Input.GetMouseButtonUp(0) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
+                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
                     {
                         _attackBox.gameObject.SetActive(true);
                         _isAttack = !_isAttack;
                         _playAttackSound = true;
                         _attackButtonTime = 0;
                     }
-                    if (Input.GetMouseButtonUp(0))
+                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)))
                     {
                         _attackButtonTime = 0;
                     }
@@ -204,7 +204,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _attackTime += Time.deltaTime;
                     }
                     //リロード時にダメージ
-                    if (_bsShot._bulletCount <= 0)
+                    if (Input.GetKeyDown(KeyCode.R))
                     {
                         _damageFromReload = (5 - _bsShot._bulletCount) * 2;
                         _bsShot._bulletCount = 5;
