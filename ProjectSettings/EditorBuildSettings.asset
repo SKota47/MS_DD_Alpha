@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/03_Scenes/Stage03_Boss.unity
     guid: 4b978e1b4d4405841bc45e535b139562
+  - enabled: 1
+    path: Assets/03_Scenes/Stage04.unity
+    guid: 8da09215fdef77f479b8179b1c42ae8e
+  - enabled: 1
+    path: Assets/03_Scenes/Stage05.unity
+    guid: a813cb25e6f95dc4c935535fc8c11770
+  - enabled: 1
+    path: Assets/03_Scenes/Stage06.unity
+    guid: 5b8d48acd0b10ec46aa77e741094b5ef
+  - enabled: 1
+    path: Assets/03_Scenes/Stage07.unity
+    guid: 415c3fc493bbb524a86e36b36c809445
   m_configObjects: {}

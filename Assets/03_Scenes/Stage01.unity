@@ -3452,7 +3452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 53e6e8f45161be342a1537df72bd2ce4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27cf8ed4e909ecf479f14f5871883c70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7583,6 +7583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyNum: 0
   _bossNum: 0
+  _lastBossNum: 0
   _enemyNumMax: 0
   _player: {fileID: 1949675177}
   _gate: {fileID: 1085894874}
@@ -8797,6 +8798,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7632753017463458530, guid: 535cd9a3daeedef4aada2c3e5bb03dac, type: 3}
+      propertyPath: m_TagString
+      value: Enemy01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 535cd9a3daeedef4aada2c3e5bb03dac, type: 3}
 --- !u!1 &2054619377
@@ -9585,6 +9590,10 @@ PrefabInstance:
     - target: {fileID: 7632753017463458530, guid: 535cd9a3daeedef4aada2c3e5bb03dac, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632753017463458530, guid: 535cd9a3daeedef4aada2c3e5bb03dac, type: 3}
+      propertyPath: m_TagString
+      value: Enemy01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 535cd9a3daeedef4aada2c3e5bb03dac, type: 3}

@@ -364,6 +364,9 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _preHpBar: {fileID: 0}
   _bgPanelObj: {fileID: 0}
+  _selectedCardSp: {fileID: 21300000, guid: 4f619920ca2b8fb4b90e7a0b9d3a3498, type: 3}
+  _unSelectedCardSp: {fileID: 21300000, guid: a196fb2b56313ba48a825d38280d17c3, type: 3}
+  _startButton: {fileID: 0}
 --- !u!1 &3899636503919823528
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +466,9 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _preHpBar: {fileID: 0}
   _bgPanelObj: {fileID: 0}
+  _selectedCardSp: {fileID: 21300000, guid: 4f619920ca2b8fb4b90e7a0b9d3a3498, type: 3}
+  _unSelectedCardSp: {fileID: 21300000, guid: a196fb2b56313ba48a825d38280d17c3, type: 3}
+  _startButton: {fileID: 0}
 --- !u!1 &3899636503959750437
 GameObject:
   m_ObjectHideFlags: 0

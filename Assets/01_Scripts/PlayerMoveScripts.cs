@@ -85,6 +85,7 @@ public class PlayerMoveScripts : MonoBehaviour
         //}
         //else
         //{
+        _maxHP = PlayerPrefs.GetInt("MaxHP", _maxHP);
         _currentHP = PlayerPrefs.GetInt("HP", (int)_maxHP);
         _maxSpeed = PlayerPrefs.GetFloat("Speed", _maxSpeed);
         _bulletDamage = PlayerPrefs.GetFloat("BulletDamage", _bulletDamage);

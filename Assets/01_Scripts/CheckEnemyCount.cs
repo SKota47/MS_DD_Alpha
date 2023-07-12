@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class CheckEnemyCount : MonoBehaviour
 {
-    GameObject[] _enemyObjects;
+    GameObject[] _enemy01Objects;
+    GameObject[] _enemy02Objects;
     GameObject[] _flyEnemyObjects;
     GameObject[] _bossObjects;
+    GameObject[] _lastBossObjects;
     public int _enemyNum;
     public int _bossNum;
+    public int _lastBossNum;
     public int _enemyNumMax;    //‰ñ•œ—Ê—p
     private int _regainNum = 4;     //‰ñ•œ—Ê‚Ç‚Ì‚­‚ç‚¢‚©
 
@@ -24,28 +27,42 @@ public class CheckEnemyCount : MonoBehaviour
     void Start()
     {
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
-        _enemyObjects = GameObject.FindGameObjectsWithTag("Enemy01");
+        _enemy01Objects = GameObject.FindGameObjectsWithTag("Enemy01");
+        _enemy02Objects = GameObject.FindGameObjectsWithTag("Enemy02");
         if (SceneManager.GetActiveScene().name == "Stage03_Boss")
         {
             _bossObjects = GameObject.FindGameObjectsWithTag("MiniBoss");
         }
-        _enemyNumMax = _enemyObjects.Length;
+        if (SceneManager.GetActiveScene().name == "Stage07")
+        {
+            _lastBossObjects = GameObject.FindGameObjectsWithTag("LastBoss");
+        }
+        _enemyNumMax = _enemy01Objects.Length + _enemy02Objects.Length;
     }
 
     void Update()
     {
-        _enemyObjects = GameObject.FindGameObjectsWithTag("Enemy01");
+        _enemy01Objects = GameObject.FindGameObjectsWithTag("Enemy01");
+        _enemy02Objects = GameObject.FindGameObjectsWithTag("Enemy02");
         if (SceneManager.GetActiveScene().name == "Stage03_Boss")
         {
             _bossObjects = GameObject.FindGameObjectsWithTag("MiniBoss");
         }
-        _enemyNum = _enemyObjects.Length;
+        if (SceneManager.GetActiveScene().name == "Stage07")
+        {
+            _lastBossObjects = GameObject.FindGameObjectsWithTag("LastBoss");
+        }
+        _enemyNum = _enemy01Objects.Length + _enemy02Objects.Length;
         if (_bossObjects != null)
         {
             _bossNum = _bossObjects.Length;
         }
+        if (_lastBossObjects != null)
+        {
+            _lastBossNum = _lastBossObjects.Length;
+        }
 
-        if (_enemyNum <= 0 && _bossNum <= 0)
+        if (_enemyNum <= 0 && _bossNum <= 0 && _lastBossNum <= 0)
         {
             if (_isRegain)
             {

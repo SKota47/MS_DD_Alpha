@@ -39,6 +39,10 @@ public class NumBuffInherit : MonoBehaviour
     public GameObject _bgPanelObj;
     private Image _backGroundImage;
 
+    protected Image _cardImage;
+    public Sprite _selectedCardSp;
+    public Sprite _unSelectedCardSp;
+
     protected float _preAttackDamage;
     protected float _preBulletDamage;
     protected float _prePlayerSpeed;
@@ -78,7 +82,6 @@ public class NumBuffInherit : MonoBehaviour
             UnSelected();
             _pushed = false;
         }
-
     }
 
     /// <summary>
@@ -104,6 +107,8 @@ public class NumBuffInherit : MonoBehaviour
         if (!_bgPanelObj.activeSelf) _bgPanelObj.SetActive(true);
         _backGroundImage = _bgPanelObj.GetComponent<Image>();
         _backGroundImage.color = new Color(0.0f, 0.0f, 0.0f, 0.75f);
+        _cardImage = this.transform.parent.Find("Image").GetComponent<Image>();
+        _cardImage.sprite = _unSelectedCardSp;
 
         switch (transform.parent.parent.name)
         {
@@ -132,6 +137,7 @@ public class NumBuffInherit : MonoBehaviour
         _preHpReduce += _descHpReduce;
         _displayPreHpResuce += _descHpReduce;
         _descriptionTextMesh.color = new Color(0.7f, 0.2f, 0.2f, 1.0f);
+        _cardImage.sprite = _selectedCardSp;
         isSelected = true;
         _preHpBarSlider.value -= _displayPreHpResuce;
     }
@@ -145,6 +151,7 @@ public class NumBuffInherit : MonoBehaviour
         _preHpReduce -= _descHpReduce;
         _displayPreHpResuce -= _descHpReduce;
         _descriptionTextMesh.color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
+        _cardImage.sprite = _unSelectedCardSp;
         isSelected = !isSelected;
     }
 

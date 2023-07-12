@@ -24,7 +24,7 @@ public class PlayerHitboxScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy01") || collision.gameObject.CompareTag("MiniBoss"))
+        if (collision.gameObject.CompareTag("Enemy01") || collision.gameObject.CompareTag("Enemy02") || collision.gameObject.CompareTag("MiniBoss") || collision.gameObject.CompareTag("LastBoss"))
         {
             _plMove._damageByTouch = 5;
             _plMove._rb.velocity = Vector3.zero;

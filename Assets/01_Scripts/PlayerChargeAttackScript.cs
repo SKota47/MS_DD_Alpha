@@ -26,7 +26,7 @@ public class PlayerChargeAttackScript : MonoBehaviour
     //“G‚É“–‚½‚Á‚½‚ç‚»‚Ì“G‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy01") || collision.gameObject.CompareTag("MiniBoss"))
+        if (collision.gameObject.CompareTag("Enemy01") || collision.gameObject.CompareTag("Enemy02") || collision.gameObject.CompareTag("MiniBoss") || collision.gameObject.CompareTag("LastBoss"))
         {
             EnemyHPScript _es = collision.GetComponent<EnemyHPScript>();
 

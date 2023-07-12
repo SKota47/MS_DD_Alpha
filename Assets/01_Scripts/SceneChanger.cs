@@ -43,7 +43,7 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && (SceneManager.GetActiveScene().buildIndex == 3))
+        if (other.tag == "Player" && (SceneManager.GetActiveScene().buildIndex == 7))
         {
             _gameClearObj.SetActive(true);
         }
@@ -54,6 +54,7 @@ public class SceneChanger : MonoBehaviour
             PlayerPrefs.SetInt("AttackDamage", _attackScript._ATTACK_DAMAGE_MAX);
             PlayerPrefs.SetInt("ChargeAttackDamage", _chargeAttackScript._CHARGE_ATTACK_DAMAGE_MAX);
             PlayerPrefs.SetFloat("BulletDamage", _playerMoveScripts._bulletDamage);
+            PlayerPrefs.SetInt("MaxHP", _playerMoveScripts._maxHP);
             PlayerPrefs.Save();
             Debug.Log(PlayerPrefs.GetInt("HP"));
             if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -67,6 +68,22 @@ public class SceneChanger : MonoBehaviour
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 SceneManager.LoadScene(3);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                SceneManager.LoadScene(4);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                SceneManager.LoadScene(5);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 5)
+            {
+                SceneManager.LoadScene(6);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 6)
+            {
+                SceneManager.LoadScene(7);
             }
         }
     }
