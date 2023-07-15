@@ -8353,11 +8353,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9031725566978831132, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: -9031725566978831132, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090335309354778427, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
     - target: {fileID: 2778917199306878775, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
     - target: {fileID: 2798644468124321059, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
+    - target: {fileID: 3025286463937964808, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
@@ -8473,6 +8489,10 @@ PrefabInstance:
       propertyPath: _background
       value: 
       objectReference: {fileID: 8807491983387244376}
+    - target: {fileID: 5134714399691225651, guid: 211d0df57404c724a8343635f158329c, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
     - target: {fileID: 6922873277082475406, guid: 211d0df57404c724a8343635f158329c, type: 3}
       propertyPath: m_Material
       value: 
@@ -8525,7 +8545,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949675177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bb7ee30c89cb3c42afedfd144f6e1eb, type: 3}
   m_Name: 
@@ -9846,6 +9866,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8017761796317910508, guid: 2c08f60923b06cf4aac6347512a9f1dd, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
     - target: {fileID: 8017761796749490160, guid: 2c08f60923b06cf4aac6347512a9f1dd, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

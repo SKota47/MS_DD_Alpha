@@ -35,7 +35,7 @@ public class EnemySight : MonoBehaviour
                     {
                         playerInSight = true;
                         playerLastSight = player.transform.position;
-                        Debug.Log("Find Player");
+                       // Debug.Log("Find Player");
                     }
                 }
             }

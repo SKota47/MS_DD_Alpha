@@ -896,6 +896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyNum: 0
   _bossNum: 0
+  _lastBossNum: 0
   _enemyNumMax: 0
   _player: {fileID: 850667509}
   _gate: {fileID: 304025356}
@@ -6864,7 +6865,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445956550}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d437298c183ca13459343346023b239d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -7688,6 +7689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyNum: 0
   _bossNum: 0
+  _lastBossNum: 0
   _enemyNumMax: 0
   _player: {fileID: 850667509}
   _gate: {fileID: 304025356}

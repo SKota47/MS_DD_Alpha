@@ -12,7 +12,7 @@ public class PlayerMoveScripts : MonoBehaviour
     public float _speed = 20.0f;   //横移動の速度
     public float _maxSpeed = 20.0f;
     private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ジャンプのパワー
-    private bool _isJump = false;   //ジャンプしているか
+    public bool _isJump = false;   //ジャンプしているか
 
     public int _maxHP = 100;        //最大体力
     public float _currentHP;        //現在の体力
@@ -72,6 +72,10 @@ public class PlayerMoveScripts : MonoBehaviour
 
     [System.NonSerialized] public bool _isDead = false;
 
+    private CharacterController _playerCharaCon;
+
+    public SphereCollider _footCollider;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -96,6 +100,7 @@ public class PlayerMoveScripts : MonoBehaviour
         _sealdObj.SetActive(false);
         _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
         _playerChargeAttackScript = _chargeAttackBox.GetComponent<PlayerChargeAttackScript>();
+        _playerCharaCon = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -108,8 +113,10 @@ public class PlayerMoveScripts : MonoBehaviour
             {
                 if (!_sealdObj.activeSelf)
                 {
+
+                    Debug.Log(_isJump);
                     //ジャンプ
-                    if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
+                    if (Input.GetKeyDown(KeyCode.Space) && !_isJump /*&&_playerCharaCon.isGrounded*/)
                     {
                         _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
                         _isJump = true;
@@ -237,10 +244,13 @@ public class PlayerMoveScripts : MonoBehaviour
     private void FixedUpdate()
     {
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Floor") && _isJump) _isJump = false;  //ジャンプ
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Floor") && _isJump)
+    //    {
+    //        _isJump = false;  //ジャンプ
+    //    }
+    //}
 
     //HPの処理
     private void HPCulc()

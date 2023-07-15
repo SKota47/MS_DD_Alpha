@@ -96,7 +96,7 @@ public class EnemyBossAI : MonoBehaviour
         Vector3 targetDir = lookPos - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDir), Mathf.Min(1f, Time.deltaTime * shootRotSpeed));
         agent.isStopped = true;
-        Debug.Log(attackBoxOffTimer);
+        //Debug.Log(attackBoxOffTimer);
 
         if (Vector3.Angle(transform.forward, targetDir) < 2)
         {

@@ -12,7 +12,7 @@ public class BuffExecuteScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_isClick);
+       // Debug.Log(_isClick);
     }
 
     public void OnClick()
