@@ -10,7 +10,7 @@ public class EnemyBossAI : MonoBehaviour
     public float patrolWaitTime = 0.5f;
     public Transform patrolWayPoints;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private float patrolTimer = 0f;
     private int wayPointIndex = 0;
 
@@ -38,7 +38,17 @@ public class EnemyBossAI : MonoBehaviour
 
     public GameObject _menuCanvas;
 
+    private Rigidbody _rb;
+    [System.NonSerialized] public bool _isKnockback;
+    private float _knockBackTime;
 
+    private float _patrolSpeedSave;
+    private float _chaseSpeedSave;
+    private float _shootSpeedSave;
+    private float _patrolWaitSave;
+    private float _chaseWaitSave;
+
+    [System.NonSerialized] public int _isKinematicOnFrame;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +57,13 @@ public class EnemyBossAI : MonoBehaviour
         enemySight = transform.Find("EnemySight").GetComponent<EnemySight>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         EnemyHP = GetComponent<EnemyHPScript>();
+
+        _patrolSpeedSave = patrolSpeed;
+        _chaseSpeedSave = chaseSpeed;
+        _chaseSpeedSave = shootRotSpeed;
+        _patrolWaitSave = patrolWaitTime;
+        _chaseWaitSave = chaseWaitTime;
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -60,31 +77,53 @@ public class EnemyBossAI : MonoBehaviour
 
         _menuCanvas = GameObject.Find("MenuCanvas");
 
-            if (enemySight.playerInSight)
-            {
-                Attacking();
-                chase = true;
-            }
-            else if (chase)
-            {
-                Chasing();
-            }
-            else
-            {
-                Patrolling();
-            }
-            if (isAttack)
-            {
-                agent.isStopped = true;
-                attackBoxOffTimer += Time.deltaTime;
-            }
+        if (enemySight.playerInSight)
+        {
+            Attacking();
+            chase = true;
+        }
+        else if (chase)
+        {
+            Chasing();
+        }
+        else
+        {
+            Patrolling();
+        }
+        if (isAttack)
+        {
+            agent.isStopped = true;
+            attackBoxOffTimer += Time.deltaTime;
+        }
 
-            if (attackBoxOffTimer > attackBoxOffTime)
-            {
-                _attackBox.gameObject.SetActive(false);
-                isAttack = false;
-            }
+        if (attackBoxOffTimer > attackBoxOffTime)
+        {
+            _attackBox.gameObject.SetActive(false);
+            isAttack = false;
+        }
+        Debug.Log(_knockBackTime);
 
+        if (_isKnockback)
+        {
+            _knockBackTime += Time.deltaTime;
+            patrolSpeed = 0;
+            chaseSpeed = 0;
+            shootRotSpeed = 0;
+            chaseWaitTime = 0;
+            patrolWaitTime = 0;
+        }
+        if (_knockBackTime >= 1)
+        {
+            patrolSpeed = _patrolSpeedSave;
+            chaseSpeed = _chaseSpeedSave;
+            shootRotSpeed = _shootSpeedSave;
+            chaseWaitTime = _chaseWaitSave;
+            patrolWaitTime = _patrolWaitSave;
+            agent.enabled = true;
+            //_rb.isKinematic = true;
+            _isKinematicOnFrame = Time.frameCount;
+            _isKnockback = false;
+        }
 
         //EnemyHpSave = EnemyHP._currentHP;
     }
@@ -107,13 +146,13 @@ public class EnemyBossAI : MonoBehaviour
                 attackBoxOffTimer = 0f;
                 attackTimer = 0f;
             }
-          // if (isAttack) { attackBoxOffTimer += Time.deltaTime; }
-          //
-          // if (attackBoxOffTimer > attackBoxOffTime)
-          // {
-          //     _attackBox.gameObject.SetActive(false);
-          //     isAttack = false;
-          // }
+            // if (isAttack) { attackBoxOffTimer += Time.deltaTime; }
+            //
+            // if (attackBoxOffTimer > attackBoxOffTime)
+            // {
+            //     _attackBox.gameObject.SetActive(false);
+            //     isAttack = false;
+            // }
             attackTimer += Time.deltaTime;
         }
 
