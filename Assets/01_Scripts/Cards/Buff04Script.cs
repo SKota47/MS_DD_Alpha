@@ -14,7 +14,7 @@ public class Buff04Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "ATK\n+4\n-10HP";
+        _description = "‹ßÚ\nUŒ‚—Í\n+4\n-10HP";
     }
 
     // Update is called once per frame

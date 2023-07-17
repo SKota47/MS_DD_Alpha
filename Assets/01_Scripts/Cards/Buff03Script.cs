@@ -14,7 +14,7 @@ public class Buff03Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "SPD\n+2\n-5HP";
+        _description = "‘¬“x\n+2\n-5HP";
     }
 
     // Update is called once per frame

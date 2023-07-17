@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerChargeAttackScript : MonoBehaviour
 {
-    [System.NonSerialized] public int _CHARGE_ATTACK_DAMAGE_MAX = 20;   //攻撃ダメージ
+    [System.NonSerialized] public float _CHARGE_ATTACK_DAMAGE_MAX = 20;   //攻撃ダメージ
     public GameObject _chargeAttackBox;       //攻撃範囲のコライダー
     public GameObject _player;
     private PlayerMoveScripts _playerMoveScripts;
+    public GameObject _attackBox;
+    private PlayerAttackScript _playerAttackScript;
 
     bool _isAttack = false;
 
@@ -17,9 +19,10 @@ public class PlayerChargeAttackScript : MonoBehaviour
         _chargeAttackBox.SetActive(false);
         _player = transform.parent.gameObject;
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
+        _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
         if (!(SceneManager.GetActiveScene().buildIndex == 0) && !(SceneManager.GetActiveScene().buildIndex == 1))
         {
-            _CHARGE_ATTACK_DAMAGE_MAX = PlayerPrefs.GetInt("ChargeAttackDamage", _CHARGE_ATTACK_DAMAGE_MAX);
+            _CHARGE_ATTACK_DAMAGE_MAX = PlayerPrefs.GetFloat("AttackDamage", _playerAttackScript._ATTACK_DAMAGE_MAX) * 1.5f;
         }
     }
 

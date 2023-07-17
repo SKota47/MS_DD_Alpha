@@ -14,7 +14,7 @@ public class Buff09Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "ATK\n+8\n-20HP";
+        _description = "ãﬂê⁄\nçUåÇóÕ\n+8\n-20HP";
     }
 
     // Update is called once per frame
@@ -25,7 +25,8 @@ public class Buff09Script : NumBuffInherit
             Execute();
         }
         //Selection();
-        _descHpReduce = (int)10;
+        _descHpReduce = (int)20;
+        _preAttackDamage = 8;
         DisplayDescription();
     }
 }

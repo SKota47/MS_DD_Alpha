@@ -52,7 +52,7 @@ public class SceneChanger : MonoBehaviour
             PlayerPrefs.SetInt("HP", (int)_playerMoveScripts._currentHP);
             PlayerPrefs.SetFloat("Speed", _playerMoveScripts._maxSpeed);
             PlayerPrefs.SetInt("AttackDamage", _attackScript._ATTACK_DAMAGE_MAX);
-            PlayerPrefs.SetInt("ChargeAttackDamage", _chargeAttackScript._CHARGE_ATTACK_DAMAGE_MAX);
+            PlayerPrefs.SetFloat("ChargeAttackDamage", _chargeAttackScript._CHARGE_ATTACK_DAMAGE_MAX);
             PlayerPrefs.SetFloat("BulletDamage", _playerMoveScripts._bulletDamage);
             PlayerPrefs.SetInt("MaxHP", _playerMoveScripts._maxHP);
             PlayerPrefs.Save();

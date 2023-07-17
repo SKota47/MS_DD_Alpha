@@ -14,7 +14,7 @@ public class Buff08Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "RangeATK\n+4\n-15HP";
+        _description = "‰“‹——£\nUŒ‚—Í\n+4\n-15HP";
     }
 
     // Update is called once per frame

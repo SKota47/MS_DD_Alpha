@@ -65,7 +65,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public int _attackButtonTime;
 
-    private int _attackButtonTimeMax = 60;
+    private int _attackButtonTimeMax = 45;
 
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeParticle;

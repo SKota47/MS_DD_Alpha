@@ -27,7 +27,7 @@ public class KnockBack : MonoBehaviour
             Rigidbody _rbOther = other.GetComponent<Rigidbody>();
             EnemyBossAI _otherAi = other.GetComponent<EnemyBossAI>();
 
-            if (_otherAi._isKinematicOnFrame == _isKinematicOffFrame) { return; }
+            //if (_otherAi._isKinematicOnFrame == _isKinematicOffFrame) { return; }
             if (!_otherAi._isKnockback)
             {
                 _isKinematicOffFrame = Time.frameCount;

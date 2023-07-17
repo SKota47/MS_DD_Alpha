@@ -634,6 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chargeAttackBox: {fileID: 5874440323599720071}
   _player: {fileID: 3826468252360168673}
+  _attackBox: {fileID: 4427219859068023137}
 --- !u!1 &6239846366013986331
 GameObject:
   m_ObjectHideFlags: 0
