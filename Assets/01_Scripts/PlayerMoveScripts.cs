@@ -245,7 +245,6 @@ public class PlayerMoveScripts : MonoBehaviour
             _isParrySuccessful = false;
         }
 
-
         HPCulc();
 
         //今のHPをstaticのHPへ代入
@@ -310,4 +309,21 @@ public class PlayerMoveScripts : MonoBehaviour
         _damageBySystem = 0;
         _regainBySystem = 0;
     }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("AttackBoxTag"))
+        {
+            if (_isParrySuccessful)
+            {
+                GameObject _enemyObj = collision.gameObject.transform.parent.gameObject;
+                EnemyHPScript _enemyHpScript = _enemyObj.GetComponent<EnemyHPScript>();
+                BossAttackScript _enemyAttackScript = collision.gameObject.GetComponent<BossAttackScript>();
+
+                _enemyHpScript._damage = _enemyAttackScript._ATTACK_DAMAGE_MAX;
+                _isParrySuccessful = false;
+            }
+        }
+    }
+
 }

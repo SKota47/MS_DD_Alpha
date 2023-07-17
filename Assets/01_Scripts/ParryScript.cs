@@ -22,7 +22,6 @@ public class ParryScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_moveScript._chanceTimer);
         if (gameObject.activeSelf)
         {
             _moveScript._chanceTimer += Time.deltaTime;
