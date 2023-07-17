@@ -10,6 +10,9 @@ public class ParryScript : MonoBehaviour
     private PlayerMoveScripts _moveScript;
     private PlayerAttackScript _attackScript;
 
+    public Material _shieldMaterial;
+    public Material _parryShieldMaterial;
+
     private float _chanceTime = 1;
 
     // Start is called before the first frame update
@@ -17,6 +20,7 @@ public class ParryScript : MonoBehaviour
     {
         _moveScript = _player.GetComponent<PlayerMoveScripts>();
         _attackScript = _attackObj.GetComponent<PlayerAttackScript>();
+        gameObject.GetComponent<Renderer>().material = _shieldMaterial;
     }
 
     // Update is called once per frame
@@ -39,5 +43,14 @@ public class ParryScript : MonoBehaviour
             _moveScript._isParrySuccessful = false;
             _moveScript._chanceTimer = 0;
         }
+
+        //if (_moveScript._isParrySuccessful)
+        //{
+        //    gameObject.GetComponent<Renderer>().material = _parryShieldMaterial;
+        //}
+        //else
+        //{
+        //    gameObject.GetComponent<Renderer>().material = _shieldMaterial;
+        //}
     }
 }

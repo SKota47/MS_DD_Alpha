@@ -861,6 +861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 3826468252360168673}
   _attackObj: {fileID: 4427219859068023137}
+  _shieldMaterial: {fileID: 2100000, guid: 8436786c0c0ae8148b2c578cb64d9d6e, type: 2}
+  _parryShieldMaterial: {fileID: 2100000, guid: 0ee0ea917284f7340bed718092a0721a, type: 2}
 --- !u!1001 &52473974768412198
 PrefabInstance:
   m_ObjectHideFlags: 0
