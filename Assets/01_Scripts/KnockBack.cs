@@ -35,12 +35,12 @@ public class KnockBack : MonoBehaviour
                 _otherAi.agent.enabled = false;
                 //_rbOther.isKinematic = false;
 
-                _rbOther.velocity = Vector3.zero;
+                //_rbOther.velocity = Vector3.zero;
 
                 // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-                Vector3 distination = (transform.position - other.transform.position).normalized;
+               // Vector3 distination = (transform.position - other.transform.position).normalized;
 
-                _rbOther.AddForce(new Vector3(distination.x * knockBackPower, 0, 0), ForceMode.Impulse);
+                //_rbOther.AddForce(new Vector3(distination.x * knockBackPower, 0, 0), ForceMode.Impulse);
             }
         }
 

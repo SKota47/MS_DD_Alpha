@@ -17,10 +17,13 @@ public class BossAttackScript : MonoBehaviour
 
     bool _isAttack = false;
 
+    public int _enemyData;
+
     private void Start()
     {
         _attackObj.SetActive(false);
         _enemyBossAI = _boss.GetComponent<EnemyBossAI>();
+        _enemyData = transform.parent.GetInstanceID();
     }
 
     //“G‚É“–‚½‚Á‚½‚ç‚»‚Ì“G‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é

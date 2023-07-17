@@ -101,24 +101,24 @@ public class EnemyBossAI : MonoBehaviour
             _attackBox.gameObject.SetActive(false);
             isAttack = false;
         }
-        Debug.Log(_knockBackTime);
+        //Debug.Log(_knockBackTime);
 
         if (_isKnockback)
         {
             _knockBackTime += Time.deltaTime;
-            patrolSpeed = 0;
-            chaseSpeed = 0;
-            shootRotSpeed = 0;
-            chaseWaitTime = 0;
-            patrolWaitTime = 0;
+            //patrolSpeed = 0;
+            //chaseSpeed = 0;
+            //shootRotSpeed = 0;
+            //chaseWaitTime = 0;
+            //patrolWaitTime = 0;
         }
         if (_knockBackTime >= 1)
         {
-            patrolSpeed = _patrolSpeedSave;
-            chaseSpeed = _chaseSpeedSave;
-            shootRotSpeed = _shootSpeedSave;
-            chaseWaitTime = _chaseWaitSave;
-            patrolWaitTime = _patrolWaitSave;
+            //patrolSpeed = _patrolSpeedSave;
+            //chaseSpeed = _chaseSpeedSave;
+            //shootRotSpeed = _shootSpeedSave;
+            //chaseWaitTime = _chaseWaitSave;
+            //patrolWaitTime = _patrolWaitSave;
             agent.enabled = true;
             //_rb.isKinematic = true;
             _isKinematicOnFrame = Time.frameCount;

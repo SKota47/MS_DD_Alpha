@@ -11,6 +11,7 @@ TagManager:
   - PreHpBar
   - MiniBoss
   - LastBoss
+  - AttackBoxTag
   layers:
   - Default
   - TransparentFX

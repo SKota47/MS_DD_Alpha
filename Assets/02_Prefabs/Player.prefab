@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
-  _speed: 20
-  _maxSpeed: 20
+  _speed: 10
+  _maxSpeed: 10
   _isJump: 0
   _maxHP: 100
   _currentHP: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   _attackButtonTime: 0
   _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 60f7e20949d1e1147910d34e93870411, type: 3}
   _footCollider: {fileID: 0}
+  _isParrySuccessful: 0
 --- !u!135 &2778917199306878775
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -757,6 +758,7 @@ GameObject:
   - component: {fileID: 1197922832874129752}
   - component: {fileID: 6348405278449439444}
   - component: {fileID: 5134714399691225651}
+  - component: {fileID: 1038112665464439618}
   m_Layer: 0
   m_Name: Seald
   m_TagString: Untagged
@@ -842,6 +844,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1038112665464439618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339989647642556260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5acc7243fb8c8445aedeb14969734d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 3826468252360168673}
+  _attackObj: {fileID: 4427219859068023137}
 --- !u!1001 &52473974768412198
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 4167322376749731683}
   m_Layer: 0
   m_Name: AttackBox
-  m_TagString: Untagged
+  m_TagString: AttackBoxTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,6 +603,7 @@ MonoBehaviour:
   patrolSpeed: 5
   patrolWaitTime: 1.5
   patrolWayPoints: {fileID: 0}
+  agent: {fileID: 0}
   chaseSpeed: 100
   chaseWaitTime: 0.5
   sqrPlayerDistance: 5

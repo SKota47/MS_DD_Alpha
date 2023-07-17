@@ -9,8 +9,8 @@ public class PlayerMoveScripts : MonoBehaviour
 {
     public Rigidbody _rb;
     /* [System.NonSerialized] */
-    public float _speed = 20.0f;   //横移動の速度
-    public float _maxSpeed = 20.0f;
+    public float _speed = 10.0f;   //横移動の速度
+    public float _maxSpeed = 10.0f;
     private Vector2 _jumpPow = new Vector2(0.0f, 450.0f);   //ジャンプのパワー
     public bool _isJump = false;   //ジャンプしているか
 
@@ -76,6 +76,10 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public SphereCollider _footCollider;
 
+    public bool _isParrySuccessful = false;
+    [System.NonSerialized] public float _chanceTimer = 0;
+
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -89,6 +93,7 @@ public class PlayerMoveScripts : MonoBehaviour
         //}
         //else
         //{
+        _maxSpeed = 10.0f;
         _maxHP = PlayerPrefs.GetInt("MaxHP", _maxHP);
         _currentHP = PlayerPrefs.GetInt("HP", (int)_maxHP);
         _maxSpeed = PlayerPrefs.GetFloat("Speed", _maxSpeed);
@@ -114,7 +119,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 if (!_sealdObj.activeSelf)
                 {
 
-                    Debug.Log(_isJump);
+                    // Debug.Log(_isJump);
                     //ジャンプ
                     if (Input.GetKeyDown(KeyCode.Space) && !_isJump /*&&_playerCharaCon.isGrounded*/)
                     {
@@ -142,8 +147,8 @@ public class PlayerMoveScripts : MonoBehaviour
                     //チャージ
                     if (_attackButtonTime >= _attackButtonTimeMax)
                     {
-                        _speed = 0.0f;
-                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
+                        //_speed = 0.0f;
+                        //_rb.velocity = new Vector3(0, 0, _rb.velocity.z);
                         if (_chargeParticle == null)
                         {
                             _chargeParticle = Instantiate(_chargeParticlePrefab);
@@ -234,6 +239,13 @@ public class PlayerMoveScripts : MonoBehaviour
             }
         }
 
+        if (!_sealdObj.activeSelf)
+        {
+            _chanceTimer = 0;
+            _isParrySuccessful = false;
+        }
+
+
         HPCulc();
 
         //今のHPをstaticのHPへ代入
@@ -258,7 +270,14 @@ public class PlayerMoveScripts : MonoBehaviour
         //各種ダメージの計算
         _currentHP -= _damage;
         _currentHP -= _damageFromReload;
-        if (_sealdObj.activeSelf) { _damageByTouch /= 2; }
+        if (_sealdObj.activeSelf)
+        {
+            _damageByTouch /= 2;
+        }
+        if (_isParrySuccessful)
+        {
+            _damageByTouch = 0;
+        }
         _currentHP -= _damageByTouch;
         _currentHP -= _damageBySystem;
         //回復の計算
