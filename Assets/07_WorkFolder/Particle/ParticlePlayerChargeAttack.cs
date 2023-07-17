@@ -5,8 +5,10 @@ using UnityEngine;
 public class ParticlePlayerChargeAttack : MonoBehaviour
 {
     public GameObject _bloodParticle;
+    public GameObject _bloodCollisionParticle;
     public GameObject _chargeAttackParticle;
     GameObject _bloodParticleIns;
+    GameObject _bloodCollisionParticleIns;
     GameObject _bloodParticleIns2;
     GameObject _chargeAttackParticleIns;
 
@@ -23,6 +25,10 @@ public class ParticlePlayerChargeAttack : MonoBehaviour
         {
             _bloodParticleIns.transform.position = this.transform.position;
         }
+        if (_bloodCollisionParticleIns != null)
+        {
+            _bloodCollisionParticleIns.transform.position = this.transform.position;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -31,9 +37,11 @@ public class ParticlePlayerChargeAttack : MonoBehaviour
         {
             _bloodParticleIns = Instantiate(_bloodParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
             _bloodParticleIns2 = Instantiate(_bloodParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
+            _bloodCollisionParticleIns = Instantiate(_bloodCollisionParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
             _chargeAttackParticleIns = Instantiate(_chargeAttackParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
             Destroy(_bloodParticleIns, 1f);
             Destroy(_bloodParticleIns2, 1f);
+            Destroy(_bloodCollisionParticleIns, 1f);
             Destroy(_chargeAttackParticleIns, 0.5f);
         }
     }

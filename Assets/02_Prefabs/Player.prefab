@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
+  _bloodCollisionParticle: {fileID: 9070753571850193632, guid: c92f99420f3a2694c8a9fb8d7af7f267, type: 3}
   _attackParticle: {fileID: 5883794629473302271, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
   _damageParticle: {fileID: 0}
 --- !u!114 &861882462663201363
@@ -619,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
+  _bloodCollisionParticle: {fileID: 9070753571850193632, guid: c92f99420f3a2694c8a9fb8d7af7f267, type: 3}
   _chargeAttackParticle: {fileID: 5514512823159395620, guid: 26eae011642eb094d9f2af1bb057a3f2, type: 3}
 --- !u!114 &1232900744925829779
 MonoBehaviour:

@@ -5,7 +5,9 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - _bloodParticle: {fileID: 9070753571850193638, guid: 313cc6db1e73124499052297894dd509, type: 3}
+  - _bloodCollisionParticle: {fileID: 9070753571850193632, guid: c92f99420f3a2694c8a9fb8d7af7f267, type: 3}
   - _attackParticle: {fileID: 5883794629473302271, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
+  - _damageParticle: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

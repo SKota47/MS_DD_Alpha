@@ -378,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
+  _bloodCollisionParticle: {fileID: 9070753571850193632, guid: c92f99420f3a2694c8a9fb8d7af7f267, type: 3}
   _attackParticle: {fileID: 5883794629473302271, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
   _damageParticle: {fileID: 8717665392237738629, guid: e4a051ce1061d0a4c80d7d5d54423dc5, type: 3}
 --- !u!114 &4167322376749731680
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackObj: {fileID: 4167322376749731682}
   _boss: {fileID: 7632753017463458530}
+  _enemyData: 0
 --- !u!65 &4167322376749731683
 BoxCollider:
   m_ObjectHideFlags: 0
