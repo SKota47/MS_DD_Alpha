@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     private float chaseTimer = 0f;
     public float sqrPlayerDistance = 4f;
     private bool chase = false;
-    
+
     public float shootRotSpeed = 4f;
     public float shootFreezeTime = 2f;
     private float shootTimer = 0f;
@@ -46,10 +46,10 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //if(EnemyHP._currentHP < EnemyHpSave)
-       //{
-       //    chase = true;
-       //}
+        //if(EnemyHP._currentHP < EnemyHpSave)
+        //{
+        //    chase = true;
+        //}
         if (enemySight.playerInSight)
         {
             Shooting();
@@ -74,14 +74,15 @@ public class EnemyAI : MonoBehaviour
         Vector3 targetDir = lookPos - transform.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDir), Mathf.Min(1f, Time.deltaTime * shootRotSpeed));
         agent.isStopped = true;
-        if(Vector3.Angle(transform.forward,targetDir) < 2)
+        if (Vector3.Angle(transform.forward, targetDir) < 2)
         {
-            if(shootTimer > shootFreezeTime)
+            if (shootTimer > shootFreezeTime)
             {
                 Instantiate(bullet, transform.position, Quaternion.LookRotation(player.position - transform.position));
                 shootTimer = 0f;
-
+                _animator.SetBool("isAttack", true);
             }
+            else _animator.SetBool("isAttack", false);
             shootTimer += Time.deltaTime;
         }
     }
@@ -90,7 +91,7 @@ public class EnemyAI : MonoBehaviour
         _animator.SetBool("isWalk", true);
         agent.isStopped = false;
         Vector3 sightDeltPos = enemySight.playerLastSight - transform.position;
-        if(sightDeltPos.sqrMagnitude > sqrPlayerDistance)
+        if (sightDeltPos.sqrMagnitude > sqrPlayerDistance)
             agent.destination = enemySight.playerLastSight;
         agent.speed = chaseSpeed;
         if (agent.remainingDistance < agent.stoppingDistance)
