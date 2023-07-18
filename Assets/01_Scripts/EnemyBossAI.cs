@@ -68,8 +68,8 @@ public class EnemyBossAI : MonoBehaviour
         _chaseWaitSave = chaseWaitTime;
         _rb = GetComponent<Rigidbody>();
 
-        _model = transform.Find("MeleeEnemyModel").gameObject;
-        _animator = _model.GetComponent<Animator>();
+        //_model = transform.Find("MeleeEnemyModel").gameObject;
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -132,13 +132,11 @@ public class EnemyBossAI : MonoBehaviour
             _isKnockback = false;
         }
 
-
-
         //EnemyHpSave = EnemyHP._currentHP;
     }
     void Attacking()
     {
-        _animator.SetFloat("speed", 0.0f);
+        _animator.SetBool("isWalk", false);
         Vector3 lookPos = player.position;
         lookPos.y = transform.position.y;
 
@@ -170,7 +168,7 @@ public class EnemyBossAI : MonoBehaviour
     }
     void Chasing()
     {
-        _animator.SetFloat("speed", 1.0f);
+        _animator.SetBool("isWalk", true);
         agent.isStopped = false;
         Vector3 sightDeltPos = enemySight.playerLastSight - transform.position;
         if (sightDeltPos.sqrMagnitude > sqrPlayerDistance)
@@ -190,7 +188,7 @@ public class EnemyBossAI : MonoBehaviour
     }
     void Patrolling()
     {
-        _animator.SetFloat("speed", 1.0f);
+        _animator.SetBool("isWalk", true);
         agent.isStopped = false;
         agent.speed = patrolSpeed;
         if (agent.remainingDistance < agent.stoppingDistance)
