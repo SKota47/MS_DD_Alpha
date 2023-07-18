@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject _gameOverObj;
 
     public GameObject _playerObj;
+
+    public GameObject _buffCardCanvas;
+    public GameObject _ruleCanvas;
+
     private PlayerMoveScripts _playerMoveScript;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +23,8 @@ public class GameManager : MonoBehaviour
         if ((SceneManager.GetActiveScene().buildIndex != 0))
         {
             Time.timeScale = 0;
-        }            
+        }
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -31,17 +36,44 @@ public class GameManager : MonoBehaviour
         {
             _menu.SetActive(true);
             Time.timeScale = 0;
+            Cursor.visible = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf)
         {
             _menu.SetActive(false);
             Time.timeScale = 1;
+            Cursor.visible = false;
         }
 
         if (_playerMoveScript._isDead)
         {
             _gameOverObj.SetActive(true);
+            Cursor.visible = true;
         }
+
+        if (_buffCardCanvas != null)
+        {
+            if (_buffCardCanvas.activeSelf)
+            {
+                Cursor.visible = true;
+            }
+            if (!_buffCardCanvas.activeSelf)
+            {
+                Cursor.visible = false;
+            }
+        }
+        if(_ruleCanvas!=null)
+        {
+            if (_ruleCanvas.activeSelf)
+            {
+                Cursor.visible = true;
+            }
+            if (!_ruleCanvas.activeSelf)
+            {
+                Cursor.visible = false;
+            }
+        }
+
         //if (Input.GetKeyDown(KeyCode.Tab))
         //{
         //    SceneManager.LoadScene("Stage02");

@@ -11487,6 +11487,7 @@ MonoBehaviour:
   _menu: {fileID: 1129284672}
   _gameOverObj: {fileID: 487486142}
   _playerObj: {fileID: 1503925598}
+  _buffCardCanvas: {fileID: 1676513934}
 --- !u!4 &1870109951
 Transform:
   m_ObjectHideFlags: 0

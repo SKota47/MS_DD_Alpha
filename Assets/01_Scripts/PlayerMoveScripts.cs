@@ -220,7 +220,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _attackTime += Time.deltaTime;
                     }
                     //リロード時にダメージ
-                    if (Input.GetKeyDown(KeyCode.R))
+                    if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex != 0)
                     {
                         _damageFromReload = (5 - _bsShot._bulletCount) * 2;
                         _bsShot._bulletCount = 5;
@@ -327,9 +327,9 @@ public class PlayerMoveScripts : MonoBehaviour
                 GameObject _enemyObj = collision.gameObject.transform.parent.gameObject;
                 EnemyHPScript _enemyHpScript = _enemyObj.GetComponent<EnemyHPScript>();
                 BossAttackScript _enemyAttackScript = collision.gameObject.GetComponent<BossAttackScript>();
-
+                _damageByTouch = 0;
                 _enemyHpScript._damage = _enemyAttackScript._ATTACK_DAMAGE_MAX;
-                _isParrySuccessful = false;
+                //_isParrySuccessful = false;
 
                 _parryEffectIns = Instantiate(_parryEffect, transform.position, Quaternion.identity);
                 Destroy(_parryEffectIns, 1f);

@@ -32,8 +32,12 @@ public class BossAttackScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMoveScripts _ps = collision.GetComponent<PlayerMoveScripts>();
-
-            _ps._damageByTouch += _ATTACK_DAMAGE_MAX;
+            if (_ps._isParrySuccessful)
+            {
+                _ps._damageByTouch = 0;
+            }
+            else
+            { _ps._damageByTouch += _ATTACK_DAMAGE_MAX; }
             _isAttack = true;
         }
     }

@@ -43,14 +43,5 @@ public class ParryScript : MonoBehaviour
             _moveScript._isParrySuccessful = false;
             _moveScript._chanceTimer = 0;
         }
-
-        //if (_moveScript._isParrySuccessful)
-        //{
-        //    gameObject.GetComponent<Renderer>().material = _parryShieldMaterial;
-        //}
-        //else
-        //{
-        //    gameObject.GetComponent<Renderer>().material = _shieldMaterial;
-        //}
     }
 }

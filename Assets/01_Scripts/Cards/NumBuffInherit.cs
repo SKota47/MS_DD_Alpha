@@ -69,6 +69,7 @@ public class NumBuffInherit : MonoBehaviour
     // Update is called once per frame
     public void Selection()
     {
+        Cursor.visible = true;
         //if (Input.GetKeyDown((KeyCode)_inputKeyCord) && !isSelected) Selected();
         //else if (Input.GetKeyDown((KeyCode)_inputKeyCord) && isSelected) UnSelected();
         //if (Input.GetKeyDown(KeyCode.Return)) Execute();
@@ -171,6 +172,7 @@ public class NumBuffInherit : MonoBehaviour
         if (_bgPanelObj.activeSelf) _bgPanelObj.SetActive(false);
         Destroy(_cardParent);
         Destroy(_startButton);
+        Cursor.visible = false;
     }
 
     protected void DisplayDescription()
