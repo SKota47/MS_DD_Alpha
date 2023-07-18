@@ -1899,7 +1899,7 @@ RectTransform:
   - {fileID: 563931742}
   - {fileID: 846301695}
   m_Father: {fileID: 1690575208}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6087,7 +6087,7 @@ RectTransform:
   - {fileID: 1159773387}
   - {fileID: 1729733430}
   m_Father: {fileID: 1690575208}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8246,7 +8246,7 @@ RectTransform:
   - {fileID: 730403579}
   - {fileID: 844148862}
   m_Father: {fileID: 1690575208}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9298,9 +9298,9 @@ RectTransform:
   - {fileID: 51545232}
   - {fileID: 58794571}
   - {fileID: 1065970695}
+  - {fileID: 1096617901}
   - {fileID: 340670492}
   - {fileID: 1469726049}
-  - {fileID: 1096617901}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12953,6 +12953,7 @@ MonoBehaviour:
   patrolSpeed: 5
   patrolWaitTime: 0.1
   patrolWayPoints: {fileID: 1382983768}
+  agent: {fileID: 0}
   chaseSpeed: 20
   chaseWaitTime: 1
   sqrPlayerDistance: 1000

@@ -238,6 +238,7 @@ MonoBehaviour:
   _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 60f7e20949d1e1147910d34e93870411, type: 3}
   _footCollider: {fileID: 0}
   _isParrySuccessful: 0
+  _parryEffect: {fileID: 4313135783995534859, guid: 31a994eb7e1bec445877351f22c8c36e, type: 3}
 --- !u!135 &2778917199306878775
 SphereCollider:
   m_ObjectHideFlags: 0

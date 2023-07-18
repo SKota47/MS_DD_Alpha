@@ -1293,10 +1293,10 @@ RectTransform:
   - {fileID: 1461061467}
   - {fileID: 2038087975}
   - {fileID: 232176658}
-  - {fileID: 928169203}
-  - {fileID: 1435431959}
   - {fileID: 1049544589}
   - {fileID: 349386233}
+  - {fileID: 928169203}
+  - {fileID: 1435431959}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1581,7 +1581,7 @@ RectTransform:
   - {fileID: 888297466}
   - {fileID: 619745423}
   m_Father: {fileID: 248041315}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5956,7 +5956,7 @@ RectTransform:
   - {fileID: 2081254824}
   - {fileID: 648356544}
   m_Father: {fileID: 248041315}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6924,7 +6924,7 @@ RectTransform:
   - {fileID: 1223825044}
   - {fileID: 238259040}
   m_Father: {fileID: 248041315}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8686,7 +8686,7 @@ RectTransform:
   - {fileID: 20485952}
   - {fileID: 1233145257}
   m_Father: {fileID: 248041315}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11437,6 +11437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyNum: 0
   _bossNum: 0
+  _lastBossNum: 0
   _enemyNumMax: 0
   _player: {fileID: 1503925598}
   _gate: {fileID: 744441702}

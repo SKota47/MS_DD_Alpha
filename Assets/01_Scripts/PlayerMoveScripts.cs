@@ -79,6 +79,9 @@ public class PlayerMoveScripts : MonoBehaviour
     public bool _isParrySuccessful = false;
     [System.NonSerialized] public float _chanceTimer = 0;
 
+    public GameObject _parryEffect;
+    private GameObject _parryEffectIns;
+
 
     void Start()
     {
@@ -245,6 +248,11 @@ public class PlayerMoveScripts : MonoBehaviour
             _isParrySuccessful = false;
         }
 
+        if (_parryEffectIns != null)
+        {
+
+        }
+
         HPCulc();
 
         //今のHPをstaticのHPへ代入
@@ -322,6 +330,9 @@ public class PlayerMoveScripts : MonoBehaviour
 
                 _enemyHpScript._damage = _enemyAttackScript._ATTACK_DAMAGE_MAX;
                 _isParrySuccessful = false;
+
+                _parryEffectIns = Instantiate(_parryEffect, transform.position, Quaternion.identity);
+                Destroy(_parryEffectIns, 1f);
             }
         }
     }

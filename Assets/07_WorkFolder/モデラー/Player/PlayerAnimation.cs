@@ -17,8 +17,6 @@ public class PlayerAnimation : MonoBehaviour
     private bool jKeyPressed;
     private float jKeyTimer;
 
-
-
     // Start is called before the first frame update
 
     void Start()
@@ -60,18 +58,18 @@ public class PlayerAnimation : MonoBehaviour
         }
 
 
-/*        if (Input.GetKeyDown(KeyCode.J))//攻撃パターン1
-        {
+        /*        if (Input.GetKeyDown(KeyCode.J))//攻撃パターン1
+                {
 
-            this.animator.SetBool(attack1Str, true);
+                    this.animator.SetBool(attack1Str, true);
 
-        }
-        else
-        {
+                }
+                else
+                {
 
-            this.animator.SetBool(attack1Str, false);
+                    this.animator.SetBool(attack1Str, false);
 
-        }*/
+                }*/
 
         if (Input.GetKeyDown(KeyCode.J))//攻撃パターン2
         {
@@ -87,18 +85,18 @@ public class PlayerAnimation : MonoBehaviour
         }
 
 
-/*        if (Input.GetKey(KeyCode.J))//長押しでため攻撃
-        {
+        /*        if (Input.GetKey(KeyCode.J))//長押しでため攻撃
+                {
 
-            this.animator.SetBool(strongattackStr, true);
+                    this.animator.SetBool(strongattackStr, true);
 
-        }
-        else
-        {
+                }
+                else
+                {
 
-            this.animator.SetBool(strongattackStr, false);
+                    this.animator.SetBool(strongattackStr, false);
 
-        }*/
+                }*/
 
 
 
