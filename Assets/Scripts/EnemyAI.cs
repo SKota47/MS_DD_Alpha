@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyHPScript EnemyHP;
     private float EnemyHpSave;
 
-
+    public Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour
         enemySight = transform.Find("EnemySight").GetComponent<EnemySight>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         EnemyHP = GetComponent<EnemyHPScript>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -66,6 +67,7 @@ public class EnemyAI : MonoBehaviour
     }
     void Shooting()
     {
+        _animator.SetBool("isWalk", false);
         Vector3 lookPos = player.position;
         lookPos.y = transform.position.y;
 
@@ -85,6 +87,7 @@ public class EnemyAI : MonoBehaviour
     }
     void Chasing()
     {
+        _animator.SetBool("isWalk", true);
         agent.isStopped = false;
         Vector3 sightDeltPos = enemySight.playerLastSight - transform.position;
         if(sightDeltPos.sqrMagnitude > sqrPlayerDistance)
@@ -104,6 +107,7 @@ public class EnemyAI : MonoBehaviour
     }
     void Patrolling()
     {
+        _animator.SetBool("isWalk", true);
         agent.isStopped = false;
         agent.speed = patrolSpeed;
         if (agent.remainingDistance < agent.stoppingDistance)

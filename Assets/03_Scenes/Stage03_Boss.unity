@@ -12963,6 +12963,8 @@ MonoBehaviour:
   EnemyHP: {fileID: 0}
   _attackBox: {fileID: 1308433255}
   _menuCanvas: {fileID: 0}
+  _animator: {fileID: 0}
+  _model: {fileID: 0}
 --- !u!1 &1019217441663278212
 GameObject:
   m_ObjectHideFlags: 0
