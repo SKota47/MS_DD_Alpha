@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = false;
             }
         }
-        if(_ruleCanvas!=null)
+        if (_ruleCanvas != null)
         {
             if (_ruleCanvas.activeSelf)
             {
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        Cursor.visible = true;
         //if (Input.GetKeyDown(KeyCode.Tab))
         //{
         //    SceneManager.LoadScene("Stage02");
