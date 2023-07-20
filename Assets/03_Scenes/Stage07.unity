@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2779,6 +2779,7 @@ Transform:
   - {fileID: 540788850}
   - {fileID: 1114854130}
   - {fileID: 1101113542}
+  - {fileID: 1530404752}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4785,6 +4786,7 @@ MonoBehaviour:
   _gameOverObj: {fileID: 1138334729}
   _playerObj: {fileID: 1045696373}
   _buffCardCanvas: {fileID: 717825851}
+  _ruleCanvas: {fileID: 0}
 --- !u!4 &756293138
 Transform:
   m_ObjectHideFlags: 0
@@ -10392,6 +10394,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522063390}
   m_CullTransparentMesh: 1
+--- !u!1001 &1530404751
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 452041523}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+      propertyPath: m_Name
+      value: meele
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+--- !u!4 &1530404752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3e00596f6ae0a2d4aa6fbf57bb59d025, type: 3}
+  m_PrefabInstance: {fileID: 1530404751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1534609511
 GameObject:
   m_ObjectHideFlags: 0
@@ -12021,8 +12085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99a717c1d204f248b7da01decdc3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _howToPlayPanel: {fileID: 906653236}
+  _howToPlayPanel01: {fileID: 0}
+  _howToPlayPanel02: {fileID: 0}
   _backButton: {fileID: 848590692}
+  _nextButton: {fileID: 0}
+  _prevButton: {fileID: 0}
+  _startButton: {fileID: 0}
 --- !u!114 &1803746737
 MonoBehaviour:
   m_ObjectHideFlags: 0
