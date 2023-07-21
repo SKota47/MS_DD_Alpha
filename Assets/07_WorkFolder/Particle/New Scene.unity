@@ -312,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChargeAttackEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 5514512823159395620, guid: 26eae011642eb094d9f2af1bb057a3f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8987013842313190978, guid: 26eae011642eb094d9f2af1bb057a3f2, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -413,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 8717665392237738629, guid: e4a051ce1061d0a4c80d7d5d54423dc5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4a051ce1061d0a4c80d7d5d54423dc5, type: 3}
 --- !u!1001 &7153497349625468543
@@ -425,6 +433,10 @@ PrefabInstance:
     - target: {fileID: 5056860102977724282, guid: 53fecb19ec5821f43967728a72b2c9ba, type: 3}
       propertyPath: m_Name
       value: BulletAttackEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5056860102977724282, guid: 53fecb19ec5821f43967728a72b2c9ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6236834162411256348, guid: 53fecb19ec5821f43967728a72b2c9ba, type: 3}
       propertyPath: m_RootOrder
@@ -472,6 +484,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fecb19ec5821f43967728a72b2c9ba, type: 3}
+--- !u!1001 &8562062540800021610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429752, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562062539402429754, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
+      propertyPath: m_Name
+      value: Trail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c51961e8ab302dc42bd88f2d971cc774, type: 3}
 --- !u!1001 &9051981289788920005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -527,6 +596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 5883794629473302271, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e182e2bf289f1945ba58d37666f855f, type: 3}
 --- !u!1001 &9070753573159855779
@@ -539,6 +612,10 @@ PrefabInstance:
     - target: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
       propertyPath: m_Name
       value: BloodEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070753571850193632, guid: 313cc6db1e73124499052297894dd509, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9070753571850193637, guid: 313cc6db1e73124499052297894dd509, type: 3}
       propertyPath: m_RootOrder

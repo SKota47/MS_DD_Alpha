@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -82,7 +83,8 @@ public class PlayerMoveScripts : MonoBehaviour
     public GameObject _parryEffect;
     private GameObject _parryEffectIns;
 
-
+    public GameObject _nailTrailObj;
+    private TrailRenderer _nailTrailRenderer;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -109,6 +111,8 @@ public class PlayerMoveScripts : MonoBehaviour
         _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
         _playerChargeAttackScript = _chargeAttackBox.GetComponent<PlayerChargeAttackScript>();
         _playerCharaCon = GetComponent<CharacterController>();
+
+        _nailTrailRenderer = _nailTrailObj.GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -168,6 +172,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     {
                         _chargeParticle.Stop();
                         Destroy(_chargeParticle);
+                        _nailTrailRenderer.emitting = true;
                         _chargeAttackBox.gameObject.SetActive(true);
                         _isAttack = !_isAttack;
                         _playAttackSound = true;
@@ -176,6 +181,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
                     {
                         _attackBox.gameObject.SetActive(true);
+                        _nailTrailRenderer.emitting = true;
                         _isAttack = !_isAttack;
                         _playAttackSound = true;
                         _attackButtonTime = 0;
@@ -196,6 +202,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _isAttack = !_isAttack;
                         _attackTime = 0;
                         _chargeAttackBox.gameObject.SetActive(false);
+                        _nailTrailRenderer.emitting = false;
                     }
                     if (_chargeAttackBox.activeSelf)
                     {
@@ -239,6 +246,12 @@ public class PlayerMoveScripts : MonoBehaviour
                 {
                     _sealdObj.SetActive(false);
                 }
+
+                if (!_attackBox.activeSelf)
+                {
+                    _nailTrailRenderer.emitting = false;
+                }
+
             }
         }
 
