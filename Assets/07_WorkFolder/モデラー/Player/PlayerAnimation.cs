@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum PlayerAnimatorStates
+{
+    isRun, isJump, isClawAttack
+}
+
 public class PlayerAnimation : MonoBehaviour
 {
 

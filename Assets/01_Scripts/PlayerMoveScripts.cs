@@ -5,6 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+//enum PlayerAnimatorState
+//{
+//    isRun, isJump, isClawAttack
+//}
 
 public class PlayerMoveScripts : MonoBehaviour
 {
@@ -73,8 +77,6 @@ public class PlayerMoveScripts : MonoBehaviour
 
     [System.NonSerialized] public bool _isDead = false;
 
-    private CharacterController _playerCharaCon;
-
     public SphereCollider _footCollider;
 
     public bool _isParrySuccessful = false;
@@ -84,6 +86,12 @@ public class PlayerMoveScripts : MonoBehaviour
     private GameObject _parryEffectIns;
 
     public GameObject _nailTrailObj;
+
+    public Animator _playerAnimator;
+
+    private const float _attackIntervalTIme = 1;
+    private float _attackIntervalTImer;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -109,7 +117,8 @@ public class PlayerMoveScripts : MonoBehaviour
         _sealdObj.SetActive(false);
         _playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
         _playerChargeAttackScript = _chargeAttackBox.GetComponent<PlayerChargeAttackScript>();
-        _playerCharaCon = GetComponent<CharacterController>();
+
+        _playerAnimator = GetComponentInChildren<Animator>();
 
         //_nailTrailRenderer = _nailTrailObj.GetComponent<TrailRenderer>();
     }

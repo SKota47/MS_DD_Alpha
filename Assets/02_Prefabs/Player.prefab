@@ -236,10 +236,11 @@ MonoBehaviour:
   _background: {fileID: 0}
   _attackButtonTime: 0
   _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 60f7e20949d1e1147910d34e93870411, type: 3}
-  _footCollider: {fileID: 0}
+  _footCollider: {fileID: 1090335309354778427}
   _isParrySuccessful: 0
   _parryEffect: {fileID: 4313135783995534859, guid: 31a994eb7e1bec445877351f22c8c36e, type: 3}
   _nailTrailObj: {fileID: 8869466555427499433}
+  _playerAnimator: {fileID: 0}
 --- !u!135 &2778917199306878775
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4790197889104676514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -957,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6341540271569640719, guid: 3520cc2ef8787754293b999848d95e17, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6341540271569640719, guid: 3520cc2ef8787754293b999848d95e17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1006,3 +1007,60 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6341540271569640712, guid: 3520cc2ef8787754293b999848d95e17, type: 3}
   m_PrefabInstance: {fileID: 2528491441710739617}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4348134852990026121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8501131145293538038}
+    m_Modifications:
+    - target: {fileID: 5950803990038522298, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_Name
+      value: NailChargeTrailAncher 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.664
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9825921
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.18577649
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000010653456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000005902256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -21.413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950803990038522301, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
