@@ -20,6 +20,9 @@ public class BulletShotScript : MonoBehaviour
     [System.NonSerialized]
     public bool _fireSound = false;
 
+    private float _chargeTime = 1;
+    private float _chargeTimer;
+
     private void Start()
     {
         _bulletCountText = _bulletCountUI.GetComponent<Text>();
@@ -27,7 +30,11 @@ public class BulletShotScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && _bulletCount > 0 && !(Input.GetKey(KeyCode.LeftShift)))
+        if ((Input.GetMouseButton(1) || Input.GetKey(KeyCode.K)) && _bulletCount > 0 && !(Input.GetKey(KeyCode.LeftShift)))
+        {
+            _chargeTimer += Time.deltaTime;
+        }
+        if (_chargeTimer < _chargeTime && (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.K)))
         {
             _fireSound = true;
             Shot();

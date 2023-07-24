@@ -9056,6 +9056,7 @@ MonoBehaviour:
   _gameOverObj: {fileID: 1446315307}
   _playerObj: {fileID: 1223131881}
   _buffCardCanvas: {fileID: 1593440302}
+  _ruleCanvas: {fileID: 0}
 --- !u!4 &1451353757
 Transform:
   m_ObjectHideFlags: 0
@@ -9418,8 +9419,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99a717c1d204f248b7da01decdc3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _howToPlayPanel: {fileID: 640317508}
+  _howToPlayPanel01: {fileID: 0}
+  _howToPlayPanel02: {fileID: 0}
   _backButton: {fileID: 1320309629}
+  _nextButton: {fileID: 0}
+  _prevButton: {fileID: 0}
+  _startButton: {fileID: 0}
 --- !u!114 &1559005986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12626,8 +12631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99a717c1d204f248b7da01decdc3614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _howToPlayPanel: {fileID: 1502334901}
+  _howToPlayPanel01: {fileID: 0}
+  _howToPlayPanel02: {fileID: 0}
   _backButton: {fileID: 621356614}
+  _nextButton: {fileID: 0}
+  _prevButton: {fileID: 0}
+  _startButton: {fileID: 0}
 --- !u!114 &1959345449
 MonoBehaviour:
   m_ObjectHideFlags: 0

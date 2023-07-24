@@ -240,6 +240,7 @@ MonoBehaviour:
   _isParrySuccessful: 0
   _parryEffect: {fileID: 4313135783995534859, guid: 31a994eb7e1bec445877351f22c8c36e, type: 3}
   _nailTrailObj: {fileID: 8869466555427499433}
+  _chargeNailTrailObj: {fileID: 7980991172792182835}
   _playerAnimator: {fileID: 0}
 --- !u!135 &2778917199306878775
 SphereCollider:
@@ -562,7 +563,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5874440323599720071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1064,3 +1065,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+--- !u!1 &7980991172792182835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5950803990038522298, guid: d2fc7dee1729d6740aa63e859794a409, type: 3}
+  m_PrefabInstance: {fileID: 4348134852990026121}
+  m_PrefabAsset: {fileID: 0}

@@ -76,7 +76,7 @@ public class PlayerAnimation : MonoBehaviour
 
                 }*/
 
-        if (Input.GetKeyDown(KeyCode.J))//攻撃パターン2
+        if (Input.GetKeyUp(KeyCode.J))//攻撃パターン2
         {
 
             this.animator.SetBool(attack2Str, true);

@@ -86,6 +86,7 @@ public class PlayerMoveScripts : MonoBehaviour
     private GameObject _parryEffectIns;
 
     public GameObject _nailTrailObj;
+    public GameObject _chargeNailTrailObj;
 
     public Animator _playerAnimator;
 
@@ -119,6 +120,9 @@ public class PlayerMoveScripts : MonoBehaviour
         _playerChargeAttackScript = _chargeAttackBox.GetComponent<PlayerChargeAttackScript>();
 
         _playerAnimator = GetComponentInChildren<Animator>();
+
+        _nailTrailObj.SetActive(false);
+        _chargeNailTrailObj.SetActive(false);
 
         //_nailTrailRenderer = _nailTrailObj.GetComponent<TrailRenderer>();
     }
@@ -181,7 +185,8 @@ public class PlayerMoveScripts : MonoBehaviour
                         _chargeParticle.Stop();
                         Destroy(_chargeParticle);
                         // _nailTrailRenderer.emitting = true;
-                        _nailTrailObj.SetActive(true);
+                        //_nailTrailObj.SetActive(true);
+                        _chargeNailTrailObj.SetActive(true);
                         _chargeAttackBox.gameObject.SetActive(true);
                         _isAttack = !_isAttack;
                         _playAttackSound = true;
@@ -195,6 +200,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _isAttack = !_isAttack;
                         _playAttackSound = true;
                         _attackButtonTime = 0;
+                        _playerAnimator.SetBool("isAttack2", true);
                     }
                     if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)))
                     {
@@ -211,9 +217,12 @@ public class PlayerMoveScripts : MonoBehaviour
                         _attackBox.gameObject.SetActive(false);
                         _isAttack = !_isAttack;
                         _attackTime = 0;
+
                         _chargeAttackBox.gameObject.SetActive(false);
                         //_nailTrailRenderer.emitting = false;
                         _nailTrailObj.SetActive(false);
+                        _chargeNailTrailObj.SetActive(false);
+                        _playerAnimator.SetBool("isAttack2", false);
                     }
                     if (_chargeAttackBox.activeSelf)
                     {
@@ -258,11 +267,11 @@ public class PlayerMoveScripts : MonoBehaviour
                     _sealdObj.SetActive(false);
                 }
 
-                if (!_attackBox.activeSelf)
-                {
-                    _nailTrailObj.SetActive(false);
-                    //_nailTrailRenderer.emitting = false;
-                }
+                //if (!_attackBox.activeSelf)
+                //{
+                //    _nailTrailObj.SetActive(false);
+                //    //_nailTrailRenderer.emitting = false;
+                //}
 
             }
         }
@@ -271,11 +280,6 @@ public class PlayerMoveScripts : MonoBehaviour
         {
             _chanceTimer = 0;
             _isParrySuccessful = false;
-        }
-
-        if (_parryEffectIns != null)
-        {
-
         }
 
         HPCulc();
