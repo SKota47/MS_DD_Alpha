@@ -70,7 +70,11 @@ public class LayingCard : MonoBehaviour
                     rt = _displayCards[_randCountRemain].GetComponent<RectTransform>();
                     rt.transform.SetParent(_ancherAlly[_randCountRemain].transform);
                     rt.transform.localPosition = new Vector3(0, 0, 0);
-                    _cards.Add(_cards[diceResult]);
+
+                    if (_cards[diceResult].name != "SkillCard10")
+                    {
+                        _cards.Add(_cards[diceResult]);
+                    }
                     _cards.RemoveAt(diceResult);
                     _randCountRemain++;
                 }
