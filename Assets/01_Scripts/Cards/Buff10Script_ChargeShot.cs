@@ -22,7 +22,10 @@ public class Buff10Script_ChargeShot : NumBuffInherit
     {
         if (_startButtonScript._isClick)
         {
-
+            if (isSelected)
+            {
+                _bulletShotScript._isChargeShot = true;
+            }
             Execute();
         }
         //Selection();

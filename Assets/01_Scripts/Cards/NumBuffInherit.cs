@@ -52,6 +52,8 @@ public class NumBuffInherit : MonoBehaviour
     public GameObject _startButton;
     protected BuffExecuteScript _startButtonScript;
 
+    protected BulletShotScript _bulletShotScript;
+
     void Start()
     {
         SetComponent();
@@ -128,6 +130,8 @@ public class NumBuffInherit : MonoBehaviour
         }
         _startButton = GameObject.Find("Start");
         _startButtonScript = _startButton.GetComponent<BuffExecuteScript>();
+
+        _bulletShotScript = _playerData.GetComponent<BulletShotScript>();
     }
 
     /// <summary>

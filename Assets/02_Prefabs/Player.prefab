@@ -269,9 +269,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firingPoint: {fileID: 2327779812956666321}
   _bullet: {fileID: 1007021245737263864, guid: 000bf4cbdded53745acde8ecb8558682, type: 3}
+  _chargeBullet: {fileID: 1007021245737263864, guid: 7e4a3b573c72d52469a5408edc374837, type: 3}
   _speed: 24
   _bulletCount: 5
   _bulletCountUI: {fileID: 0}
+  _isChargeShot: 0
+  _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 6caab75284bf4f1458238806042b58c0, type: 3}
 --- !u!1 &4427219859068023137
 GameObject:
   m_ObjectHideFlags: 0

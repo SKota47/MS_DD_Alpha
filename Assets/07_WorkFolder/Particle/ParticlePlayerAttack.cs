@@ -13,6 +13,8 @@ public class ParticlePlayerAttack : MonoBehaviour
     GameObject _attackParticleIns;
     GameObject _damageParticleIns;
 
+    PlayerMoveScripts _moveScripts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,12 +47,16 @@ public class ParticlePlayerAttack : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            _bloodParticleIns = Instantiate(_bloodParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
-            _bloodCollisionParticleIns = Instantiate(_bloodCollisionParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
-            _damageParticleIns = Instantiate(_damageParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
-            Destroy(_bloodParticleIns, 1f);
-            Destroy(_bloodCollisionParticleIns, 1f);
-            Destroy(_damageParticleIns, 0.5f);
+            _moveScripts = collision.gameObject.GetComponent<PlayerMoveScripts>();
+            if (!_moveScripts._isParrySuccessful)
+            {
+                _bloodParticleIns = Instantiate(_bloodParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
+                _bloodCollisionParticleIns = Instantiate(_bloodCollisionParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
+                _damageParticleIns = Instantiate(_damageParticle, collision.ClosestPoint(this.transform.position), Quaternion.identity);
+                Destroy(_bloodParticleIns, 1f);
+                Destroy(_bloodCollisionParticleIns, 1f);
+                Destroy(_damageParticleIns, 0.5f);
+            }
         }
     }
 }

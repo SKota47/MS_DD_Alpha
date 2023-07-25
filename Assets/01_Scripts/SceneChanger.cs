@@ -18,6 +18,7 @@ public class SceneChanger : MonoBehaviour
     private PlayerMoveScripts _playerMoveScripts;
     private PlayerAttackScript _attackScript;
     private PlayerChargeAttackScript _chargeAttackScript;
+    private BulletShotScript _bulletShotScript;
 
     public GameObject _gameClearObj;
 
@@ -30,7 +31,9 @@ public class SceneChanger : MonoBehaviour
         _playerMoveScripts = _playerObj.GetComponent<PlayerMoveScripts>();
         _attackScript = _attackObj.GetComponent<PlayerAttackScript>();
         _chargeAttackScript = _chargeAttackObj.GetComponent<PlayerChargeAttackScript>();
+        _bulletShotScript = _playerObj.GetComponent<BulletShotScript>();
         _nowSceneNum = SceneManager.GetActiveScene().buildIndex;
+
         _gameClearObj.SetActive(false);
     }
 
@@ -54,7 +57,10 @@ public class SceneChanger : MonoBehaviour
             PlayerPrefs.SetInt("AttackDamage", _attackScript._ATTACK_DAMAGE_MAX);
             PlayerPrefs.SetFloat("ChargeAttackDamage", _chargeAttackScript._CHARGE_ATTACK_DAMAGE_MAX);
             PlayerPrefs.SetFloat("BulletDamage", _playerMoveScripts._bulletDamage);
+            PlayerPrefs.SetFloat("ChargeBulletDamage", _playerMoveScripts._chargeBulletDamage);
             PlayerPrefs.SetInt("MaxHP", _playerMoveScripts._maxHP);
+            PlayerPrefsUtil.SetBool("isChargeShot", _bulletShotScript._isChargeShot);
+            //PlayerPrefs.SetInt("isChargeShot", _bulletShotScript._isChargeShotActive);
             PlayerPrefs.Save();
             Debug.Log(PlayerPrefs.GetInt("HP"));
             if (SceneManager.GetActiveScene().buildIndex == 0)
