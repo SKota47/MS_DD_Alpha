@@ -55,7 +55,7 @@ public class PlayerMoveScripts : MonoBehaviour
     private const float _ATTACK_DEFUSE_MAX = 2;     //未使用
     private float AttackDefuse = 0;                 //未使用
     [System.NonSerialized] public float _bulletDamage = 5;
-    [System.NonSerialized] public float _chargeBulletDamage = 30;
+    [System.NonSerialized] public float _chargeBulletDamage = 100;
 
     [System.NonSerialized] public bool _playAttackSound = false;
     [System.NonSerialized] public bool _playJumpSound = false;

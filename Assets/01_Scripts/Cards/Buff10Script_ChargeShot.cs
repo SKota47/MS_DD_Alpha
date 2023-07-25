@@ -14,7 +14,7 @@ public class Buff10Script_ChargeShot : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "チャージショット\n\n-10%HP";
+        _description = "チャージ\nショット\n\n-10%HP";
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class Buff10Script_ChargeShot : NumBuffInherit
             Execute();
         }
         //Selection();
-        _displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) / 10;
+        _descHpReduce = ((int)_playerScript._currentHP - _preHpReduce) / 10;
         _preAttackDamage = 8;
         DisplayDescription();
     }
