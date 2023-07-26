@@ -35,7 +35,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.D)))//ˆÚ“®
+        if ((Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.RightArrow)) || (Input.GetKey(KeyCode.LeftArrow)))//ˆÚ“®
         {
 
             this.animator.SetBool(runStr, true);
@@ -119,4 +119,3 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 }
-

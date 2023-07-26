@@ -23,6 +23,10 @@ public class BGMSpeakerScript : MonoBehaviour
 
     //シーンをまたいで再生する仕組み
     private static bool _isLoad = false;
+
+    private Scene _saveScene;
+    private Scene _currentScene;
+
     private void Awake()
     {
         //新しく生成したとき
@@ -45,22 +49,8 @@ public class BGMSpeakerScript : MonoBehaviour
 
     void Update()
     {
-        ChangeBGMByStage();
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (_isMiniBossStage && !_throughOnece)
-        {
-            _audioSource.clip = _BGM_MiniBoss;
-            _audioSource.time = 0;
-            _audioSource.Play();
-            _throughOnece = true;
-        }
-        if (!_isMiniBossStage && _throughOnece)
-        {
-            _audioSource.clip = _BGM_Field;
-            _audioSource.time = 0;
-            _audioSource.Play();
-            _throughOnece = false;
-        }
         if (_audioSource.time >= 48.16f && !_isMiniBossStage) //音楽の最後に到達したら_fieldBGMLoopTimeから再生
         {
             _audioSource.time = _fieldBGMLoopTime;
@@ -73,14 +63,36 @@ public class BGMSpeakerScript : MonoBehaviour
 
     void ChangeBGMByStage()
     {
-        if (SceneManager.GetActiveScene().buildIndex != _miniBossStageSceneNum)
+        if (SceneManager.GetActiveScene().buildIndex != _miniBossStageSceneNum /*|| SceneManager.GetActiveScene().buildIndex != _bossStageSceneNum*/)
         {
             _isMiniBossStage = false;
             _throughOnece = false;
         }
-        if (SceneManager.GetActiveScene().buildIndex == _miniBossStageSceneNum)
+        else if (SceneManager.GetActiveScene().buildIndex == _miniBossStageSceneNum /*|| SceneManager.GetActiveScene().buildIndex == _bossStageSceneNum*/)
         {
             _isMiniBossStage = true;
         }
+
+        if (_isMiniBossStage && !_throughOnece && _audioSource.clip != _BGM_MiniBoss)
+        {
+            _audioSource.Stop();
+            _audioSource.clip = _BGM_MiniBoss;
+            _audioSource.time = 0;
+            _audioSource.Play();
+            _throughOnece = true;
+        }
+        if (!_isMiniBossStage && !_throughOnece && _audioSource.clip != _BGM_Field)
+        {
+            _audioSource.Stop();
+            _audioSource.clip = _BGM_Field;
+            _audioSource.time = 0;
+            _audioSource.Play();
+            _throughOnece = true;
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ChangeBGMByStage();
     }
 }

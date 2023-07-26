@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+        else if ((SceneManager.GetActiveScene().buildIndex == 0))
+        {
+            Time.timeScale = 1;
+        }
         //Cursor.visible = false;
     }
 
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (_playerMoveScript._isDead)
         {
             _gameOverObj.SetActive(true);
+            Time.timeScale = 0;
             Cursor.visible = true;
         }
 

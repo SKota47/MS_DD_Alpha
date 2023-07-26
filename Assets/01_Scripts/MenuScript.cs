@@ -21,6 +21,8 @@ public class MenuScript : MonoBehaviour
         _canselSound = true;
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("00Title");
+
+        
     }
     public void CheckTitleNo()
     {
@@ -55,6 +57,7 @@ public class MenuScript : MonoBehaviour
     public void FromSave()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     public void GameStart()
