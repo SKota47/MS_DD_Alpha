@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip _deadSound;
     public AudioClip _cancelSound;
     public AudioClip _decisionSound;
+    public AudioClip _parrySound;
 
     AudioSource _audioSource;
     public GameObject _audioSourceobj;
@@ -77,6 +78,13 @@ public class SoundManager : MonoBehaviour
             _playerScript._playChargeSound = false;
         }
 
+        if (_playerScript._playParrySound)
+        {
+            _audioSource.volume = 1.0f;
+            _audioSource.PlayOneShot(_parrySound);
+            _playerScript._playParrySound = false;
+        }
+
         if (_menuScript._desiSound)
         {
             _audioSource.volume = 1.0f;
@@ -98,7 +106,7 @@ public class SoundManager : MonoBehaviour
         //}
         if (!_backGroundCanvas.activeSelf && !_backgroundcheck)
         {
-            _audioSource.volume = 1.0f;
+            _audioSource.volume = 0.8f;
             _audioSource.PlayOneShot(_strengthenSound);
             _backgroundcheck = true;
         }

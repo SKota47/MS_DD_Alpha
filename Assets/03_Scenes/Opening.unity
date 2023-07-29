@@ -889,6 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7eefa0adc7e2c4d89943171732cb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _video: {fileID: 1541894616426521442}
 --- !u!328 &1541894616426521440
 VideoPlayer:
   m_ObjectHideFlags: 0

@@ -8765,6 +8765,7 @@ MonoBehaviour:
   _deadSound: {fileID: 8300000, guid: 6855df194653f2144a98837e6f5d9eb8, type: 3}
   _cancelSound: {fileID: 8300000, guid: 9570cf29460761646b214d76deefbf8e, type: 3}
   _decisionSound: {fileID: 8300000, guid: 6cbf16dca7711b64eaea38f1e58bb37c, type: 3}
+  _parrySound: {fileID: 8300000, guid: 850ecd707336bee4f8cca49b241c8aa5, type: 3}
   _audioSourceobj: {fileID: 0}
   _playerObj: {fileID: 1949675177}
   _Menu: {fileID: 2058372267}

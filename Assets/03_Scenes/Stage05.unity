@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 09051b9c07faeb249817e8d3d3e92cba, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -5558,6 +5558,10 @@ PrefabInstance:
       value: EnemyShot (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2103194543375473301, guid: 21cdc02c911461d4fbd7b16129d20968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103194543375473301, guid: 21cdc02c911461d4fbd7b16129d20968, type: 3}
       propertyPath: m_TagString
       value: Enemy02
       objectReference: {fileID: 0}
@@ -8235,6 +8239,10 @@ PrefabInstance:
     - target: {fileID: 2103194543375473301, guid: 21cdc02c911461d4fbd7b16129d20968, type: 3}
       propertyPath: m_Name
       value: EnemyShot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103194543375473301, guid: 21cdc02c911461d4fbd7b16129d20968, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2103194543375473301, guid: 21cdc02c911461d4fbd7b16129d20968, type: 3}
       propertyPath: m_TagString
@@ -13285,6 +13293,7 @@ MonoBehaviour:
   _deadSound: {fileID: 8300000, guid: 6855df194653f2144a98837e6f5d9eb8, type: 3}
   _cancelSound: {fileID: 8300000, guid: 9570cf29460761646b214d76deefbf8e, type: 3}
   _decisionSound: {fileID: 8300000, guid: 6cbf16dca7711b64eaea38f1e58bb37c, type: 3}
+  _parrySound: {fileID: 8300000, guid: 850ecd707336bee4f8cca49b241c8aa5, type: 3}
   _audioSourceobj: {fileID: 0}
   _playerObj: {fileID: 492836159}
   _Menu: {fileID: 1847567013}

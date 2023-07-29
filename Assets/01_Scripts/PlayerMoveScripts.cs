@@ -62,6 +62,7 @@ public class PlayerMoveScripts : MonoBehaviour
     [System.NonSerialized] public bool _playRegainSound = false;
     [System.NonSerialized] public bool _playChargeSound = false;//a
     [System.NonSerialized] public bool _playDeadSound = false;//a
+    [System.NonSerialized] public bool _playParrySound = false;
 
     bool _deadSoundPlaymanage = false;
 
@@ -354,13 +355,13 @@ public class PlayerMoveScripts : MonoBehaviour
         {
             if (_isParrySuccessful)
             {
+                _playParrySound = true;
                 GameObject _enemyObj = collision.gameObject.transform.parent.gameObject;
                 EnemyHPScript _enemyHpScript = _enemyObj.GetComponent<EnemyHPScript>();
                 BossAttackScript _enemyAttackScript = collision.gameObject.GetComponent<BossAttackScript>();
                 _damageByTouch = 0;
                 _enemyHpScript._damage = _enemyAttackScript._ATTACK_DAMAGE_MAX;
                 //_isParrySuccessful = false;
-
                 _parryEffectIns = Instantiate(_parryEffect, transform.position, Quaternion.identity);
                 Destroy(_parryEffectIns, 1f);
             }
