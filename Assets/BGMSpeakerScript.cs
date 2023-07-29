@@ -63,15 +63,31 @@ public class BGMSpeakerScript : MonoBehaviour
 
     void ChangeBGMByStage()
     {
-        if (SceneManager.GetActiveScene().buildIndex != _miniBossStageSceneNum /*|| SceneManager.GetActiveScene().buildIndex != _bossStageSceneNum*/)
+        //if (SceneManager.GetActiveScene().buildIndex != _miniBossStageSceneNum || SceneManager.GetActiveScene().buildIndex != _bossStageSceneNum)
+        //{
+        //    _isMiniBossStage = false;
+        //    _throughOnece = false;
+        //}
+        //else if (SceneManager.GetActiveScene().buildIndex == _miniBossStageSceneNum || SceneManager.GetActiveScene().buildIndex == _bossStageSceneNum)
+        //{
+        //    _isMiniBossStage = true;
+        //}
+
+        switch (SceneManager.GetActiveScene().buildIndex)
         {
-            _isMiniBossStage = false;
-            _throughOnece = false;
+            case 3:
+                _isMiniBossStage = true;
+                break;
+            case 7:
+                _isMiniBossStage = true;
+                break;
+            default:
+                _isMiniBossStage = false;
+                _throughOnece = false;
+                break;
         }
-        else if (SceneManager.GetActiveScene().buildIndex == _miniBossStageSceneNum /*|| SceneManager.GetActiveScene().buildIndex == _bossStageSceneNum*/)
-        {
-            _isMiniBossStage = true;
-        }
+
+
 
         if (_isMiniBossStage && !_throughOnece && _audioSource.clip != _BGM_MiniBoss)
         {
