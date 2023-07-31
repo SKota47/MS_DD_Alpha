@@ -275,6 +275,7 @@ MonoBehaviour:
   _bulletCountUI: {fileID: 0}
   _isChargeShot: 0
   _chargeParticlePrefab: {fileID: 6709387749530194178, guid: 6caab75284bf4f1458238806042b58c0, type: 3}
+  _chargedParticlePrefab: {fileID: 6709387749530194178, guid: fc2bda6e41eb27c44853e657c8e6dc50, type: 3}
 --- !u!1 &4427219859068023137
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,6 +34,9 @@ public class BulletShotScript : MonoBehaviour
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeShotParticle;
 
+    public ParticleSystem _chargedParticlePrefab;
+    private ParticleSystem _chargedShotParticle;
+
     private void Start()
     {
         _bulletCountText = _bulletCountUI.GetComponent<Text>();
@@ -64,8 +67,23 @@ public class BulletShotScript : MonoBehaviour
             _isShot = true;
         }
 
+        if (_chargeTimer >= 1 && _isChargeShot)
+        {
+            if (_chargedShotParticle == null)
+            {
+                _chargedShotParticle = Instantiate(_chargedParticlePrefab);
+                _chargedShotParticle.transform.position = transform.position;
+                _chargedShotParticle.Play();
+            }
+            if (_chargedShotParticle != null)
+            {
+                _chargedShotParticle.transform.position = transform.position;
+            }
+        }
+
         if (_chargeTimer >= _chargeTime && _isChargeShot)
         {
+            Destroy(_chargedShotParticle);
             if (_chargeShotParticle == null)
             {
                 _chargeShotParticle = Instantiate(_chargeParticlePrefab);
