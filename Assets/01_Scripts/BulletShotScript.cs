@@ -67,7 +67,7 @@ public class BulletShotScript : MonoBehaviour
             _isShot = true;
         }
 
-        if (_chargeTimer >= 1 && _isChargeShot)
+        if (_chargeTimer >= 1 && _isChargeShot && _chargeTimer < _chargeTime)
         {
             if (_chargedShotParticle == null)
             {
@@ -83,12 +83,13 @@ public class BulletShotScript : MonoBehaviour
 
         if (_chargeTimer >= _chargeTime && _isChargeShot)
         {
-            Destroy(_chargedShotParticle);
             if (_chargeShotParticle == null)
             {
                 _chargeShotParticle = Instantiate(_chargeParticlePrefab);
                 _chargeShotParticle.transform.position = transform.position;
                 _chargeShotParticle.Play();
+                _chargedShotParticle.time = _chargedShotParticle.time;
+                Destroy(_chargedShotParticle);
             }
             if (_chargeShotParticle != null)
             {
