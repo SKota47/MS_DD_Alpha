@@ -23,7 +23,7 @@ public class PlayerAttackScript : MonoBehaviour
         _attackObj.SetActive(false);
         _player = transform.parent.gameObject;
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
-        if (!(SceneManager.GetActiveScene().buildIndex == 0) && !(SceneManager.GetActiveScene().buildIndex == 1))
+        if (!(SceneManager.GetActiveScene().buildIndex == 1) && !(SceneManager.GetActiveScene().buildIndex == 2))
         {
             _ATTACK_DAMAGE_MAX = PlayerPrefs.GetInt("AttackDamage", _ATTACK_DAMAGE_MAX);
         }

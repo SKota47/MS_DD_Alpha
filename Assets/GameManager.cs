@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
         Screen.SetResolution(1920, 1080, true);
         _playerMoveScript = _playerObj.GetComponent<PlayerMoveScripts>();
         _gameOverObj.SetActive(false);
-        if ((SceneManager.GetActiveScene().buildIndex != 0))
+        if ((SceneManager.GetActiveScene().buildIndex != 1))
         {
             Time.timeScale = 0;
         }
-        else if ((SceneManager.GetActiveScene().buildIndex == 0))
+        else if ((SceneManager.GetActiveScene().buildIndex == 1))
         {
             Time.timeScale = 1;
         }

@@ -249,7 +249,7 @@ public class PlayerMoveScripts : MonoBehaviour
                         _attackTime += Time.deltaTime;
                     }
                     //リロード時にダメージ
-                    if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex != 0)
+                    if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex != 1)
                     {
                         _damageFromReload = (5 - _bsShot._bulletCount) * 2;
                         _bsShot._bulletCount = 5;

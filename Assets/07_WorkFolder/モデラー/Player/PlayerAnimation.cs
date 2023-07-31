@@ -105,7 +105,7 @@ public class PlayerAnimation : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.K))//’Ü”ò‚Î‚µUŒ‚
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetMouseButtonUp(1))//’Ü”ò‚Î‚µUŒ‚
         {
 
             this.animator.SetBool(clawattackStr, true);

@@ -23,10 +23,10 @@ public class OpeningSceneSkip : MonoBehaviour
 
     public void OnClick()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void LoopPointReached(VideoPlayer vp)
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
