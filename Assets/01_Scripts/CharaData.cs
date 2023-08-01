@@ -5,47 +5,36 @@ using TMPro;
 
 public class CharaData : MonoBehaviour
 {
-    public TextMeshProUGUI atk;
-    public TextMeshProUGUI speed;
-    public TextMeshProUGUI rangeAtk;
+    public TextMeshProUGUI _atkText;
+    public TextMeshProUGUI _rangeAtkText;
+    public TextMeshProUGUI _speedText;
 
-    public GameObject _player;
-    public GameObject _attackBox;
-    private float _bulletDamage;
-    private float _ATTACK_DAMAGE_MAX;
-    private PlayerMoveScripts playerMoveScripts;
-    private PlayerAttackScript playerAttackScript;
+    private GameObject _playerObj;
+    private GameObject _attackBoxObj;
+
+    private PlayerMoveScripts _playerMoveScript;
+    private PlayerAttackScript _playerAttackScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
-        _bulletDamage = playerMoveScripts._bulletDamage;
-        playerAttackScript = _attackBox.GetComponent<PlayerAttackScript>();
-        _ATTACK_DAMAGE_MAX = playerAttackScript._ATTACK_DAMAGE_MAX;
-        UpdateUI1();
-        UpdateUI2();
+        _playerObj = GameObject.Find("Player");
+        _playerMoveScript = _playerObj.GetComponent<PlayerMoveScripts>();
+        _playerAttackScript = _playerObj.transform.Find("AttackBox").GetComponent<PlayerAttackScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UpdateUI1();
     }
     void UpdateUI1()
     {
-        if (playerMoveScripts != null)
-        {
-            //atk.text = "ATK:" + playerAttackScript._ATTACK_DAMAGE_MAX;
-            speed.text = "ë¨ìx:" + playerMoveScripts._maxSpeed;
-            rangeAtk.text = "âìãóó£çUåÇóÕ:" + playerMoveScripts._bulletDamage;
-        }
+        _atkText.text = _playerAttackScript._ATTACK_DAMAGE_MAX.ToString();
+        _speedText.text = _playerMoveScript._maxSpeed.ToString();
+        _rangeAtkText.text = _playerMoveScript._bulletDamage.ToString();
     }
     void UpdateUI2()
     {
-        if (playerAttackScript != null)
-        {
-            atk.text = "ãﬂê⁄çUåÇóÕ:" + playerAttackScript._ATTACK_DAMAGE_MAX;
-        }
     }
 }
