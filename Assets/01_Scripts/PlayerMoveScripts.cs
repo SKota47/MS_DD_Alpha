@@ -72,7 +72,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public int _attackButtonTime;
 
-    private int _attackButtonTimeMax = 45;
+    private int _attackButtonTimeMax = 250;
 
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeParticle;
@@ -158,7 +158,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     //プレイヤーにダメージ
                     //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
 
-                    // Debug.Log(_attackButtonTime);
+                    UnityEngine.Debug.Log(_attackButtonTime);
 
                     //攻撃と攻撃判定オンオフ
                     if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)))

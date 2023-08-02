@@ -22,7 +22,7 @@ public class BulletShotScript : MonoBehaviour
     [System.NonSerialized]
     public bool _fireSound = false;
 
-    private float _chargeTime = 5.0f;
+    private float _chargeTime = 3.0f;
     private float _chargeTimer;
 
     //public bool _isChargeShotActive = true;
@@ -129,7 +129,7 @@ public class BulletShotScript : MonoBehaviour
         //}
         _bulletCountText.text = _bulletCount.ToString() + "/5";
 
-        Debug.Log(_chargeTimer);
+        //Debug.Log(_chargeTimer);
     }
 
     private void Shot()

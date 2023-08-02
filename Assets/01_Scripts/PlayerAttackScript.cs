@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAttackScript : MonoBehaviour
 {
-    [System.NonSerialized] public int _ATTACK_DAMAGE_MAX = 10;   //攻撃ダメージ
+    [System.NonSerialized] public int _ATTACK_DAMAGE_MAX = 5;   //攻撃ダメージ
     //[System.NonSerialized] public int _CHARGE_ATTACK_DAMAGE_MAX = 20;   //攻撃ダメージ
     public GameObject _attackObj;       //攻撃範囲のコライダー
     public GameObject _player;
