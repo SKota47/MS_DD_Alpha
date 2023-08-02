@@ -5527,6 +5527,7 @@ MonoBehaviour:
   _enemyNumMax: 0
   _player: {fileID: 1045696373}
   _gate: {fileID: 787376206}
+  _closegate: {fileID: 0}
 --- !u!114 &756293136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13493,7 +13494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6844438515649075106, guid: b7e9a0a668446d946b03b6439a6df0da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 6844438515649075106, guid: b7e9a0a668446d946b03b6439a6df0da, type: 3}
       propertyPath: m_LocalPosition.z
