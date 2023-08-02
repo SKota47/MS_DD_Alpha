@@ -22,6 +22,7 @@ public class CheckEnemyCount : MonoBehaviour
     public GameObject _player;
     private PlayerMoveScripts _playerMoveScripts;
     public GameObject _gate;
+    public GameObject _closegate;
     private bool _isRegain = true;
 
     void Start()
@@ -70,6 +71,7 @@ public class CheckEnemyCount : MonoBehaviour
                 _isRegain = false;
             }
             _gate.SetActive(true);
+            _closegate.SetActive(false);
             if (SceneManager.GetActiveScene().name == "Stage03_Boss")
             {
                 if (_playerMoveScripts._maxHP == 100) _playerMoveScripts._maxHP = _playerMoveScripts._maxHP + 50;
