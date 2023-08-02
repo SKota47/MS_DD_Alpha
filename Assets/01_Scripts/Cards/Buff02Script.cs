@@ -14,7 +14,7 @@ public class Buff02Script : NumBuffInherit
     void Start()
     {
         SetComponent();
-        _description = "‰“‹——£\nUŒ‚—Í\n+1\n-5HP";
+        _description = "‰“‹——£\nUŒ‚—Í\n+3\n-5HP";
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Buff02Script : NumBuffInherit
         }
         //Selection();
         _descHpReduce = (int)5;
-        _preBulletDamage = (int)1;
+        _preBulletDamage = (int)3;
         // _displayPreHpResuce = ((int)_playerScript._currentHP - _preHpReduce) - _descHpReduce;
         DisplayDescription();
     }
