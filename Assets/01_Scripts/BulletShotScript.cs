@@ -67,7 +67,7 @@ public class BulletShotScript : MonoBehaviour
             _isShot = true;
         }
 
-        if (_chargeTimer >= 1 && _isChargeShot && _chargeTimer < _chargeTime)
+        if (_chargeTimer >= 1 && _isChargeShot && _chargeTimer < _chargeTime && _bulletCount >= 5)
         {
             if (_chargedShotParticle == null)
             {
@@ -81,7 +81,7 @@ public class BulletShotScript : MonoBehaviour
             }
         }
 
-        if (_chargeTimer >= _chargeTime && _isChargeShot)
+        if (_chargeTimer >= _chargeTime && _isChargeShot && _bulletCount >= 5)
         {
             if (_chargeShotParticle == null)
             {
@@ -109,6 +109,11 @@ public class BulletShotScript : MonoBehaviour
             {
                 _chargeShotParticle.Stop();
                 Destroy(_chargeShotParticle);
+            }
+            if (_chargedShotParticle)
+            {
+                _chargedShotParticle.Stop();
+                Destroy(_chargedShotParticle);
             }
         }
 

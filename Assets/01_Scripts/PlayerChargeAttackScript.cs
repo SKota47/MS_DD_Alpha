@@ -23,6 +23,7 @@ public class PlayerChargeAttackScript : MonoBehaviour
         if (!(SceneManager.GetActiveScene().buildIndex == 1) /*&& !(SceneManager.GetActiveScene().buildIndex == 1)*/)
         {
             _CHARGE_ATTACK_DAMAGE_MAX = PlayerPrefs.GetFloat("AttackDamage", _playerAttackScript._ATTACK_DAMAGE_MAX) * 2;
+            _CHARGE_ATTACK_DAMAGE_MAX = _CHARGE_ATTACK_DAMAGE_MAX * 2;
         }
     }
 
