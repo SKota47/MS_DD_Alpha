@@ -70,9 +70,9 @@ public class PlayerMoveScripts : MonoBehaviour
 
     public GameObject _background;
 
-    public int _attackButtonTime;
+    public float _attackButtonTime;
 
-    private int _attackButtonTimeMax = 250;
+    private float _attackButtonTimeMax = 2.5f;
 
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeParticle;
@@ -163,7 +163,7 @@ public class PlayerMoveScripts : MonoBehaviour
                     //攻撃と攻撃判定オンオフ
                     if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)))
                     {
-                        _attackButtonTime++;
+                        _attackButtonTime += Time.deltaTime;
                     }
                     //チャージ
                     if (_attackButtonTime >= _attackButtonTimeMax)
