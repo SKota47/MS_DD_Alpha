@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Compression;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,8 @@ public class PlayerMoveScripts : MonoBehaviour
     public float _currentHP;        //現在の体力
     public static float _publicHP;  //シーン間でHPを共有するためのHPのセーブ的なもの
     private float _damage = 0;      //受けるダメージ
-    //以下何からダメージを受けるか
+
+    //以下何からダメージを受けるか(回復するか)
     [System.NonSerialized]
     public int _damageFromReload = 0;   //リロード時に受けるダメージ
     [System.NonSerialized]
@@ -33,17 +35,17 @@ public class PlayerMoveScripts : MonoBehaviour
 
     [System.NonSerialized]
     public int _regainBySystem = 0;     //システム(強化など)による回復
+    //
+
 
     public Slider _hpBar;            //HPゲージのスライダー
     public GameObject _hpValue;      //UI
     private Text _hpText;            //UI
 
     public GameObject _attackBox;       //攻撃時の当たり判定Cube
-    private Collider _attackCollision;  //当たり判定コライダー(おそらく未使用)
     [System.NonSerialized] public PlayerAttackScript _playerAttackScript;
 
     public GameObject _chargeAttackBox;       //チャージ攻撃時の当たり判定Cube
-    private Collider _chargeAttackCollision;  //当たり判定コライダー(おそらく未使用)
     [System.NonSerialized] public PlayerChargeAttackScript _playerChargeAttackScript;
 
     public GameObject _bullel;          //弾が射出される場所
@@ -52,11 +54,11 @@ public class PlayerMoveScripts : MonoBehaviour
     public float _attackTime = 0;                   //一回攻撃した後にしばらく攻撃しないためのタイマー
     private const float _ATTACK_TIME_MAX = 0.25f;   //一回攻撃した後にしばらく攻撃しないためのタイマーの最大値
     [System.NonSerialized] public bool _isAttack = false;                 //攻撃しているかどうか
-    private const float _ATTACK_DEFUSE_MAX = 2;     //未使用
-    private float AttackDefuse = 0;                 //未使用
-    [System.NonSerialized] public float _bulletDamage = 5;
-    [System.NonSerialized] public float _chargeBulletDamage = 100;
+    [System.NonSerialized] public float _bulletDamage = 5;                //弾の攻撃力
+    [System.NonSerialized] public float _chargeBulletDamage = 100;        //チャージした弾の攻撃力
 
+    //サウンド-----------------------------------------------------------------
+    //サウンドのオンオフ
     [System.NonSerialized] public bool _playAttackSound = false;
     [System.NonSerialized] public bool _playJumpSound = false;
     [System.NonSerialized] public bool _playRegainSound = false;
@@ -65,13 +67,11 @@ public class PlayerMoveScripts : MonoBehaviour
     [System.NonSerialized] public bool _playParrySound = false;
 
     bool _deadSoundPlaymanage = false;
-
     public GameObject _sealdObj;
 
     public GameObject _background;
 
     public float _attackButtonTime;
-
     private float _attackButtonTimeMax = 2.5f;
 
     public ParticleSystem _chargeParticlePrefab;
@@ -79,7 +79,7 @@ public class PlayerMoveScripts : MonoBehaviour
 
     [System.NonSerialized] public bool _isDead = false;
 
-    public SphereCollider _footCollider;
+    //public SphereCollider _footCollider;
 
     public bool _isParrySuccessful = false;
     [System.NonSerialized] public float _chanceTimer = 0;
@@ -98,23 +98,12 @@ public class PlayerMoveScripts : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        //HPがシーン間で共有される仕組み
-        //1ステージ目の場合は最大体力だがそれ以外は前のステージのHPをもってくる
-        //if内後半は今後消した方がいいかも
-        //if (SceneManager.GetActiveScene().buildIndex == 0)
-        //{
-        //    _currentHP = _maxHP;
-        //    _publicHP = _currentHP;
-        //}
-        //else
-        //{
         _maxSpeed = 10.0f;
         _maxHP = PlayerPrefs.GetInt("MaxHP", _maxHP);
         _currentHP = PlayerPrefs.GetInt("HP", (int)_maxHP);
         _maxSpeed = PlayerPrefs.GetFloat("Speed", _maxSpeed);
         _bulletDamage = PlayerPrefs.GetFloat("BulletDamage", _bulletDamage);
-        //_currentHP = _publicHP;
-        // }
+
         _hpText = _hpValue.GetComponent<Text>();
         _bsShot = _bullel.GetComponent<BulletShotScript>();
         _sealdObj.SetActive(false);
@@ -125,186 +114,160 @@ public class PlayerMoveScripts : MonoBehaviour
 
         _nailTrailObj.SetActive(false);
         _chargeNailTrailObj.SetActive(false);
-
-        //_nailTrailRenderer = _nailTrailObj.GetComponent<TrailRenderer>();
     }
 
     void Update()
     {
-        //_currentHP = _publicHP;
         //移動
-        if (!_isDead)
+        if (!_background.activeSelf && !_isDead)
         {
-            if (!_background.activeSelf)
+            if (!_sealdObj.activeSelf)
             {
-                if (!_sealdObj.activeSelf)
+
+                //ジャンプ
+                if (Input.GetKeyDown(KeyCode.Space) && !_isJump)
                 {
+                    _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
+                    _isJump = true;
+                    _playJumpSound = true;
+                }
 
-                    // Debug.Log(_isJump);
-                    //ジャンプ
-                    if (Input.GetKeyDown(KeyCode.Space) && !_isJump /*&&_playerCharaCon.isGrounded*/)
-                    {
-                        _rb.AddForce(Vector3.up * _jumpPow, ForceMode.Impulse);
-                        _isJump = true;
-                        _playJumpSound = true;
-                    }
+                //横移動
+                _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
+                //横移動時の反転
+                if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
+                if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
 
-                    //横移動
-                    _rb.velocity = new Vector3(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y, 0);
-                    //横移動時の反転
-                    if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
-                    if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
+                UnityEngine.Debug.Log(_attackButtonTime);
 
-                    //プレイヤーにダメージ
-                    //if (Input.GetKeyDown(KeyCode.P)) _damage = 1;
+                //攻撃処理-----------------------------------------------------------------------
+                //攻撃と攻撃判定オンオフ
+                if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)))
+                {
+                    _attackButtonTime += Time.deltaTime;
+                }
+                //チャージした時のエフェクトやサウンドの処理
+                if (_attackButtonTime >= _attackButtonTimeMax)
+                {
+                    //パーティクル処理
+                    if (_chargeParticle == null)
+                    {
+                        _chargeParticle = Instantiate(_chargeParticlePrefab);
+                        _chargeParticle.transform.position = transform.position;
+                        _chargeParticle.Play();
+                        _playChargeSound = true;//a
+                    }
+                    if (_chargeParticle != null)
+                    {
+                        _chargeParticle.transform.position = transform.position;
+                    }
+                }
+                //攻撃ボタンの押下時間による攻撃方法の推移
+                //一定時間以上押下...チャージ攻撃
+                if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
+                {
+                    _chargeParticle.Stop();
+                    Destroy(_chargeParticle);
+                    _chargeNailTrailObj.SetActive(true);
+                    _chargeAttackBox.gameObject.SetActive(true);
+                    _isAttack = !_isAttack;
+                    _playAttackSound = true;
+                    _attackButtonTime = 0;
+                }
+                //一定時間に満たない...通常攻撃
+                if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
+                {
+                    _attackBox.gameObject.SetActive(true);
+                    _nailTrailObj.SetActive(true);
+                    _isAttack = !_isAttack;
+                    _playAttackSound = true;
+                    _attackButtonTime = 0;
+                    _playerAnimator.SetBool("isAttack2", true);
+                }
+                //押下時間をリセット
+                if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)))
+                {
+                    _attackButtonTime = 0;
+                }
+                //攻撃間隔の調整(連撃出来ないように)
+                else if (_attackTime >= _ATTACK_TIME_MAX)
+                {
+                    _attackBox.gameObject.SetActive(false);
+                    _isAttack = !_isAttack;
+                    _attackTime = 0;
 
-                    UnityEngine.Debug.Log(_attackButtonTime);
-
-                    //攻撃と攻撃判定オンオフ
-                    if ((Input.GetMouseButton(0) || Input.GetKey(KeyCode.J)))
-                    {
-                        _attackButtonTime += Time.deltaTime;
-                    }
-                    //チャージ
-                    if (_attackButtonTime >= _attackButtonTimeMax)
-                    {
-                        //_speed = 0.0f;
-                        //_rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                        if (_chargeParticle == null)
-                        {
-                            _chargeParticle = Instantiate(_chargeParticlePrefab);
-                            _chargeParticle.transform.position = transform.position;
-                            _chargeParticle.Play();
-                            _playChargeSound = true;//a
-                        }
-                        if (_chargeParticle != null)
-                        {
-                            _chargeParticle.transform.position = transform.position;
-                        }
-                    }
-                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime >= _attackButtonTimeMax && !_isAttack)
-                    {
-                        _chargeParticle.Stop();
-                        Destroy(_chargeParticle);
-                        // _nailTrailRenderer.emitting = true;
-                        //_nailTrailObj.SetActive(true);
-                        _chargeNailTrailObj.SetActive(true);
-                        _chargeAttackBox.gameObject.SetActive(true);
-                        _isAttack = !_isAttack;
-                        _playAttackSound = true;
-                        _attackButtonTime = 0;
-                    }
-                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)) && _attackButtonTime < _attackButtonTimeMax && !_isAttack)
-                    {
-                        _attackBox.gameObject.SetActive(true);
-                        // _nailTrailRenderer.emitting = true;
-                        _nailTrailObj.SetActive(true);
-                        _isAttack = !_isAttack;
-                        _playAttackSound = true;
-                        _attackButtonTime = 0;
-                        _playerAnimator.SetBool("isAttack2", true);
-                    }
-                    if ((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.J)))
-                    {
-                        _attackButtonTime = 0;
-                    }
-                    //if (Input.GetKeyDown(KeyCode.E) && !_isAttack)
-                    //{
-                    //    _attackBox.gameObject.SetActive(true);
-                    //    _isAttack = !_isAttack;
-                    //    _playAttackSound = true;
-                    //}
-                    else if (_attackTime >= _ATTACK_TIME_MAX)
-                    {
-                        _attackBox.gameObject.SetActive(false);
-                        _isAttack = !_isAttack;
-                        _attackTime = 0;
-
-                        _chargeAttackBox.gameObject.SetActive(false);
-                        //_nailTrailRenderer.emitting = false;
-                        _nailTrailObj.SetActive(false);
-                        _chargeNailTrailObj.SetActive(false);
-                        _playerAnimator.SetBool("isAttack2", false);
-                    }
-                    if (_chargeAttackBox.activeSelf)
-                    {
-                        _speed = 0.0f;
-                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                    }
-                    else
-                    {
-                        _speed = _maxSpeed;
-                    }
-                    if (_attackBox.activeSelf)
-                    {
-                        _speed = 0.0f;
-                        _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
-                    }
-                    else
-                    {
-                        _speed = _maxSpeed;
-                    }
-                    if (_isAttack)
-                    {
-                        _attackTime += Time.deltaTime;
-                    }
-                    //リロード時にダメージ
-                    if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex != 1)
-                    {
-                        _damageFromReload = (5 - _bsShot._bulletCount) * 2;
-                        _bsShot._bulletCount = 5;
-                    }
+                    _chargeAttackBox.gameObject.SetActive(false);
+                    _nailTrailObj.SetActive(false);
+                    _chargeNailTrailObj.SetActive(false);
+                    _playerAnimator.SetBool("isAttack2", false);
+                }
+                //チャージ攻撃中のプレイヤー座標移動を停止
+                if (_chargeAttackBox.activeSelf)
+                {
+                    _speed = 0.0f;
+                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
                 }
                 else
                 {
-                    _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
+                    _speed = _maxSpeed;
                 }
-
-                if (Input.GetKey(KeyCode.LeftShift))
+                //通常攻撃中のプレイヤー座標移動を停止
+                if (_attackBox.activeSelf)
                 {
-                    _sealdObj.SetActive(true);
+                    _speed = 0.0f;
+                    _rb.velocity = new Vector3(0, 0, _rb.velocity.z);
                 }
                 else
                 {
-                    _sealdObj.SetActive(false);
+                    _speed = _maxSpeed;
                 }
+                if (_isAttack)
+                {
+                    _attackTime += Time.deltaTime;
+                }
+                //リロード時にダメージ
+                if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex != 1)
+                {
+                    _damageFromReload = (5 - _bsShot._bulletCount) * 2;
+                    _bsShot._bulletCount = 5;
+                }
+            }
 
-                //if (!_attackBox.activeSelf)
-                //{
-                //    _nailTrailObj.SetActive(false);
-                //    //_nailTrailRenderer.emitting = false;
-                //}
-
+            //シールド-------------------------------------------------------
+            //シールドを張っている場合は移動不可
+            else
+            {
+                _rb.velocity = new Vector3(0.0f, _rb.velocity.y, 0.0f);
+            }
+            //シールド展開
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                _sealdObj.SetActive(true);
+            }
+            else
+            {
+                _sealdObj.SetActive(false);
             }
         }
-
+        //パリィの時間、判定のリセット
         if (!_sealdObj.activeSelf)
         {
             _chanceTimer = 0;
             _isParrySuccessful = false;
         }
 
+        //最終HP調整
         HPCulc();
 
-        //今のHPをstaticのHPへ代入
+        //今のHPをstaticのHPへ代入(引継ぎ)
         _publicHP = _currentHP;
-        //Debug.Log(_playerAttackScript._ATTACK_DAMAGE_MAX);
     }
-
-    private void FixedUpdate()
-    {
-    }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Floor") && _isJump)
-    //    {
-    //        _isJump = false;  //ジャンプ
-    //    }
-    //}
 
     //HPの処理
     private void HPCulc()
     {
+        //計算順
+        //自傷、ダメージ計算-->シールドもしくは-->回復計算
         //各種ダメージの計算
         _currentHP -= _damage;
         _currentHP -= _damageFromReload;

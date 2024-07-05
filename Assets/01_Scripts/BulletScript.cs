@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//’eŽ©‘Ì‚Ì
 public class BulletScript : MonoBehaviour
 {
     private float _bulletDamage;
@@ -11,11 +12,6 @@ public class BulletScript : MonoBehaviour
     {
         _playerMoveScripts = _player.GetComponent<PlayerMoveScripts>();
         _bulletDamage = _playerMoveScripts._bulletDamage;
-    }
-
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter(Collider collision)
