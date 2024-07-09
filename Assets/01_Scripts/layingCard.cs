@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// カードを並べるスクリプト
+/// </summary>
 public class LayingCard : MonoBehaviour
 {
     public GameObject _ancherPoint01, _ancherPoint02, _ancherPoint03;
@@ -11,8 +14,6 @@ public class LayingCard : MonoBehaviour
 
     public List<GameObject> _cards = new List<GameObject>();
     public static List<GameObject> _cardsSaveBox = new List<GameObject>();
-
-    //public GameObject _buffCardCamvas;
 
     private const int _LAYING_MAX = 3;
     private const int _CARDS_MAX = 6;
@@ -23,15 +24,14 @@ public class LayingCard : MonoBehaviour
     private int _randomWeight;
     private bool _isStageStart = true;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         _ancherAlly[0] = _ancherPoint01;
         _ancherAlly[1] = _ancherPoint02;
         _ancherAlly[2] = _ancherPoint03;
 
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 1
+            || SceneManager.GetActiveScene().buildIndex == 2)
         {
             _cardsSaveBox = _cards;
         }
@@ -49,41 +49,29 @@ public class LayingCard : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    /// <summary>
+    /// 並べる処理
+    /// </summary>
     private void DoLaying()
     {
         int diceResult;
         RectTransform rt;
-        int nullCheckCount = 0;
         while (_randCountRemain < _LAYING_MAX)
         {
-            if (_randCountRemain < _LAYING_MAX)
+            diceResult = DiceRoll();
+            if (_cards[diceResult] != null)
             {
-                diceResult = DiceRoll();
-                if (_cards[diceResult] != null)
-                {
-                    _displayCards[_randCountRemain] = Instantiate(_cards[diceResult]);
-                    rt = _displayCards[_randCountRemain].GetComponent<RectTransform>();
-                    rt.transform.SetParent(_ancherAlly[_randCountRemain].transform);
-                    rt.transform.localPosition = new Vector3(0, 0, 0);
+                _displayCards[_randCountRemain] = Instantiate(_cards[diceResult]);
+                rt = _displayCards[_randCountRemain].GetComponent<RectTransform>();
+                rt.transform.SetParent(_ancherAlly[_randCountRemain].transform);
+                rt.transform.localPosition = new Vector3(0, 0, 0);
 
-                    if (_cards[diceResult].name != "SkillCard10")
-                    {
-                        _cards.Add(_cards[diceResult]);
-                    }
-                    _cards.RemoveAt(diceResult);
-                    _randCountRemain++;
+                if (_cards[diceResult].name != "SkillCard10")
+                {
+                    _cards.Add(_cards[diceResult]);
                 }
-            }
-            nullCheckCount++;
-            //無限ループするので強制的に止める(後に消すやつ)
-            if (nullCheckCount >= 10)
-            {
-                break;
+                _cards.RemoveAt(diceResult);
+                _randCountRemain++;
             }
         }
         _randCountRemain = 0;

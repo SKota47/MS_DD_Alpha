@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//ゲーム内に出るメニューの管理
 public class MenuScript : MonoBehaviour
 {
     public GameObject _titleCheck;
@@ -11,6 +12,7 @@ public class MenuScript : MonoBehaviour
     [System.NonSerialized] public bool _desiSound = false;
     [System.NonSerialized] public bool _canselSound = false;
 
+    //タイトル選択--------------------------
     public void Title()
     {
         _titleCheck.SetActive(true);
@@ -21,15 +23,14 @@ public class MenuScript : MonoBehaviour
         _canselSound = true;
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("00Title");
-
-        
     }
     public void CheckTitleNo()
     {
         _canselSound = true;
         _titleCheck.SetActive(false);
     }
-
+    //---------------------------------------
+    //Quit選択-------------------------------
     public void Quit()
     {
         _canselSound = true;
@@ -46,7 +47,7 @@ public class MenuScript : MonoBehaviour
         _canselSound = true;
         _quitCheck.SetActive(false);
     }
-
+    //----------------------------------------
     public void Resume()
     {
         _canselSound = true;

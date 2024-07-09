@@ -79,8 +79,6 @@ public class PlayerMoveScripts : MonoBehaviour
 
     [System.NonSerialized] public bool _isDead = false;
 
-    //public SphereCollider _footCollider;
-
     public bool _isParrySuccessful = false;
     [System.NonSerialized] public float _chanceTimer = 0;
 
@@ -316,6 +314,7 @@ public class PlayerMoveScripts : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("AttackBoxTag"))
         {
+            //パリィの判定
             if (_isParrySuccessful)
             {
                 _playParrySound = true;
@@ -324,7 +323,6 @@ public class PlayerMoveScripts : MonoBehaviour
                 BossAttackScript _enemyAttackScript = collision.gameObject.GetComponent<BossAttackScript>();
                 _damageByTouch = 0;
                 _enemyHpScript._damage = _enemyAttackScript._ATTACK_DAMAGE_MAX;
-                //_isParrySuccessful = false;
                 _parryEffectIns = Instantiate(_parryEffect, transform.position, Quaternion.identity);
                 Destroy(_parryEffectIns, 1f);
             }

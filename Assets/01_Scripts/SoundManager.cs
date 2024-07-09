@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// âπÉfÅ[É^ÇÃä«óù
+/// </summary>
 public class SoundManager : MonoBehaviour
 {
     public AudioClip _meleeAtackSound;
@@ -18,9 +21,6 @@ public class SoundManager : MonoBehaviour
 
     AudioSource _audioSource;
     public GameObject _audioSourceobj;
-    private AudioSource _BGMSource;
-
-    bool _isAttackSoundPlay;
 
     public GameObject _playerObj;
     private PlayerMoveScripts _playerScript;
@@ -37,8 +37,6 @@ public class SoundManager : MonoBehaviour
         _playerScript = _playerObj.GetComponent<PlayerMoveScripts>();
         _bulletShotScript = _playerObj.GetComponent<BulletShotScript>();
         _menuScript = _Menu.GetComponent<MenuScript>();
-        //_audioSourceobj = GameObject.FindGameObjectWithTag("BGM");
-        //_BGMSource = _audioSourceobj.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -91,19 +89,14 @@ public class SoundManager : MonoBehaviour
             _audioSource.PlayOneShot(_decisionSound);
             _menuScript._desiSound = false;
         }
+
         if (_menuScript._canselSound)
         {
             _audioSource.volume = 1.0f;
             _audioSource.PlayOneShot(_cancelSound);
             _menuScript._canselSound = false;
         }
-        //if (_playerScript._playDeadSound)
-        //{
-        //    _BGMSource.Pause();
-        //    _audioSource.volume = 0.3f;
-        //    _audioSource.PlayOneShot(_deadSound);
-        //    _playerScript._playDeadSound = false;
-        //}
+
         if (!_backGroundCanvas.activeSelf && !_backgroundcheck)
         {
             _audioSource.volume = 0.8f;

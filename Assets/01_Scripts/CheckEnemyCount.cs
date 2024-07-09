@@ -10,13 +10,12 @@ public class CheckEnemyCount : MonoBehaviour
 {
     GameObject[] _enemy01Objects;
     GameObject[] _enemy02Objects;
-    GameObject[] _flyEnemyObjects;
     GameObject[] _bossObjects;
     GameObject[] _lastBossObjects;
     public int _enemyNum;
     public int _bossNum;
     public int _lastBossNum;
-    public int _enemyNumMax;    //‰ñ•œ—Ê—p
+    public int _enemyNumMax;        //‰ñ•œ—Ê—p
     private int _regainNum = 4;     //‰ñ•œ—Ê‚Ç‚Ì‚­‚ç‚¢‚©
 
     public GameObject _player;

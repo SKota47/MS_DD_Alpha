@@ -3,34 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//弾の発射時に駆動する部分
 public class BulletShotScript : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject _firingPoint;
-    [SerializeField]
-    public GameObject _bullet;
-    [SerializeField]
-    public GameObject _chargeBullet;
-    [SerializeField]
-    private float _speed = 24.0f;
-    [SerializeField]
-    public int _bulletCount = 5;
+    public GameObject _firingPoint;     //射撃位置
+    public GameObject _bullet;          //弾
+    public GameObject _chargeBullet;    //チャージ弾
+    public GameObject _bulletCountUI;   //残段数のUI
 
-    public GameObject _bulletCountUI;
-    private Text _bulletCountText;
+    private float _speed = 24.0f;       //弾速
+    public int _bulletCount = 5;        //弾の数
+    private const float _CHARGE_TIME = 3.0f;   //チャージする時間
+    private float _chargeTimer;         //チャージしている時間
 
-    [System.NonSerialized]
-    public bool _fireSound = false;
+    private Text _bulletCountText;      //UIにアタッチするテキスト
 
-    private float _chargeTime = 3.0f;
-    private float _chargeTimer;
-
-    //public bool _isChargeShotActive = true;
-    public bool _isChargeShot = false;
+    public bool _isChargeShot = false;  //チャージショットかどうか
     private bool _isShot = false;
     private float _shotIntervalTime = 0.6f;
     private float _shotIntervalTimer;
 
+    public bool _fireSound = false;
+
+    //チャージした時に発生するエフェクト
     public ParticleSystem _chargeParticlePrefab;
     private ParticleSystem _chargeShotParticle;
 
@@ -40,7 +35,6 @@ public class BulletShotScript : MonoBehaviour
     private void Start()
     {
         _bulletCountText = _bulletCountUI.GetComponent<Text>();
-        //_isChargeShotActive = true;
         _isChargeShot = PlayerPrefsUtil.GetBool("isChargeShot", false);
     }
 
@@ -50,7 +44,7 @@ public class BulletShotScript : MonoBehaviour
         {
             _chargeTimer += Time.deltaTime;
         }
-        if (_chargeTimer < _chargeTime && (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.K)) && _bulletCount > 0 && !_isShot)
+        if (_chargeTimer < _CHARGE_TIME && (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.K)) && _bulletCount > 0 && !_isShot)
         {
             _fireSound = true;
             Shot();
@@ -58,7 +52,7 @@ public class BulletShotScript : MonoBehaviour
             _chargeTimer = 0.0f;
             _isShot = true;
         }
-        else if (_chargeTimer >= _chargeTime && (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.K)) && _isChargeShot && _bulletCount >= 5 && !_isShot)
+        else if (_chargeTimer >= _CHARGE_TIME && (Input.GetMouseButtonUp(1) || Input.GetKeyUp(KeyCode.K)) && _isChargeShot && _bulletCount >= 5 && !_isShot)
         {
             _fireSound = true;
             ChargeShot();
@@ -67,7 +61,7 @@ public class BulletShotScript : MonoBehaviour
             _isShot = true;
         }
 
-        if (_chargeTimer >= 1 && _isChargeShot && _chargeTimer < _chargeTime && _bulletCount >= 5)
+        if (_chargeTimer >= 1 && _isChargeShot && _chargeTimer < _CHARGE_TIME && _bulletCount >= 5)
         {
             if (_chargedShotParticle == null)
             {
@@ -81,7 +75,7 @@ public class BulletShotScript : MonoBehaviour
             }
         }
 
-        if (_chargeTimer >= _chargeTime && _isChargeShot && _bulletCount >= 5)
+        if (_chargeTimer >= _CHARGE_TIME && _isChargeShot && _bulletCount >= 5)
         {
             if (_chargeShotParticle == null)
             {
@@ -123,13 +117,8 @@ public class BulletShotScript : MonoBehaviour
             _chargeTimer = 0.0f;
             _shotIntervalTimer = 0.0f;
         }
-        //if ()
-        //{
-
-        //}
         _bulletCountText.text = _bulletCount.ToString() + "/5";
 
-        //Debug.Log(_chargeTimer);
     }
 
     private void Shot()

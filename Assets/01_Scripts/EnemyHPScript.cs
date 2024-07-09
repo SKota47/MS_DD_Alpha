@@ -47,8 +47,6 @@ public class EnemyHPScript : MonoBehaviour
 
     private void Start()
     {
-        //_player = GameObject.Find("AttackBox");
-        //_plAttackScript = _player.GetComponent<PlayerAttackScript>();
         _slider = GetComponentInChildren<Slider>();
     }
 

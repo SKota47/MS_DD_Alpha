@@ -6,9 +6,7 @@ public class ParryScript : MonoBehaviour
 {
     public GameObject _player;
     public GameObject _attackObj;
-    private GameObject _shieldObj;
     private PlayerMoveScripts _moveScript;
-    private PlayerAttackScript _attackScript;
 
     public Material _shieldMaterial;
     public Material _parryShieldMaterial;
@@ -19,7 +17,6 @@ public class ParryScript : MonoBehaviour
     void Start()
     {
         _moveScript = _player.GetComponent<PlayerMoveScripts>();
-        _attackScript = _attackObj.GetComponent<PlayerAttackScript>();
         gameObject.GetComponent<Renderer>().material = _shieldMaterial;
     }
 

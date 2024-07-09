@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         }
         else if ((SceneManager.GetActiveScene().buildIndex == 1))
         {
+            PlayerPrefs.DeleteAll();
             Time.timeScale = 1;
         }
         //Cursor.visible = false;
@@ -80,9 +81,5 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.visible = true;
-        //if (Input.GetKeyDown(KeyCode.Tab))
-        //{
-        //    SceneManager.LoadScene("Stage02");
-        //}
     }
 }
