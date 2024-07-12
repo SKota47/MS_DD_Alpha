@@ -1,0 +1,12 @@
+担当箇所
+佐々木昂太郎
+-01_Scriptsフォルダ内 
+  BGMSperkerScript
+  BulletScript
+  BulletShotScript
+  CharaData
+  ChargeBulletScript
+  CheckEnemyCount
+  ColliderManager
+  EndingSceneSkip
+  GameRuleGate
