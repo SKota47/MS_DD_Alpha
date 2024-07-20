@@ -1,5 +1,5 @@
 担当箇所
-佐々木昂太郎
+Skota47(メインプログラマ)
 -01_Scriptsフォルダ内 
   BGMSperkerScript
   BulletScript
