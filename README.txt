@@ -1,5 +1,6 @@
 担当箇所
 Skota47(メインプログラマ)
+Assets
 -01_Scriptsフォルダ内 
   BGMSperkerScript
   BulletScript
@@ -10,3 +11,18 @@ Skota47(メインプログラマ)
   ColliderManager
   EndingSceneSkip
   GameRuleGate
+  GameRuleScript
+  GameSaveScript
+  KnockBack
+  JumpManager
+  MenuScript
+  OpeningSceneSkip
+  ParryScript
+  PlayerAttackScript
+　PlayerChargeAttackScript
+　PlayerHitboxScript
+  PlayerMoveScripts
+  SceneChanger
+  SoundManager
+  TitleButtonScript
+  layingCard
