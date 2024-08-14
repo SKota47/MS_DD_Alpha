@@ -25,4 +25,4 @@ Assets
   SceneChanger
   SoundManager
   TitleButtonScript
-  layingCard
+  layingCard（Gitの仕様上大文字と小文字の変更ができないため、Unity上ではLayingCardと変更する必要があります）
