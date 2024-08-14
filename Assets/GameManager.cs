@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf) _menu.SetActive(true);
-        //  else if (Input.GetKeyDown(KeyCode.Escape) && _menu.activeSelf) _menu.SetActive(false);
         if (Input.GetKeyDown(KeyCode.Escape) && !_menu.activeSelf)
         {
             _menu.SetActive(true);
@@ -50,7 +48,7 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (_playerMoveScript._isDead)
+        if (_playerMoveScript._isDead && SceneManager.GetActiveScene().buildIndex != 0)
         {
             _gameOverObj.SetActive(true);
             Time.timeScale = 0;

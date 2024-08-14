@@ -136,7 +136,7 @@ public class PlayerMoveScripts : MonoBehaviour
                 if (_rb.velocity.x > 0) transform.eulerAngles = new Vector3(0, -90, 0);
                 if (_rb.velocity.x < 0) transform.eulerAngles = new Vector3(0, 90, 0);
 
-                UnityEngine.Debug.Log(_attackButtonTime);
+                //UnityEngine.Debug.Log(_attackButtonTime);
 
                 //攻撃処理-----------------------------------------------------------------------
                 //攻撃と攻撃判定オンオフ
